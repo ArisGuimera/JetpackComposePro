@@ -1,2 +1,4 @@
 - Renombrar el proyecto (fast-force) a otro que decidamos
 - Hacer un template guay para este fichero y el de propuestas
+- Buscar componente de lista bonito
+- Ver porqué al cambiar de lenguaje de prog desaparecen los iconos tipo windows
