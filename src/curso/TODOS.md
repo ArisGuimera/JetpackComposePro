@@ -1,0 +1,2 @@
+- Renombrar el proyecto (fast-force) a otro que decidamos
+- Hacer un template guay para este fichero y el de propuestas
