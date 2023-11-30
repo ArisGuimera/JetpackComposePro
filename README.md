@@ -1,27 +1,20 @@
 # Composepedia
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Proyecto por y para la comunidad donde intentamos ser la mayor base de datos _open source_ que te permita utilizar y entender cada uno de los componentes de _Jetpack Compose_.
 
-```
-npm create astro@latest -- --template starlight
-```
+## 🚀 Estructura del proyecto
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+El proyecto está hecho con Astro y nuestra estructura actual es:
 
 ```
 .
 ├── public/
 ├── src/
 │   ├── assets/
+│   ├── collaborations/
 │   ├── content/
 │   │   ├── docs/
+│   │   │   ├── **componentes**
 │   │   └── config.ts
 │   └── env.d.ts
 ├── astro.config.mjs
@@ -29,25 +22,30 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## Colabora
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Actualmente estamos en una fase muy inicial y todo ayuda se agradece. Para colaborar es muy sencillo. Lo primero que debes hacer es verificar los siguientes documentos que encontrarás dentro del directorio `/collaborations`.
 
-Static assets, like favicons, can be placed in the `public/` directory.
+| Documentos          | Descripción                                      |
+| :------------------------ | :----------------------------------------------- |
+| [**info**](https://github.com/ArisGuimera/JetpackComposePro/blob/master/src/collaborations/info.md)             | Cualquier link o información que debas saber 
+| [**TODO's**](https://github.com/ArisGuimera/JetpackComposePro/blob/master/src/collaborations/todos.md)             | Tareas apuntadas por hacer ||
+| [**Propuestas**](https://github.com/ArisGuimera/JetpackComposePro/blob/master/src/collaborations/propuestas.md)             | Añade las tuyas |
+| [**Preguntas Comunidad**](https://github.com/ArisGuimera/JetpackComposePro/blob/master/src/collaborations/preguntas-comunidad.md)             | Decisiones que hay que tomar para la web, se suelen preguntar en los directos |
+| [**Template componentes**](https://github.com/ArisGuimera/JetpackComposePro/blob/master/src/collaborations/template.mdx)             | Si quieres colaborar con algún componente tendrás que usar la siguiente plantilla |
 
-## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+### Información necesaria
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm install`             | Instala las dependencias                         |
+| `npm run dev`             | Inicial el servidor en `localhost:4321`          |
+| `npm run preview`         | Preview de tu build, hazlo antes de hacer PR     |
 
-## 👀 Want to learn more?
+- Todos los componentes serán formato `.mdx`
+- Las imágenes irán en `src/assets/nombreDelComponente`.
+
+## 👀 ¿Quieres estar actualizado/a?
 
 Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
