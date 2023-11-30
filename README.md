@@ -48,4 +48,4 @@ Actualmente estamos en una fase muy inicial y todo ayuda se agradece. Para colab
 
 ## 👀 ¿Quieres estar actualizado/a?
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Únete al [discord de la comunidad](https://bit.ly/3bmeQvm) donde tenemos un canal para hablar del proyecto (`🧱-composepedia`). 
