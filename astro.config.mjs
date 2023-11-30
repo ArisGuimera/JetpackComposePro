@@ -15,8 +15,8 @@ export default defineConfig({
           autogenerate: { directory: "app-bars" },
         },
         {
-          label: "Badge",
-          autogenerate: { directory: "badge" },
+          label: "Badges",
+          autogenerate: { directory: "badges" },
         },
         {
           label: "Buttons",

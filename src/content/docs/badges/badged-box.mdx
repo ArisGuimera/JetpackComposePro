@@ -1,0 +1,64 @@
+---
+title: BadgedBox
+description: Aprende a usar el composable BadgedBox en Jetpack Compose.
+image: ../../../assets/image.webp
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+<center><img>../../../assets/image.webp</img></center>
+
+`BadgedBox` es el componente que nos permitirá gestionar de una forma sencilla la clásica vista de notificaciones. Su implementación es muy fácil y personalizable por lo que podemos usarlo tanto para avisar al usuario de alguna novedad o como por ejemplo para mostrar el clásico carrito de compra con el número de productos.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin
+@Composable
+fun BadgedBox(
+    badge: @Composable BoxScope.() -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit,
+)
+```
+
+- **badge**: El badged a mostrar - normalmente se usa un componente [Badge](/badges/badge/).
+- **modifier**: Modificador que implementará el composable (_Opcional_).
+- **content**: Contenido que tendrá el badge en la parte superior
+
+</TabItem>
+</Tabs>
+
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin
+@Composable
+fun BadgedBoxExample() {
+    Box(Modifier.size(100.dp), contentAlignment = Alignment.Center) {
+        BadgedBox(badge = { Badge { Text("8") } }) {
+            Icon(
+                Icons.Filled.Favorite,
+                contentDescription = "Favorite"
+            )
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
