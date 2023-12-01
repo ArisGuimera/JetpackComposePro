@@ -7,7 +7,12 @@ export default defineConfig({
     starlight({
       title: "Jetpack Compose Pro",
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: "https://github.com/ArisGuimera/JetpackComposePro",
+        youtube: 'https://youtube.com/@aristidevs',
+        discord: 'https://bit.ly/3bmeQvm',
+        twitter: "https://x.com/aristidevs",
+        linkedin: 'https://www.linkedin.com/in/aristides-guimera-orozco/',
+        twitch: 'https://www.twitch.tv/aristidevs',
       },
       sidebar: [
         {
