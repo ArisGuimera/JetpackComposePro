@@ -6,6 +6,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Jetpack Compose Pro",
+      editLink: {
+        baseUrl: 'https://github.com/ArisGuimera/JetpackComposePro/blob/master/'
+      },
       social: {
         github: "https://github.com/ArisGuimera/JetpackComposePro",
         youtube: 'https://youtube.com/@aristidevs',

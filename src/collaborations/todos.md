@@ -3,3 +3,4 @@
 - Buscar componente de lista bonito
 - Ver porqué al cambiar de lenguaje de prog desaparecen los iconos tipo windows
 - Actualizar el readme
+- Habilitar el mapa del sitio
