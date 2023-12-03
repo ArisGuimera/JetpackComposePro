@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Jetpack Compose Pro",
+      description: "La mayor base de datos de Jetpack Compose de habla hispana.",
       editLink: {
         baseUrl: 'https://github.com/ArisGuimera/JetpackComposePro/blob/master/'
       },
@@ -105,14 +106,7 @@ export default defineConfig({
         {
           label: "ToolTips",
           autogenerate: { directory: "tooltips" },
-        },
-        {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", link: "/guides/example/" },
-          ],
-        },
+        }
       ],
     }),
   ],
