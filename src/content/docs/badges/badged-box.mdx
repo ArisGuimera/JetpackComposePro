@@ -34,6 +34,24 @@ fun BadgedBox(
 - **content**: Contenido que tendrá el badge en la parte superior.
 
 </TabItem>
+
+<TabItem label="Material 3">
+
+```kotlin
+@ExperimentalMaterial3Api
+@Composable
+fun BadgedBox(
+    badge: @Composable BoxScope.() -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit,
+)
+```
+
+- **badge**: El badged a mostrar - normalmente se usa un componente [Badge](/badges/badge/).
+- **modifier**: Modificador que implementará el composable (_Opcional_).
+- **content**: Contenido que tendrá el badge en la parte superior.
+
+</TabItem>
 </Tabs>
 
 
@@ -48,6 +66,24 @@ Puedes acceder a la documentación oficial de Google
 <TabItem label="Material">
 
 ```kotlin
+@Composable
+fun BadgedBoxExample() {
+    Box(Modifier.size(100.dp), contentAlignment = Alignment.Center) {
+        BadgedBox(badge = { Badge { Text("8") } }) {
+            Icon(
+                Icons.Filled.Favorite,
+                contentDescription = "Favorite"
+            )
+        }
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BadgedBoxExample() {
     Box(Modifier.size(100.dp), contentAlignment = Alignment.Center) {
