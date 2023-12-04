@@ -4,3 +4,4 @@
 - Ver porqué al cambiar de lenguaje de prog desaparecen los iconos tipo windows
 - Actualizar el readme
 - Habilitar el mapa del sitio
+- Añadir alguna regla al componente que muestra el código para que las etiquetas tipo @Composable se vean amarillas.
