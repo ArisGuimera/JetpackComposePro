@@ -6,7 +6,12 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Jetpack Compose Pro",
-      description: "La mayor base de datos de Jetpack Compose de habla hispana.",
+      locales: {
+        root: {
+          label: 'Español',
+          lang: 'es',
+        },
+      },      description: "La mayor base de datos de Jetpack Compose de habla hispana.",
       editLink: {
         baseUrl: 'https://github.com/ArisGuimera/JetpackComposePro/blob/master/'
       },
