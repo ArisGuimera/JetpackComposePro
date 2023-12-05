@@ -9,9 +9,12 @@ export default defineConfig({
       expressiveCode: {
         themes: ["github-dark-dimmed", "solarized-light"],
         styleOverrides: {
-          
+          //
         }
       },
+      customCss: [
+        './src/styles/smoothscroll.css',
+      ],
       title: "Jetpack Compose Pro",
       locales: {
         root: {
