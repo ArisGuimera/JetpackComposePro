@@ -136,5 +136,7 @@ export default defineConfig({
         directory: "tooltips"
       }
     }]
-  }), tailwind()]
+  }), tailwind(
+    
+  )]
 });
