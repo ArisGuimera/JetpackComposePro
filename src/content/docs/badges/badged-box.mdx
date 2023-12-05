@@ -8,8 +8,10 @@ sidebar:
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import heroImage from '@assets/badgedbox/badgedbox-header.webp';
+import HeadingImage from '@components/HeadingImage.astro';
 
-![Imagen del componente BadgedBox](../../../assets/badgedbox/badgedbox-header.webp)
+<HeadingImage src={heroImage} alt="Imagen del componente BadgedBox"/>
 
 `BadgedBox` es el componente que nos permitirá gestionar de una forma sencilla la clásica vista de notificaciones. Su implementación es muy fácil y personalizable por lo que podemos usarlo tanto para avisar al usuario de alguna novedad o como por ejemplo para mostrar el clásico carrito de compra con el número de productos.
 
