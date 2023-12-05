@@ -19,4 +19,4 @@
 - [ ] 🗺️ Habilitar el mapa del sitio para una navegación más cómoda.
 
 ## Resaltar Etiquetas @Composable
-- [ ] 🌈 Agregar reglas al componente que muestra el código para que las etiquetas tipo @Composable destaquen en amarillo.
+- [x] 🌈 Agregar reglas al componente que muestra el código para que las etiquetas tipo @Composable destaquen en amarillo.
