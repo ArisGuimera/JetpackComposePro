@@ -1,0 +1,118 @@
+---
+title: Card
+description: Aprende a usar el composable Card en Jetpack Compose.
+sidebar:
+  badge:
+    text: Nuevo
+    variant: tip
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import cardImg from '@assets/cards/cards-header.webp';
+import HeadingImage from '@components/images/HeadingImage.astro';
+
+<HeadingImage src={cardImg} alt="Imagen del componente Card"/>
+
+El elemento componible `Card` actúa como un contenedor. En general, en ellas se suele poner un contenido que se quiere destacar, como por ejemplo una imagen o un texto.
+
+## Implementación
+
+### Definición del componente
+
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin
+@Composable
+fun Card(
+    modifier: Modifier = Modifier,
+    shape: Shape = CardDefaults.shape,
+    colors: CardColors = CardDefaults.cardColors(),
+    elevation: CardElevation = CardDefaults.cardElevation(),
+    border: BorderStroke? = null,
+    content: @Composable ColumnScope.() -> Unit
+): Unit
+```
+- **modifier**: Modificador que implementará el composable.
+- **shape**: Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.
+- **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto <a href="#carddefaults">`CardDefaults`</a>.
+- **elevation**: Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.
+- **border**: Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.
+- **content**: Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/jetpack/compose/components/card).
+:::
+
+### Ejemplos
+
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin
+@Composable
+fun FilledCardExample() {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+        modifier = Modifier
+            .size(width = 240.dp, height = 100.dp)
+    ) {
+        Text(
+            text = "Filled",
+            modifier = Modifier
+                .padding(16.dp),
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+```
+:::tip[Información]
+Fragmento de código extraído de la documentación oficial de Google. Puedes acceder a ella [desde aquí](https://developer.android.com/jetpack/compose/components/card?hl=es-419#filled).
+:::
+</TabItem>
+</Tabs>
+
+## Otros
+
+### CardDefaults
+
+`CardDefaults` es un objeto que contiene los valores por defecto de las tarjetas. En caso de las tarjetas sin elevación, los valores por defecto de esta vienen dados por la extensión `.cardColors()`. Si llamamos a este método componible, podremos modificar sus parámetros, por lo que podremos cambiar los valores de los colores a usar por los deseados.
+
+```kotlin
+@Composable
+fun CardDefaults.cardColors(
+    containerColor: Color = ...,
+    contentColor: Color = ...,
+    disabledContainerColor: Color = ...,
+    disabledContentColor: Color = ...
+): CardColors
+```
+
+Su aplicación sería la siguiente:
+
+```kotlin
+Card(
+    modifier = Modifier
+        .fillMaxWidth()
+        .padding(16.dp),
+    shape = RoundedCornerShape(16.dp),
+    colors = CardDefaults.cardColors(
+        containerColor = Color.Red,
+        contentColor = Color.White,
+        disabledContainerColor = Color.Gray,
+        disabledContentColor = Color.Black
+    )
+) {
+    Text(
+        text = "Card",
+        modifier = Modifier.padding(16.dp)
+    )
+}
+```

@@ -9,7 +9,7 @@ export default defineConfig({
       expressiveCode: {
         themes: ["github-dark-dimmed", "solarized-light"],
         styleOverrides: {
-          //
+          borderRadius: "0.5rem",
         }
       },
       customCss: [
