@@ -22,7 +22,7 @@ El elemento componible `Card` actúa como un contenedor. En general, en ellas se
 <Tabs>
 <TabItem label="Material 3">
 
-```kotlin
+```kotlin frame="terminal"
 @Composable
 fun Card(
     modifier: Modifier = Modifier,
@@ -54,7 +54,7 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material 3">
 
-```kotlin
+```kotlin frame="terminal"
 @Composable
 fun FilledCardExample() {
     Card(
@@ -74,7 +74,7 @@ fun FilledCardExample() {
 }
 ```
 :::tip[Información]
-Fragmento de código extraído de la documentación oficial de Google. Puedes acceder a ella [desde aquí](https://developer.android.com/jetpack/compose/components/card?hl=es-419#filled).
+Fragmento de código extraído de la documentación oficial de Google. Puedes acceder a ella [desde aquí](https://developer.android.com/jetpack/compose/components/card#filled).
 :::
 </TabItem>
 </Tabs>
@@ -85,7 +85,7 @@ Fragmento de código extraído de la documentación oficial de Google. Puedes ac
 
 `CardDefaults` es un objeto que contiene los valores por defecto de las tarjetas. En caso de las tarjetas sin elevación, los valores por defecto de esta vienen dados por la extensión `.cardColors()`. Si llamamos a este método componible, podremos modificar sus parámetros, por lo que podremos cambiar los valores de los colores a usar por los deseados.
 
-```kotlin
+```kotlin frame="terminal"
 @Composable
 fun CardDefaults.cardColors(
     containerColor: Color = ...,
@@ -97,7 +97,7 @@ fun CardDefaults.cardColors(
 
 Su aplicación sería la siguiente:
 
-```kotlin
+```kotlin frame="terminal"
 Card(
     modifier = Modifier
         .fillMaxWidth()

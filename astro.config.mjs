@@ -10,7 +10,7 @@ export default defineConfig({
         themes: ["github-dark-dimmed", "solarized-light"], //Temas de syntax highlighting (Bloques de código)
         styleOverrides: {
           borderRadius: "0.5rem", //Bordes redondeados en los bloques de código
-        }
+        },
       },
       customCss: [
         './src/styles/smoothscroll.css', //Para que el scroll sea suave entre secciones
