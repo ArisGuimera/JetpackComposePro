@@ -11,6 +11,9 @@ export default defineConfig({
           borderRadius: "0.5rem", //Bordes redondeados en los bloques de código
         },
       },
+      customCss: [
+        './src/styles/smoothscroll.css', //Para que el scroll sea suave entre secciones
+      ],
       title: "Jetpack Compose Pro",
       locales: {
         root: {
