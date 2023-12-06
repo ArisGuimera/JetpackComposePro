@@ -5,23 +5,32 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
+      expressiveCode: {
+        themes: ["github-dark-dimmed", "solarized-light"], //Temas de syntax highlighting (Bloques de código)
+        styleOverrides: {
+          borderRadius: "0.5rem", //Bordes redondeados en los bloques de código
+        },
+      },
       title: "Jetpack Compose Pro",
       locales: {
         root: {
-          label: 'Español',
-          lang: 'es',
+          label: "Español",
+          lang: "es",
         },
-      },      description: "La mayor base de datos de Jetpack Compose de habla hispana.",
+      },
+      description:
+        "La mayor base de datos de Jetpack Compose de habla hispana.",
       editLink: {
-        baseUrl: 'https://github.com/ArisGuimera/JetpackComposePro/blob/master/'
+        baseUrl:
+          "https://github.com/ArisGuimera/JetpackComposePro/blob/master/",
       },
       social: {
         github: "https://github.com/ArisGuimera/JetpackComposePro",
-        youtube: 'https://youtube.com/@aristidevs',
-        discord: 'https://bit.ly/3bmeQvm',
+        youtube: "https://youtube.com/@aristidevs",
+        discord: "https://bit.ly/3bmeQvm",
         twitter: "https://x.com/aristidevs",
-        linkedin: 'https://www.linkedin.com/in/aristides-guimera-orozco/',
-        twitch: 'https://www.twitch.tv/aristidevs',
+        linkedin: "https://www.linkedin.com/in/aristides-guimera-orozco/",
+        twitch: "https://www.twitch.tv/aristidevs",
       },
       sidebar: [
         {
@@ -111,7 +120,7 @@ export default defineConfig({
         {
           label: "ToolTips",
           autogenerate: { directory: "tooltips" },
-        }
+        },
       ],
     }),
   ],

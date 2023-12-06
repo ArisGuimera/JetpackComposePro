@@ -20,7 +20,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 <Tabs>
 <TabItem label="Material">
 
-```kotlin
+```kotlin frame="terminal"
 @Composable
 fun BadgedBox(
     badge: @Composable BoxScope.() -> Unit,
@@ -37,7 +37,7 @@ fun BadgedBox(
 
 <TabItem label="Material 3">
 
-```kotlin
+```kotlin frame="terminal"
 @ExperimentalMaterial3Api
 @Composable
 fun BadgedBox(
@@ -65,7 +65,7 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material">
 
-```kotlin
+```kotlin frame="terminal"
 @Composable
 fun BadgedBoxExample() {
     Box(Modifier.size(100.dp), contentAlignment = Alignment.Center) {
@@ -82,7 +82,7 @@ fun BadgedBoxExample() {
 </TabItem>
 <TabItem label="Material 3">
 
-```kotlin
+```kotlin frame="terminal"
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BadgedBoxExample() {
