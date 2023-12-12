@@ -33,7 +33,7 @@ fun Card(
 ```
 - **modifier**: Modificador que implementará el composable.
 - **shape**: Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.
-- **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto <a href="#carddefaults">`CardDefaults`</a>.
+- **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.
 - **elevation**: Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.
 - **border**: Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.
 - **content**: Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.
@@ -76,44 +76,3 @@ Fragmento de código extraído de la documentación oficial de Google. Puedes ac
 :::
 </TabItem>
 </Tabs>
-
-## Otros
-
-### CardDefaults
-
-`CardDefaults` es un objeto que contiene los valores por defecto de las tarjetas.
-En caso de las tarjetas sin elevación, los valores por defecto de esta vienen dados por la extensión `.cardColors()`.
-Si llamamos a este método componible, podremos modificar sus parámetros, traduciéndose esto en cambiar los valores de
-los colores a usar por los deseados.
-
-```kotlin frame="terminal"
-@Composable
-fun CardDefaults.cardColors(
-    containerColor: Color = ...,
-    contentColor: Color = ...,
-    disabledContainerColor: Color = ...,
-    disabledContentColor: Color = ...
-): CardColors
-```
-
-Su aplicación sería la siguiente:
-
-```kotlin frame="terminal"
-Card(
-    modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp),
-    shape = RoundedCornerShape(16.dp),
-    colors = CardDefaults.cardColors(
-        containerColor = Color.Red,
-        contentColor = Color.White,
-        disabledContainerColor = Color.Gray,
-        disabledContentColor = Color.Black
-    )
-) {
-    Text(
-        text = "Card",
-        modifier = Modifier.padding(16.dp)
-    )
-}
-```
