@@ -26,6 +26,30 @@ El componente tiene dos partes: el círculo(*Thumb*) y la pista(*Track*). El cí
 ### Definición del componente
 
 <Tabs>
+
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+Switch(
+    checked: Boolean,
+    onCheckedChange: ((Boolean) -> Unit)?,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    colors: SwitchColors = SwitchDefaults.colors()
+)
+```
+
+- **checked**: Es el estado inicial del interruptor.
+- **onCheckedChange**: Es una devolución de llamada a la que se llama cuando cambia el estado del interruptor.
+- **modifier**: Modificador que implementará el composable (_Opcional_).
+- **enabled**: Indica si el interruptor está habilitado o inhabilitado.
+- **interactionSource**: Usa esta opción para personalizar el color de la ruta y el círculo. _(Representa un flujo de interacciones correspondientes a eventos emitidos por un componente)_
+- **colors**: Los colores que se usaron para el cambio.
+
+</TabItem>
+
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
@@ -43,10 +67,11 @@ Switch(
 
 - **checked**: Es el estado inicial del interruptor.
 - **onCheckedChange**: Es una devolución de llamada a la que se llama cuando cambia el estado del interruptor.
+- **modifier**: Modificador que implementará el composable (_Opcional_).
+- **thumbContent**: Úsalo para personalizar la apariencia del círculo cuando está marcado.
 - **enabled**: Indica si el interruptor está habilitado o inhabilitado.
 - **colors**: Los colores que se usaron para el cambio.
-- **thumbContent**: Úsalo para personalizar la apariencia del círculo cuando está marcado.
-- **colors**: Usa esta opción para personalizar el color de la ruta y el círculo.
+- **interactionSource**: Usa esta opción para personalizar el color de la ruta y el círculo. _(Representa un flujo de interacciones correspondientes a eventos emitidos por un componente)_
 
 </TabItem>
 
@@ -60,9 +85,31 @@ Puedes acceder a la documentación oficial del componente
 ### Ejemplos
 
 <Tabs>
-<TabItem label="Predeterminado">
 
-```kotlin title="SwitchDefault" frame="terminal"
+<TabItem label="Material">
+
+```kotlin "androidx.compose.material.Switch" title="SwitchM2Default" frame="terminal"
+import androidx.compose.material.Switch
+@Composable
+fun SwitchDefault() {
+    val checkedState = remember { mutableStateOf(true) }
+    Switch(
+        checked = checkedState.value,
+        onCheckedChange = { checkedState.value = it }
+    )
+}
+```
+
+<center>
+![Switch](../../../assets/switch/switch-default-m2.webp)
+</center>
+
+</TabItem>
+
+<TabItem label="Material 3">
+
+```kotlin "androidx.compose.material3.Switch" title="SwitchM3Default" frame="terminal"
+import androidx.compose.material3.Switch
 @Composable
 fun SwitchDefault() {
     val checkedState = remember { mutableStateOf(true) }
@@ -78,9 +125,10 @@ fun SwitchDefault() {
 </center>
 
 </TabItem>
-<TabItem label="Personalizado">
+{/* <TabItem label="Material 3">
 
-```kotlin title="SwitchWithIcon" frame="terminal"
+```kotlin "androidx.compose.material3.Switch" title="SwitchM3WithIcon" frame="terminal"
+import androidx.compose.material3.Switch
 @Composable
 fun SwitchWithIcon() {
     var switchCheckedState by remember { mutableStateOf(false) }
@@ -113,9 +161,12 @@ fun SwitchWithIcon() {
 ![Switch](../../../assets/switch/switch-custom.webp)
 </center>
 
-</TabItem>
+</TabItem> */}
 </Tabs>
 
 :::note
-Puedes pasar cualquier elemento componible para el parámetro `thumbContent` a fin de crear una miniatura personalizada.
+Puedes pasar cualquier elemento componible para el parámetro `thumbContent` (Material 3) a fin de crear una miniatura personalizada:
+<center>
+![Switch](../../../assets/switch/switch-custom.webp)
+</center>
 :::
