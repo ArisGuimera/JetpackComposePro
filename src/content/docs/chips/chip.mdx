@@ -1,0 +1,125 @@
+---
+title: Chip
+description: composable Chip en Jetpack Compose.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+![Imagen del componente Chip](../../../assets/chip/chip-header.webp)
+
+El Chip es un elemento visual compacto y interactivo que representa entidades como contactos o etiquetas. Puede ser marcado, descartado o clicado. Aquí te presento cuatro tipos de chips y sus usos.
+
+## Implementación
+
+### Definición del componente
+
+A continuación, se presenta la implementación del composable `Chip`.
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@ExperimentalMaterialApi
+@Composable
+fun Chip(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
+    border: BorderStroke? = null,
+    colors: ChipColors = ChipDefaults.chipColors(),
+    leadingIcon: @Composable (() -> Unit)? = null,
+    content: @Composable RowScope.() -> Unit
+)
+```
+
+**Parámetros**
+Nombre | Descripción
+------ | -----------
+onClick | Se llama cuando se hace clic en el chip.
+modifier | Modificador que se aplicará al chip.
+enabled | Cuando está deshabilitado, el chip no responderá a la entrada del usuario. También aparecerá visualmente deshabilitado y desactivado para los servicios de accesibilidad.
+interactionSource | La MutableInteractionSource representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia MutableInteractionSource si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
+border | Borde que se dibujará alrededor del chip. Pasa null aquí para no tener borde.
+colors | ChipColors que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta ChipDefaults.chipColors.
+leadingIcon | Icono opcional al principio del chip, antes del texto de contenido.
+content | El contenido de este chip.
+
+
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@ExperimentalMaterialApi
+@Composable
+fun Chip(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
+    border: BorderStroke? = null,
+    colors: ChipColors = ChipDefaults.chipColors(),
+    leadingIcon: @Composable (() -> Unit)? = null,
+    content: @Composable RowScope.() -> Unit
+)
+```
+
+**Parámetros**
+Nombre | Descripción
+------ | -----------
+onClick | Se llama cuando se hace clic en el chip.
+modifier | Modificador que se aplicará al chip.
+enabled | Cuando está deshabilitado, el chip no responderá a la entrada del usuario. También aparecerá visualmente deshabilitado y desactivado para los servicios de accesibilidad.
+interactionSource | La MutableInteractionSource representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia MutableInteractionSource si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
+border | Borde que se dibujará alrededor del chip. Pasa null aquí para no tener borde.
+colors | ChipColors que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta ChipDefaults.chipColors.
+leadingIcon | Icono opcional al principio del chip, antes del texto de contenido.
+content | El contenido de este chip.
+
+</TabItem>
+</Tabs>
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/jetpack/compose/components/chip?hl=es-419s).
+:::
+
+## El composable `Chip` se divide en cuatro tipos distintos, cada uno diseñado con un propósito específico:
+
+![Imagen del componente Chip](../../../assets/chip/chip-sub-componentes.webp)
+
+### 1 Assist Chip (Chip de Asistencia)
+
+- **Propósito:** Orienta al usuario durante una tarea.
+- **Apariencia:** Suelen ser elementos temporales que aparecen en respuesta a las acciones del usuario.
+- **Ejemplo de Uso:** Guiar al usuario a través de un flujo de trabajo o proporcionar información relevante en un contexto específico.
+
+### 2 Filter Chip (Chip de Filtro)
+
+- **Propósito:** Permite a los usuarios refinar el contenido de un conjunto de opciones.
+- **Interactividad:** Pueden ser seleccionados o deseleccionados.
+- **Características:** Algunos pueden incluir un ícono de marca de verificación para indicar la selección.
+- **Ejemplo de Uso:** Filtrar resultados en una lista o conjunto de datos.
+
+### 3 Input Chip (Chip de Entrada)
+
+- **Propósito:** Representa la información proporcionada por el usuario.
+- **Contenido:** Puede incluir un ícono y texto.
+- **Funcionalidad:** Ofrece la posibilidad de eliminar el chip, a menudo con un botón "X".
+- **Ejemplo de Uso:** Mostrar las selecciones de un menú o etiquetar contenido.
+
+### 4 Suggestion Chip (Chip de Sugerencia)
+
+- **Propósito:** Proporciona recomendaciones al usuario basadas en su actividad o entradas recientes.
+- **Ubicación:** Suelen aparecer debajo de un campo de entrada, sugiriendo acciones al usuario.
+- **Ejemplo de Uso:** Ofrecer opciones sugeridas mientras el usuario escribe en un cuadro de búsqueda.
+
+Estos tipos de chips brindan versatilidad al composable `Chip`, permitiendo su adaptación a diversos escenarios y necesidades de diseño en una interfaz de usuario.
+
+## Diferencias de Material Design 3 respecto a Material Design 2
+
+- Color: Nuevos mapeos de colores y compatibilidad con colores dinámicos.
+- Forma: Rectángulo redondeado.
+- Tipos: Las action chips se han separado en assist chips y suggestion chips. Choice chips ahora son un subconjunto de filter chips.
