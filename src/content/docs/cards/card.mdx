@@ -18,24 +18,58 @@ El elemento componible `Card` actúa como un contenedor. En general, en ellas se
 ### Definición del componente
 
 <Tabs>
+<TabItem label="Material">
+```kotlin frame="terminal"
+@ExperimentalMaterialApi
+@Composable
+@NonRestartableComposable
+fun Card(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = MaterialTheme.shapes.medium,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    contentColor: Color = contentColorFor(backgroundColor),
+    border: BorderStroke? = null,
+    elevation: Dp = 1.dp,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable () -> Unit
+)
+```
+- **onClick**: Función que se ejecutará cuando se haga click en la tarjeta.
+- **modifier**: Modificador que implementará el composable.
+- **enabled**: Indica si la tarjeta está habilitada o no. Por defecto es `true`.
+- **shape**: Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.
+- **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.
+- **elevation**: Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.
+- **border**: Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.
+- **interactionSource**: Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.
+- **content**: Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.
+</TabItem>
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
 @Composable
 fun Card(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
     elevation: CardElevation = CardDefaults.cardElevation(),
     border: BorderStroke? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable ColumnScope.() -> Unit
-): Unit
+)
 ```
+- **onClick**: Función que se ejecutará cuando se haga click en la tarjeta.
 - **modifier**: Modificador que implementará el composable.
+- **enabled**: Indica si la tarjeta está habilitada o no. Por defecto es `true`.
 - **shape**: Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.
 - **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.
 - **elevation**: Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.
 - **border**: Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.
+- **interactionSource**: Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.
 - **content**: Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.
 </TabItem>
 </Tabs>
