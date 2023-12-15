@@ -1,6 +1,6 @@
 ---
-title: Button
-description: Aprende a usar el composable Button en Jetpack Compose.
+title: OutlinedButton
+description: Aprende a usar el composable OutlinedButton en Jetpack Compose.
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -9,9 +9,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 | Material| Material 3| 
 | :----------------: | :------: |
-| ![Imagen del componente Button - Material](../../../assets/buttons/button/button-header-material.png)              | ![Imagen del componente Button - Material 3](../../../assets/buttons/button/button-header-material-3.png) | 
+| ![Imagen del componente OutlinedButton - Material](../../../assets/buttons/outlinedbutton/button-header-material.png)              | ![Imagen del componente OutlinedButton - Material 3](../../../assets/buttons/outlinedbutton/button-header-material-3.png) | 
 
-Los `Button` le dan al usuario la posibilidad de activar/ejecutar acciones predefinidas. Este se trata del botón más sencillo de todos y el que se utiliza por defecto.
+Los `OutlinedButton` son [botones](/buttons/button/) con un diseño menos llamativo ya que están diseñados para acciones importantes pero que no son TAN importantes como la acción primaria.
 
 ## Implementación
 
@@ -24,15 +24,15 @@ Los `Button` le dan al usuario la posibilidad de activar/ejecutar acciones prede
 
 ```kotlin frame="terminal"
 @Composable
-fun Button(
+fun OutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    elevation: ButtonElevation? = ButtonDefaults.elevation(),
+    elevation: ButtonElevation? = null,
     shape: Shape = MaterialTheme.shapes.small,
-    border: BorderStroke? = null,
-    colors: ButtonColors = ButtonDefaults.buttonColors(),
+    border: BorderStroke? = ButtonDefaults.outlinedBorder,
+    colors: ButtonColors = ButtonDefaults.outlinedButtonColors(),
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     content: @Composable RowScope.() -> Unit
 )
@@ -55,14 +55,14 @@ content | Contenido a mostrar dentro del `Button`.
 
 ```kotlin frame="terminal"
 @Composable
-fun Button(
+fun OutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = ButtonDefaults.shape,
-    colors: ButtonColors = ButtonDefaults.buttonColors(),
-    elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
-    border: BorderStroke? = null,
+    shape: Shape = ButtonDefaults.outlinedShape,
+    colors: ButtonColors = ButtonDefaults.outlinedButtonColors(),
+    elevation: ButtonElevation? = null,
+    border: BorderStroke? = ButtonDefaults.outlinedButtonBorder,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit
@@ -97,12 +97,12 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material">
 
-<center>![Imagen del componente Button - Material](../../../assets/buttons/button/button-header-material.png)</center>
+<center>![Imagen del componente OutlinedButton - Material](../../../assets/buttons/outlinedbutton/button-header-material.png)</center>
 
 ```kotlin frame="terminal"
 @Composable
-fun ButtonExample() {
-    Button(onClick = { print("Hello") }) {
+fun OutlinedButtonExample() {
+    OutlinedButton(onClick = { print("Hello") }) {
         Text(text = "Click me")
     }
 }
@@ -111,12 +111,12 @@ fun ButtonExample() {
 </TabItem>
 <TabItem label="Material 3">
 
-<center>![Imagen del componente Button - Material 3](../../../assets/buttons/button/button-header-material-3.png)</center>
+<center>![Imagen del componente OutlinedButton - Material 3](../../../assets/buttons/outlinedbutton/button-header-material-3.png)</center>
 
 ```kotlin frame="terminal"
 @Composable
-fun ButtonExample() {
-    Button(onClick = { print("Hello") }) {
+fun OutlinedButtonExample() {
+    OutlinedButton(onClick = { print("Hello") }) {
         Text(text = "Click me")
     }
 }
