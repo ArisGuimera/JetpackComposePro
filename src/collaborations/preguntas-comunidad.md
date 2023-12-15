@@ -1,3 +1,5 @@
-- ¿Switch y checkbox juntos?
-- Decidir la forma de añadir nombres tipo (App bar) o (App Bar)
-- Nombres de los componentes en ingles o español
+- ¿Switch y checkbox juntos? - NO
+- Decidir la forma de añadir nombres tipo (App bar) o (App Bar) - App Bar (PascalCase)
+- Nombres de los componentes en ingles o español - INGLES
+
+- ### Otros diseños

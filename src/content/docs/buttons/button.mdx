@@ -7,7 +7,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 [comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
 
-![Imagen del componente Button](../../../assets/badgedbox/badgedbox-header.webp)
+| Material| Material 3| 
+| :----------------: | :------: |
+| ![Imagen del componente Button - Material](../../../assets/button/button-header-material.png)              | ![Imagen del componente Button - Material 3](../../../assets/button/button-header-material-3.png) | 
 
 Los `Button` le dan al usuario la posibilidad de activar/ejecutar acciones predefinidas. Este se trata del botón más sencillo de todos y el que se utiliza por defecto.
 
@@ -20,7 +22,7 @@ Los `Button` le dan al usuario la posibilidad de activar/ejecutar acciones prede
 <Tabs>
 <TabItem label="Material">
 
-```kotlin frame="terminal
+```kotlin frame="terminal"
 @Composable
 fun Button(
     onClick: () -> Unit,
@@ -35,22 +37,23 @@ fun Button(
     content: @Composable RowScope.() -> Unit
 )
 ```
-
-- onClick: Función lambda que se ejecutará cuando el usuario pulse el botón.
-- modifier: Modificador que implementará el composable.
-- enabled: Habilita o deshabilita el botón.
-- interactionSource: Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
-- elevation: Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
-- shape: Define la forma del `Button` y su sombra.
-- border: Borde para el `Button`.
-- colors: Nos permite modificar el color del fondo del `Button` y el del contenido.
-- contentPadding: The spacing values to apply internally between the container and the content
-- content: Contenido a mostrar dentro del `Button`.
+Atributo | Descripción
+------ | -----------
+onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
+modifier | Modificador que implementará el composable.
+enabled | Habilita o deshabilita el botón.
+interactionSource | Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
+shape | Define la forma del `Button` y su sombra.
+border | Borde para el `Button`.
+colors | Nos permite modificar el color del fondo del `Button` y el del contenido.
+contentPadding | The spacing values to apply internally between the container and the content
+content | Contenido a mostrar dentro del `Button`.
 
 </TabItem>
 <TabItem label="Material 3">
 
-```kotlin frame="terminal
+```kotlin frame="terminal"
 @Composable
 fun Button(
     onClick: () -> Unit,
@@ -66,16 +69,18 @@ fun Button(
 )
 ```
 
-- onClick: Función lambda que se ejecutará cuando el usuario pulse el botón.
-- modifier: Modificador que implementará el composable.
-- enabled: Habilita o deshabilita el botón.
-- shape: Define la forma del `Button` y su sombra.
-- colors: Nos permite modificar el color del fondo del `Button` y el del contenido.
-- elevation: Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
-- border: Borde para el `Button`.
-- contentPadding: The spacing values to apply internally between the container and the content
-- interactionSource: Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
-- content: Contenido a mostrar dentro del `Button`.
+Atributo | Descripción
+------ | -----------
+onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
+modifier | Modificador que implementará el composable.
+enabled | Habilita o deshabilita el botón.
+shape | Define la forma del `Button` y su sombra.
+colors | Nos permite modificar el color del fondo del `Button` y el del contenido.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
+border | Borde para el `Button`.
+contentPadding | The spacing values to apply internally between the container and the content
+interactionSource | Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
+content | Contenido a mostrar dentro del `Button`.
 
 </TabItem>
 </Tabs>
@@ -87,12 +92,14 @@ Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
 :::
 
-### Ejemplos
+### Ejemplos 
 
 <Tabs>
 <TabItem label="Material">
 
-```kotlin frame="terminal
+<center>![Imagen del componente Button - Material](../../../assets/button/button-header-material.png)</center>
+
+```kotlin frame="terminal"
 @Composable
 fun ButtonExample() {
     Button(onClick = { print("Hello") }) {
@@ -104,7 +111,9 @@ fun ButtonExample() {
 </TabItem>
 <TabItem label="Material 3">
 
-```kotlin frame="terminal
+<center>![Imagen del componente Button - Material 3](../../../assets/button/button-header-material-3.png)</center>
+
+```kotlin frame="terminal"
 @Composable
 fun ButtonExample() {
     Button(onClick = { print("Hello") }) {
