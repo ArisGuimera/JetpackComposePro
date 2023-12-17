@@ -19,23 +19,46 @@ El composable `AlertDialog` proporciona una API conveniente para crear un diálo
 <Tabs>
 <TabItem label="Material">
 ```kotlin frame="terminal"
-
+    @Composable
+    @ExperimentalMaterialApi
+    fun AlertDialog(
+        onDismissRequest: () -> Unit,
+        buttons: @Composable () -> Unit,
+        modifier: Modifier = Modifier,
+        title: (@Composable () -> Unit)? = null,
+        text: (@Composable () -> Unit)? = null,
+        shape: Shape = MaterialTheme.shapes.medium,
+        backgroundColor: Color = MaterialTheme.colors.surface,
+        contentColor: Color = contentColorFor(backgroundColor),
+        dialogProvider: AlertDialogProvider = PopupAlertDialogProvider
+    ): Unit
 ```
 
-| Atributo         | Descripción                                                                       |
-| ----------------- | ---------------------------------------------------------------------------------- |
-| **title**         | Texto que aparece en la parte superior del diálogo.                               |
-| **text**          | Texto que aparece centrado en el diálogo.                                         |
-| **icon**          | Gráfico que aparece en la parte superior del diálogo.                              |
-| **onDismissRequest** | Función llamada cuando el usuario descarta el diálogo, por ejemplo, al presionar fuera de él. |
-| **dismissButton** | Elemento componible que funciona como botón para descartar.                        |
-| **confirmButton** | Elemento componible que funciona como botón de confirmación.                       |
+| Atributo             | Descripción                                                                       |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| **onDismissRequest** | Callback que se llamará cuando el usuario cierra el diálogo.                       |
+| **buttons**          | Función que emite el diseño con los botones.                                       |
+| **modifier**         | Modificador que se aplicará al diseño del diálogo.                                 |
+| **title**            | El título del diálogo que debe especificar el propósito del diálogo.               |
+| **text**             | El texto que presenta los detalles sobre el propósito del diálogo.                 |
+| **shape**            | Define la forma del diálogo.                                                       |
+| **backgroundColor**  | El color de fondo del diálogo.                                                     |
+| **contentColor**     | El color de contenido preferido proporcionado por este diálogo a sus hijos.         |
+| **dialogProvider**   | Define cómo crear un diálogo en el cual se colocará el contenido del AlertDialog.  |
 </TabItem>
 
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
-
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun AlertDialog(
+        onDismissRequest: () -> Unit,
+        onConfirmation: () -> Unit,
+        dialogTitle: String,
+        dialogText: String,
+        icon: ImageVector,
+    ): Unit
 ```
 
 | Atributo         | Descripción                                                                       |
@@ -53,10 +76,23 @@ El composable `AlertDialog` proporciona una API conveniente para crear un diálo
 
 [comment]: <> (No modifiques el tip)
 
+
+<Tabs>
+<TabItem label="Material">
 :::tip[Fuente]
-Puedes acceder a la documentación oficial de Google
-[desde aquí](https://developer.android.com/jetpack/compose/components/dialog?hl=es-419).
+Puedes acceder a la documentación oficial de Google de material:
+[desde aquí ](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary?_gl=1*19tuy8v*_ga*MzIxMzM0MzIxLjE2ODQxODE4MTQ.*_ga_QPQ2NRV856*MTcwMjY5MzE5MC4xOC4xLjE3MDI2OTMxOTcuMC4wLjA.#top-level-functions)
 :::
+</TabItem>
+<TabItem label="Material 3">
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google de material 3:
+[desde aquí ](https://developer.android.com/jetpack/compose/components/dialog?hl=es-419)
+:::
+
+</TabItem>
+</Tabs>
 
 ### Ejemplos 
 En el siguiente ejemplo, se implementan dos botones en un diálogo de alerta: uno para descartar el diálogo y otro para confirmar la solicitud
