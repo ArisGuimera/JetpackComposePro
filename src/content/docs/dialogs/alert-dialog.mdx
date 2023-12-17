@@ -151,9 +151,41 @@ fun alertDialogDoc() {
 
 ```kotlin frame="terminal"
 @Composable
-fun ButtonExample() {
-    Button(onClick = { print("Hello") }) {
-        Text(text = "Click me")
+fun alertDialogDoc() {
+    val openDialog = remember { mutableStateOf(true) }
+
+    if (openDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                openDialog.value = false
+            },
+            title = {
+                Text(text = "Documentación  de AlertDialog")
+            },
+            text = {
+                Text(
+                    "Descripción de la alerta de ejemplo de material 2."
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        openDialog.value = false
+                    }
+                ) {
+                    Text("Aceptar")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        openDialog.value = false
+                    }
+                ) {
+                    Text("Salir")
+                }
+            }
+        )
     }
 }
 ```
