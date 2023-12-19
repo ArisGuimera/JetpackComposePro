@@ -51,25 +51,41 @@ El composable `AlertDialog` proporciona una API conveniente para crear un diálo
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun AlertDialog(
         onDismissRequest: () -> Unit,
-        onConfirmation: () -> Unit,
-        dialogTitle: String,
-        dialogText: String,
-        icon: ImageVector,
-    ): Unit
+        confirmButton: @Composable () -> Unit,
+        modifier: Modifier = Modifier,
+        dismissButton: @Composable (() -> Unit)? = null,
+        icon: @Composable (() -> Unit)? = null,
+        title: @Composable (() -> Unit)? = null,
+        text: @Composable (() -> Unit)? = null,
+        shape: Shape = AlertDialogDefaults.shape,
+        containerColor: Color = AlertDialogDefaults.containerColor,
+        iconContentColor: Color = AlertDialogDefaults.iconContentColor,
+        titleContentColor: Color = AlertDialogDefaults.titleContentColor,
+        textContentColor: Color = AlertDialogDefaults.textContentColor,
+        tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
+        properties: DialogProperties = DialogProperties()
+    )
 ```
 
-| Atributo         | Descripción                                                                       |
-| ----------------- | ---------------------------------------------------------------------------------- |
-| **title**         | Texto que aparece en la parte superior del diálogo.                               |
-| **text**          | Texto que aparece centrado en el diálogo.                                         |
-| **icon**          | Gráfico que aparece en la parte superior del diálogo.                              |
-| **onDismissRequest** | Función llamada cuando el usuario descarta el diálogo, por ejemplo, al presionar fuera de él. |
-| **dismissButton** | Elemento componible que funciona como botón para descartar.                        |
-| **confirmButton** | Elemento componible que funciona como botón de confirmación.                       |
+| Atributo             | Descripción                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| **onDismissRequest**  | Función llamada cuando el usuario descarta el diálogo, por ejemplo, al presionar fuera de él. |
+| **confirmButton**     | Elemento componible que funciona como botón de confirmación.                       |
+| **modifier**          | Modificador para personalizar la apariencia y el comportamiento del diálogo.       |
+| **dismissButton**     | Elemento componible opcional que funciona como botón para descartar.               |
+| **icon**              | Gráfico opcional que aparece en la parte superior del diálogo.                     |
+| **title**             | Texto opcional que aparece en la parte superior del diálogo.                       |
+| **text**              | Texto opcional que aparece centrado en el diálogo.                                 |
+| **shape**             | Forma del diálogo, por defecto es la forma predeterminada de AlertDialog.          |
+| **containerColor**    | Color del fondo del diálogo.                                                       |
+| **iconContentColor**  | Color del gráfico (icono) en el diálogo.                                           |
+| **titleContentColor** | Color del texto en la parte superior del diálogo.                                  |
+| **textContentColor**  | Color del texto centrado en el diálogo.                                            |
+| **tonalElevation**    | Elevación del diálogo en términos de sombras.                                      |
+| **properties**        | Propiedades del diálogo (por defecto, DialogProperties).                           |
 
 </TabItem>
 
