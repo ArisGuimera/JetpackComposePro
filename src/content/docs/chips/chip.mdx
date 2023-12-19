@@ -110,9 +110,73 @@ Puedes acceder a la documentación oficial de Google
 
 ### 4 Suggestion Chip (Chip de Sugerencia)
 
+<center>![Imagen del componente Chip de Sugerencia - Material 3](../../../assets/chip/chip-suggestion-material-3-example.webp)</center>
+
 - **Propósito:** Proporciona recomendaciones al usuario basadas en su actividad o entradas recientes.
 - **Ubicación:** Suelen aparecer debajo de un campo de entrada, sugiriendo acciones al usuario.
 - **Ejemplo de Uso:** Ofrecer opciones sugeridas mientras el usuario escribe en un cuadro de búsqueda.
+
+```kotlin frame="terminal"
+@ExperimentalMaterial3Api
+@Composable
+@ComposableInferredTarget
+public fun SuggestionChip(
+    onClick: () -> Unit,
+    label: @Composable () -> Unit,
+    modifier: Modifier,
+    enabled: Boolean,
+    icon: @Composable() (() -> Unit)?,
+    shape: Shape,
+    colors: ChipColors,
+    elevation: ChipElevation?,
+    border: ChipBorder?,
+    interactionSource: MutableInteractionSource
+): Unit
+```
+
+Atributo | Descripción
+------ | -----------
+onClick | Se llama cuando se hace clic en el chip.
+label | El contenido del chip definido como un composable.
+modifier | Modificador que se aplicará al chip.
+enabled | Cuando está deshabilitado, el chip no responderá a la entrada del usuario. También aparecerá visualmente deshabilitado y desactivado para los servicios de accesibilidad.
+icon | Icono opcional que se mostrará dentro del chip, definido como un composable.
+shape | La forma del chip, que puede ser un rectángulo, un círculo, etc.
+colors | `ChipColors` que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta `ChipDefaults.chipColors`.
+elevation | La elevación del chip, que afecta su sombra.
+border | Borde que se dibujará alrededor del chip. Pasa null aquí para no tener borde.
+interactionSource | La `MutableInteractionSource` representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia `MutableInteractionSource` si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
+
+### Ejemplo de Suggestion Chip
+
+<Tabs>
+<TabItem label="Material">
+
+<center>![Imagen del componente Chip de Sugerencia - Material 3](../../../assets/chip/chip-suggestion-material-3-example.webp)</center>
+
+```kotlin frame="terminal"
+
+```
+
+</TabItem>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente Chip de Sugerencia - Material 3](../../../assets/chip/chip-suggestion-material-3-example.webp)</center>
+
+```kotlin frame="terminal"
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun exampleSuggestionChip() {
+    SuggestionChip(
+        modifier = Modifier.padding(20.dp),
+        onClick = { Log.d("Suggestion chip", "Hi from suggestion chip") },
+        label = { Text("Doc de Sugerencia") }
+    )
+}
+```
+
+</TabItem>
+</Tabs>
 
 Estos tipos de chips brindan versatilidad al composable `Chip`, permitiendo su adaptación a diversos escenarios y necesidades de diseño en una interfaz de usuario.
 
