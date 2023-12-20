@@ -14,7 +14,7 @@ export default defineConfig({
       customCss: [
         './src/styles/smoothscroll.css', //Para que el scroll sea suave entre secciones
       ],
-      title: "Jetpack Compose Pro",
+      title: "OpenCompose",
       locales: {
         root: {
           label: "Español",
