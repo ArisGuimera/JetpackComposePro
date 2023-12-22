@@ -1,8 +1,8 @@
 ---
-title: OutlinedButton
-description: Aprende a usar el composable OutlinedButton en Jetpack Compose.
+title: TextButton
+description: Aprende a usar el composable TextButton en Jetpack Compose.
 sidebar:
-    order: 2
+    order: 4
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -11,9 +11,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 | Material| Material 3| 
 | :----------------: | :------: |
-| ![Imagen del componente OutlinedButton - Material](../../../assets/buttons/outlinedbutton/button-header-material.png)              | ![Imagen del componente OutlinedButton - Material 3](../../../assets/buttons/outlinedbutton/button-header-material-3.png) | 
+| ![Imagen del componente TextButton - Material](../../../assets/buttons/textbutton/button-header-material.png)              | ![Imagen del componente TextButton - Material 3](../../../assets/buttons/textbutton/button-header-material-3.png) | 
 
-Los `OutlinedButton` son [botones](/buttons/button/) con un diseño menos llamativo ya que están diseñados para acciones importantes pero que no son TAN importantes como la acción primaria.
+Los `TextButton` están destinados a las acciones con menos prioridad en las vistas.
 
 ## Implementación
 
@@ -26,16 +26,16 @@ Los `OutlinedButton` son [botones](/buttons/button/) con un diseño menos llamat
 
 ```kotlin frame="terminal"
 @Composable
-fun OutlinedButton(
+fun TextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = null,
     shape: Shape = MaterialTheme.shapes.small,
-    border: BorderStroke? = ButtonDefaults.outlinedBorder,
-    colors: ButtonColors = ButtonDefaults.outlinedButtonColors(),
-    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    border: BorderStroke? = null,
+    colors: ButtonColors = ButtonDefaults.textButtonColors(),
+    contentPadding: PaddingValues = ButtonDefaults.TextButtonContentPadding,
     content: @Composable RowScope.() -> Unit
 )
 ```
@@ -57,15 +57,15 @@ content | Contenido a mostrar dentro del `Button`.
 
 ```kotlin frame="terminal"
 @Composable
-fun OutlinedButton(
+fun TextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = ButtonDefaults.outlinedShape,
-    colors: ButtonColors = ButtonDefaults.outlinedButtonColors(),
+    shape: Shape = ButtonDefaults.textShape,
+    colors: ButtonColors = ButtonDefaults.textButtonColors(),
     elevation: ButtonElevation? = null,
-    border: BorderStroke? = ButtonDefaults.outlinedButtonBorder,
-    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    border: BorderStroke? = null,
+    contentPadding: PaddingValues = ButtonDefaults.TextButtonContentPadding,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit
 )
@@ -99,12 +99,12 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material">
 
-<center>![Imagen del componente OutlinedButton - Material](../../../assets/buttons/outlinedbutton/button-header-material.png)</center>
+<center>![Imagen del componente Button - Material](../../../assets/buttons/button/button-header-material.png)</center>
 
 ```kotlin frame="terminal"
 @Composable
-fun OutlinedButtonExample() {
-    OutlinedButton(onClick = { print("Hello") }) {
+fun TextButtonExample() {
+    TextButton(onClick = { print("Hello") }) {
         Text(text = "Click me")
     }
 }
@@ -113,12 +113,12 @@ fun OutlinedButtonExample() {
 </TabItem>
 <TabItem label="Material 3">
 
-<center>![Imagen del componente OutlinedButton - Material 3](../../../assets/buttons/outlinedbutton/button-header-material-3.png)</center>
+<center>![Imagen del componente Button - Material 3](../../../assets/buttons/button/button-header-material-3.png)</center>
 
 ```kotlin frame="terminal"
 @Composable
-fun OutlinedButtonExample() {
-    OutlinedButton(onClick = { print("Hello") }) {
+fun TextButtonExample() {
+    TextButton(onClick = { print("Hello") }) {
         Text(text = "Click me")
     }
 }

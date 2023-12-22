@@ -1,0 +1,83 @@
+---
+title: FilledTonalButton
+description: Aprende a usar el composable FilledTonalButton en Jetpack Compose.
+sidebar:
+    order: 1
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material 3| 
+| :------: |
+| ![Imagen del componente FilledTonalButton - Material 3](../../../assets/buttons/filledtonalbutton/button-header-material-3.png) | 
+
+Los `FilledTonalButton` están definidos para acciones de importancia intermedia, entre los [Button](/buttons/button/) y los [OutlinedButton](/buttons/outlined-button/). Como norma general estos botones utilizarán de la gama de colores la parte secundaria, es decir, colores que no llamen tanto la atención como los primarios.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun FilledTonalButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = ButtonDefaults.filledTonalShape,
+    colors: ButtonColors = ButtonDefaults.filledTonalButtonColors(),
+    elevation: ButtonElevation? = ButtonDefaults.filledTonalButtonElevation(),
+    border: BorderStroke? = null,
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit
+)
+```
+
+Atributo | Descripción
+------ | -----------
+onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
+modifier | Modificador que implementará el composable.
+enabled | Habilita o deshabilita el botón.
+shape | Define la forma del `Button` y su sombra.
+colors | Nos permite modificar el color del fondo del `Button` y el del contenido.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
+border | Borde para el `Button`.
+contentPadding | The spacing values to apply internally between the container and the content
+interactionSource | Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
+content | Contenido a mostrar dentro del `Button`.
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos 
+
+<Tabs>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente FilledTonalButton - Material 3](../../../assets/buttons/filledtonalbutton/button-header-material-3.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun FilledTonalButtonExample() {
+    FilledTonalButton(onClick = { print("Hello") }) {
+        Text(text = "Click me")
+    }
+}
+```
+
+</TabItem>
+</Tabs>
