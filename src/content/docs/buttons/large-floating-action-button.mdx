@@ -1,8 +1,8 @@
 ---
-title: SmallFloatingActionButton
-description: Aprende a usar el composable SmallFloatingActionButton en Jetpack Compose.
+title: LargeFloatingActionButton
+description: Aprende a usar el composable LargeFloatingActionButton en Jetpack Compose.
 sidebar:
-    order: 6
+    order: 7
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -11,9 +11,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 | Material 3| 
 | :------: |
-| ![Imagen del componente SmallFloatingActionButton - Material 3](../../../assets/buttons/smallfloatingactionbutton/button-header-material-3.png) | 
+| ![Imagen del componente LargeFloatingActionButton - Material 3](../../../assets/buttons/largefloatingactionbutton/button-header-material-3.png) | 
 
-El componente `SmallFloatingActionButton` sigue las mismas reglas e implimentaciones que [FloatingActionButton](/buttons/floating-action-button/) pero con un diseño algo más pequeño.
+El componente `LargeFloatingActionButton` sigue las mismas reglas e implimentaciones que [FloatingActionButton](/buttons/floating-action-button/) pero el botón como tal es más grande.
 
 ## Implementación
 
@@ -26,10 +26,10 @@ El componente `SmallFloatingActionButton` sigue las mismas reglas e implimentaci
 
 ```kotlin frame="terminal"
 @Composable
-fun SmallFloatingActionButton(
+fun LargeFloatingActionButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    shape: Shape = FloatingActionButtonDefaults.smallShape,
+    shape: Shape = FloatingActionButtonDefaults.largeShape,
     containerColor: Color = FloatingActionButtonDefaults.containerColor,
     contentColor: Color = contentColorFor(containerColor),
     elevation: FloatingActionButtonElevation = FloatingActionButtonDefaults.elevation(),
@@ -64,12 +64,12 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material 3">
 
-<center>![Imagen del componente SmallFloatingActionButton - Material 3](../../../assets/buttons/smallfloatingactionbutton/button-header-material-3.png)</center>
+<center>![Imagen del componente LargeFloatingActionButton - Material 3](../../../assets/buttons/largefloatingactionbutton/button-header-material-3.png)</center>
 
 ```kotlin frame="terminal"
 @Composable
-fun SmallFloatingActionButtonExample() {
-    SmallFloatingActionButton(onClick = { print("Hello") }) {
+fun LargeFloatingActionButtonExample() {
+    LargeFloatingActionButton(onClick = { print("Hello") }) {
         Icon(Icons.Filled.Favorite, "Floating action button.")
     }
 }

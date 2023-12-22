@@ -1,17 +1,14 @@
 ---
-title: BadgedBox
-description: Aprende a usar el composable BadgedBox en Jetpack Compose.
-sidebar:
-  badge:
-    text: Nuevo
-    variant: tip
+title: BottomAppBar
+description: Aprende a usar el composable BottomAppBar en Jetpack Compose.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
+{/* 
 | Material| Material 3| 
 | :----------------: | :------: |
-![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material.png)|![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material-3.png)
+![Imagen del componente BottomAppBar - Material](../../../assets/appbars/bottomappbar/bottomappbar-header-material.png)|![Imagen del componente BottomAppBar - Material 3](../../../assets/appbars/bottomappbar/bottomappbar-header-material-3.png)
 
 `BadgedBox` es el componente que nos permitirá gestionar de una forma sencilla la clásica vista de notificaciones. Su implementación es muy fácil y personalizable por lo que podemos usarlo tanto para avisar al usuario de alguna novedad o como por ejemplo para mostrar el clásico carrito de compra con el número de productos.
 
@@ -24,12 +21,14 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 ```kotlin frame="terminal"
 @Composable
-fun BadgeBox(
+fun BottomAppBar(
     modifier: Modifier = Modifier,
-    backgroundColor: Color = MaterialTheme.colors.error,
+    backgroundColor: Color = MaterialTheme.colors.primarySurface,
     contentColor: Color = contentColorFor(backgroundColor),
-    badgeContent: @Composable (RowScope.() -> Unit)? = null,
-    content: @Composable BoxScope.() -> Unit,
+    cutoutShape: Shape? = null,
+    elevation: Dp = AppBarDefaults.BottomAppBarElevation,
+    contentPadding: PaddingValues = AppBarDefaults.ContentPadding,
+    content: @Composable RowScope.() -> Unit
 )
 ```
 
@@ -37,27 +36,50 @@ Atributo | Descripción
 ------ | -----------
 modifier | Modificador que implementará el composable (_Opcional_).
 backgroundColor | El color del fondo del componente.
-contentColor | Color del contenido. 
-badgeContent | El contenido a mostrar en el `badge`.
-content | Contenido que tendrá el badge en la parte superior.
+contentColor | Color del contenido.
+cutoutShape | Recorte que tendrá la `BottomAppBar` si lo combinamos en un [`Scaffold`]() con un [`floatingActionButton`]().
+elevation | 
+contentPadding | 
+content | Contenido que almacenará la `BottomAppBar`.
 
 </TabItem>
 
 <TabItem label="Material 3">
 
+:::info[Diferentes implementaciones]
+`BottomAppBar` en Material 3 dispone de dos implementaciones distintas.
+:::
+
 ```kotlin frame="terminal"
-@ExperimentalMaterial3Api
 @Composable
-fun BadgedBox(
-    badge: @Composable BoxScope.() -> Unit,
+fun BottomAppBar(
     modifier: Modifier = Modifier,
-    content: @Composable BoxScope.() -> Unit,
-)
+    containerColor: Color = BottomAppBarDefaults.containerColor,
+    contentColor: Color = contentColorFor(containerColor),
+    tonalElevation: Dp = BottomAppBarDefaults.ContainerElevation,
+    contentPadding: PaddingValues = BottomAppBarDefaults.ContentPadding,
+    windowInsets: WindowInsets = BottomAppBarDefaults.windowInsets,
+    content: @Composable RowScope.() -> Unit
+) 
 ```
 
 - **badge**: El badged a mostrar - normalmente se usa un componente [Badge](/badges/badge/).
 - **modifier**: Modificador que implementará el composable (_Opcional_).
 - **content**: Contenido que tendrá el badge en la parte superior.
+
+```kotlin frame="terminal"
+@Composable
+fun BottomAppBar(
+    actions: @Composable RowScope.() -> Unit,
+    modifier: Modifier = Modifier,
+    floatingActionButton: @Composable (() -> Unit)? = null,
+    containerColor: Color = BottomAppBarDefaults.containerColor,
+    contentColor: Color = contentColorFor(containerColor),
+    tonalElevation: Dp = BottomAppBarDefaults.ContainerElevation,
+    contentPadding: PaddingValues = BottomAppBarDefaults.ContentPadding,
+    windowInsets: WindowInsets = BottomAppBarDefaults.windowInsets,
+)
+```
 
 </TabItem>
 </Tabs>
@@ -73,7 +95,7 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material">
 
-<center>![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material.png)</center>
+<center>![Imagen del componente BottomAppBar - Material](../../../assets/appbars/bottomappbar/bottomappbar-header-material.png)</center>
 
 ```kotlin frame="terminal"
 @OptIn(ExperimentalMaterialApi::class)
@@ -94,7 +116,7 @@ fun BadgedBoxExample() {
 </TabItem>
 <TabItem label="Material 3">
 
-<center>![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material-3.png)</center>
+<center>![Imagen del componente BottomAppBar - Material 3](../../../assets/appbars/bottomappbar/bottomappbar-header-material-3.png)</center>
 
 ```kotlin frame="terminal"
 @OptIn(ExperimentalMaterial3Api::class)
@@ -113,3 +135,5 @@ fun BadgedBoxExample() {
 
 </TabItem>
 </Tabs>
+
+ */}
