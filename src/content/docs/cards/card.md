@@ -7,7 +7,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 [comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
 
-![Imagen del componente [Nombre del componente]](../../../assets/badgedbox/badgedbox-header.webp)
+<!-- ![Imagen del componente [Nombre del componente]](../../../assets/badgedbox/badgedbox-header.webp) -->
 
 [Breve descripción del componente]
 
