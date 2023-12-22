@@ -9,7 +9,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 | Material| Material 3| 
 | :----------------: | :------: |
-| ![Imagen del componente FilterChip - Material](../../../assets/chip/assist-chip/chip-assist-material-3-example.webp)              | ![Imagen del componente Button - Material 3](../../../assets/chip/assist-chip/chip-assist-material-3-example.webp) | 
+| ![Imagen del componente FilterChip - Material](../../../assets/chip/filter-chip/chip-filter-material-3-example.webp)  | ![Imagen del componente FilterChip - Material](../../../assets/chip/filter-chip/chip-filter-material-3-example.webp) | 
 
 
 - **Propósito:** Permite a los usuarios refinar el contenido de un conjunto de opciones.
@@ -40,7 +40,8 @@ onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
 @ExperimentalMaterial3Api
 @Composable
 @ComposableInferredTarget
-public fun AssistChip(
+public fun FilterChip(
+    selected: Boolean,
     onClick: () -> Unit,
     label: @Composable () -> Unit,
     modifier: Modifier,
@@ -48,15 +49,16 @@ public fun AssistChip(
     leadingIcon: @Composable() (() -> Unit)?,
     trailingIcon: @Composable() (() -> Unit)?,
     shape: Shape,
-    colors: ChipColors,
-    elevation: ChipElevation?,
-    border: ChipBorder?,
+    colors: SelectableChipColors,
+    elevation: SelectableChipElevation?,
+    border: SelectableChipBorder?,
     interactionSource: MutableInteractionSource
 ): Unit
 ```
 
 Atributo | Descripción
 ------ | -----------
+selected | Indica si el chip está seleccionado o no.
 onClick | Se llama cuando se hace clic en el chip.
 label | El contenido del chip definido como un composable.
 modifier | Modificador que se aplicará al chip.
@@ -64,10 +66,10 @@ enabled | Cuando está deshabilitado, el chip no responderá a la entrada del us
 leadingIcon | Icono opcional que se mostrará al principio del chip, antes del texto de contenido.
 trailingIcon | Icono opcional que se mostrará al final del chip, después del texto de contenido.
 shape | La forma del chip, que puede ser un rectángulo, un círculo, etc.
-colors | ChipColors que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta ChipDefaults.chipColors.
-elevation | La elevación del chip, que afecta su sombra.
-border | Borde que se dibujará alrededor del chip. Pasa null aquí para no tener borde.
-interactionSource | La MutableInteractionSource representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia MutableInteractionSource si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
+colors | `SelectableChipColors` que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta `ChipDefaults.selectableChipColors`.
+elevation | La elevación del chip, que afecta su sombra en estados seleccionados.
+border | Borde que se dibujará alrededor del chip en estados seleccionados. Pasa null aquí para no tener borde.
+interactionSource | La `MutableInteractionSource` representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia `MutableInteractionSource` si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
 
 </TabItem>
 </Tabs>
@@ -79,12 +81,12 @@ Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/jetpack/compose/components/chip?hl=es-419#assist).
 :::
 
-### Ejemplo de Assist Chip 
+### Ejemplo de Filter Chip
 
 <Tabs>
 <TabItem label="Material">
 
-<center>![Imagen del componente Button - Material 3](../../../assets/chip/assist-chip/chip-assist-material-3-example.webp)</center>
+<center>![Imagen del componente FilterChip - Material ](../../../assets/chip/filter-chip/chip-filter-material-3-example.webp)</center>
 
 ```kotlin frame="terminal"
 
@@ -93,17 +95,18 @@ Puedes acceder a la documentación oficial de Google
 </TabItem>
 <TabItem label="Material 3">
 
-<center>![Imagen del componente Button - Material 3](../../../assets/chip/assist-chip/chip-assist-material-3-example.webp)</center>
+<center>![Imagen del componente FilterChip - Material ](../../../assets/chip/filter-chip/chip-filter-material-3-example.webp)</center>
 
 ```kotlin frame="terminal"
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun exampleAssistChip() {
-    AssistChip(
+fun exampleFilterChip() {
+    FilterChip(
         modifier = Modifier.padding(20.dp),
-        onClick = { Log.d("Assist chip", "Hi from assist chip") },
-        label = { Text("Doc de Asistencia") },
-        )
+        onClick = { Log.d("Filter chip", "Hi from filter chip") },
+        label = { Text("Doc de filtrado") },
+        selected = true
+    )
 }
 ```
 
