@@ -13,7 +13,7 @@ export default defineConfig({
       attrs: {
         src: 'https://www.googletagmanager.com/gtag/js',
         'data-gtag-id': 'G-WPBWX9JW9W',
-        async: true,
+        defer:true
       },
     },
     // Configuración de Google Analytics
