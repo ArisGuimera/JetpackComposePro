@@ -49,3 +49,9 @@ Actualmente estamos en una fase muy inicial y todo ayuda se agradece. Para colab
 ## 👀 ¿Quieres estar actualizado/a?
 
 Únete al [discord de la comunidad](https://bit.ly/3bmeQvm) donde tenemos un canal para hablar del proyecto (`🧱-composepedia`). 
+
+## 👨‍💻 Colaboradores
+
+<a href="https://github.com/ArisGuimera/JetpackComposePro/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ArisGuimera/JetpackComposePro" />
+</a>
