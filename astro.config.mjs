@@ -24,8 +24,6 @@ export default defineConfig({
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-WPBWX9JW9W');`
-      ,
-      defer:true
     },
   ],
     expressiveCode: {
