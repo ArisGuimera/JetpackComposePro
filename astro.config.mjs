@@ -1,13 +1,10 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
-import partytown from "@astrojs/partytown";
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [starlight({
      head: [
-    // Añadir el script de Google Analytics
     {
       tag: 'script',
       attrs: {
@@ -16,7 +13,6 @@ export default defineConfig({
         defer:true
       },
     },
-    // Configuración de Google Analytics
     {
       tag: 'script',
       content: `
@@ -167,5 +163,5 @@ export default defineConfig({
         directory: "tooltips"
       }
     }]
-  }), partytown()]
+  })]
 });
