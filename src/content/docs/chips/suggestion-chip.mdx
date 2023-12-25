@@ -1,0 +1,91 @@
+---
+title: SuggestionChip
+description: Aprende a usar el composable SuggestionChip en Jetpack Compose.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material 3| 
+| :------: |
+| ![Imagen del componente SuggestionChip - Material ](../../../assets/chip/suggestion-chip/chip-suggestion-material-3-example.webp) | 
+
+El `SuggestionChip` tiene como propósito facilitar a los usuarios la refinación del contenido de un conjunto de opciones. Estos chips son interactivos, permitiendo a los usuarios seleccionar o deseleccionar las sugerencias según sus preferencias. Algunos SuggestionChips pueden incluir un ícono de marca de verificación, proporcionando una indicación visual clara de la selección realizada. Un caso típico de uso sería emplear estos chips para filtrar resultados en una lista o conjunto de datos, ofreciendo a los usuarios sugerencias contextuales y la capacidad de personalizar la información que desean ver.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@ExperimentalMaterial3Api
+@Composable
+@ComposableInferredTarget
+public fun SuggestionChip(
+    selected: Boolean,
+    onClick: () -> Unit,
+    label: @Composable () -> Unit,
+    modifier: Modifier,
+    enabled: Boolean,
+    leadingIcon: @Composable() (() -> Unit)?,
+    trailingIcon: @Composable() (() -> Unit)?,
+    shape: Shape,
+    colors: SelectableChipColors,
+    elevation: SelectableChipElevation?,
+    border: SelectableChipBorder?,
+    interactionSource: MutableInteractionSource
+): Unit
+```
+
+Atributo | Descripción
+------ | -----------
+selected | Indica si el chip está seleccionado o no.
+onClick | Se llama cuando se hace clic en el chip.
+label | El contenido del chip definido como un composable.
+modifier | Modificador que se aplicará al chip.
+enabled | Cuando está deshabilitado, el chip no responderá a la entrada del usuario. También aparecerá visualmente deshabilitado y desactivado para los servicios de accesibilidad.
+leadingIcon | Icono opcional que se mostrará al principio del chip, antes del texto de contenido.
+trailingIcon | Icono opcional que se mostrará al final del chip, después del texto de contenido.
+shape | La forma del chip, que puede ser un rectángulo, un círculo, etc.
+colors | `SelectableChipColors` que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta `ChipDefaults.selectableChipColors`.
+elevation | La elevación del chip, que afecta su sombra en estados seleccionados.
+border | Borde que se dibujará alrededor del chip en estados seleccionados. Pasa null aquí para no tener borde.
+interactionSource | La `MutableInteractionSource` representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia `MutableInteractionSource` si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de SuggestionChip de material 3:
+[desde aquí](https://developer.android.com/jetpack/compose/components/chip?hl=es-419#suggestion).
+:::
+
+### Ejemplo de Filter Chip
+
+<Tabs>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente SuggestionChip - Material ](../../../assets/chip/suggestion-chip/chip-suggestion-material-3-example.webp)</center>
+
+```kotlin frame="terminal"
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun exampleInputChip() {
+    SuggestionChip(
+        modifier = Modifier.padding(20.dp),
+        onClick = { Log.d("Filter chip", "Hi from filter chip") },
+        label = { Text("Doc de filtrado") },
+        selected = true
+    )
+}
+```
+
+</TabItem>
+</Tabs>
