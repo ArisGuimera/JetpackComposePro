@@ -59,6 +59,12 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: "Primeros pasos",
+          items:[
+            {label: 'Información General', link:'/home/guide'}
+          ],
+        },
+        {
           label: "App bars",
           autogenerate: {
             directory: "app-bars",
