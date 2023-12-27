@@ -3,7 +3,7 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jetpackcompose.pro',
+  site: 'https://www.jetpackcompose.pro',
   integrations: [
     starlight({
       head: [
