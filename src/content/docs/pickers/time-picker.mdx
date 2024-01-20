@@ -1,0 +1,113 @@
+---
+title: Time Picker
+description: Aprende a usar el composable Time Picker en Jetpack Compose.
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material2 | Material3 |
+|-----------|-----------|
+| ![TimePickerM2](../../../assets/pickers/timePicker/timePicker_m2.webp)  |  ![TimePickerM3](../../../assets/pickers/timePicker/timePicker_m3.webp) |
+
+Time picker ayuda a los usuarios a seleccionar un hora, o establecer una hora determinada.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun TimePicker(
+    state: TimePickerState,
+    modifier: Modifier = Modifier,
+    colors: TimePickerColors = TimePickerDefaults.colors(),
+    layoutType: TimePickerLayoutType = TimePickerDefaults.layoutType(),
+)
+```
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+@ExperimentalMaterial3Api
+fun TimePicker(
+    state: TimePickerState,
+    modifier: Modifier = Modifier,
+    colors: TimePickerColors = TimePickerDefaults.colors(),
+    layoutType: TimePickerLayoutType = TimePickerDefaults.layoutType(),
+)
+```
+
+</TabItem>
+</Tabs>
+
+#### Parametros
+
+| Nombre| Descripción |
+|----------|----------|
+| state    | estado para este componente, permite suscribirse a cambios de TimePickerState.hour y TimePickerState.minute, y establecer la hora por defecto para este componente.  |
+| modifiers| modificador que va a ser aplicado a este componente   |
+| colors   | colores TimePickerColors que seran usados para resolver los colores de este time picker en diferentes estados. Ver TimePickerDefaults.colors.   |
+|layoutType| los diferentes TimePickerLayoutType soportados por este time picker, cambiara la posicion y tamaño de diferentes componentes de el timepicker     |
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos
+
+```kotlin frame="terminal"
+class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            HelloWorldComposeTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        MyTimePicker()
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@Composable
+@ExperimentalMaterial3Api
+fun MyTimePicker(){
+    val state = rememberTimePickerState()
+    TimePicker(
+        state = state,
+        modifier = Modifier.padding(15.dp),
+        colors = TimePickerDefaults.colors(),
+        layoutType = TimePickerDefaults.layoutType()
+    )
+    Text(text = "Hora seleccionada H:M = ${state.hour} : ${state.minute}")
+}
+```
+
+  ![TimePicker Ejemplo](../../../assets/pickers/timePicker/timePicker_m3_example.webp)
+
+## Diferencias con Material 2
+
+ - Color: Nuevas asignaciones de color y compatibilidad con colores dinámicos
