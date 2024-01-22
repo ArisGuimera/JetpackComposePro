@@ -21,10 +21,6 @@ Las listas tienden a tener una estructura más jerárquica, donde cada elemento 
 <Tabs>
 <TabItem label="Material">
 
-:::note[Diferentes implementaciones]
-La implementación del componente `List item` en `Material` y `Material 3` son similares, pero hay algunas diferencias importantes.
-:::
-
 ```kotlin frame="terminal"
 @Composable
 fun ListItem(
@@ -67,6 +63,7 @@ Atributo | Descripción
 text | El texto que se mostrará en el elemento de la lista.
 modifier | El modifier que se aplicará al elemento de la lista.
 isChecked | Un booleano que indica si el elemento de la lista está seleccionado.
+onClick | Una función que se ejecutará cuando el elemento de la lista sea tocado.
 
 
 </TabItem>
@@ -74,8 +71,8 @@ isChecked | Un booleano que indica si el elemento de la lista está seleccionado
 
 
 :::tip[Fuente]
-Puedes acceder a la documentación oficial de AndroidDeveloper
-[desde aquí](https://developer.android.com/jetpack/compose/lists?hl=es-419).
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
 :::
 
 ### Ejemplos
@@ -126,7 +123,7 @@ fun ItemMaterial3() {
 Utilizar ListItem en Material 3 es una excelente adición al desarrollo de aplicaciones de Android, ya que proporciona una forma sencilla y optimizada de crear listas además de LazyColumn o LazyRow.
 
 Este nuevo componente es fácil de usar y personalizar.
- PD: No tiene que usarse exclusivamente para elemento de la lista!
+ PD: !No tiene que usarse exclusivamente para elemento de la lista!
 
 </TabItem>
 </Tabs>
