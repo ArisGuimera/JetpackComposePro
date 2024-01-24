@@ -185,6 +185,12 @@ export default defineConfig({
           },
         },
         {
+          label: "OutlinedTextField",
+          autogenerate: {
+            directory: "outlined-text-field",
+          },
+        },
+        {
           label: "ToolTips",
           autogenerate: {
             directory: "tooltips",
