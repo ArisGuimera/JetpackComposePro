@@ -7,9 +7,11 @@ sidebar:
     variant: tip
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-![Imagen del componente [Card]](@assets/card/cards-header.webp)
+| Material 3 |
+| -------- |
+|![Imagen del componente [Card]](@assets/card/cards-header.webp)|
 
 El elemento componible `Card` actúa como un contenedor. En general, en ellas se suele poner un contenido que se quiere destacar, como por ejemplo una imagen o un texto.
 
@@ -36,19 +38,22 @@ fun Card(
     content: @Composable () -> Unit
 )
 ```
-- **onClick**: Función que se ejecutará cuando se haga click en la tarjeta.
-- **modifier**: Modificador que implementará el composable.
-- **enabled**: Indica si la tarjeta está habilitada o no. Por defecto es `true`.
-- **shape**: Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.
-- **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.
-- **elevation**: Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.
-- **border**: Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.
-- **interactionSource**: Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.
-- **content**: Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.
+|Atributo | Descripción |
+|------ | ----------- |
+|onClick | Función que se ejecutará cuando se haga click en la tarjeta.|
+|modifier | Modificador que implementará el composable.|
+|enabled | Indica si la tarjeta está habilitada o no. Por defecto es `true`.|
+|shape | Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.|
+|colors | Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.|
+|elevation | Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.|
+|border | Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.|
+|interactionSource| Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.|
+|content | Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.|
 </TabItem>
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
+@ExperimentalMaterial3Api
 @Composable
 fun Card(
     onClick: () -> Unit,
@@ -62,15 +67,19 @@ fun Card(
     content: @Composable ColumnScope.() -> Unit
 )
 ```
-- **onClick**: Función que se ejecutará cuando se haga click en la tarjeta.
-- **modifier**: Modificador que implementará el composable.
-- **enabled**: Indica si la tarjeta está habilitada o no. Por defecto es `true`.
-- **shape**: Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.
-- **colors**: Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.
-- **elevation**: Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.
-- **border**: Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.
-- **interactionSource**: Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.
-- **content**: Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.
+
+| Atributo          | Descripción                                                                                                                   |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| onClick           | Función que se ejecutará cuando se haga click en la tarjeta.                                                                  |
+| modifier          | Modificador que implementará el composable.                                                                                   |
+| enabled           | Indica si la tarjeta está habilitada o no. Por defecto es `true`.                                                             |
+| shape             | Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.                                                 |
+| colors            | Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`. |
+| elevation         | Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.                                                   |
+| border            | Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.            |
+| interactionSource | Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.                          |
+| content           | Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.                   |
+
 </TabItem>
 </Tabs>
 
@@ -105,8 +114,10 @@ fun FilledCardExample() {
     }
 }
 ```
+
 :::tip[Información]
 Fragmento de código extraído de la documentación oficial de Google. Puedes acceder a ella [desde aquí](https://developer.android.com/jetpack/compose/components/card#filled).
 :::
+
 </TabItem>
 </Tabs>
