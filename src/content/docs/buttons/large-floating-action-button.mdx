@@ -1,0 +1,79 @@
+---
+title: LargeFloatingActionButton
+description: Aprende a usar el composable LargeFloatingActionButton en Jetpack Compose.
+sidebar:
+    order: 7
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material 3| 
+| :------: |
+| ![Imagen del componente LargeFloatingActionButton - Material 3](../../../assets/buttons/largefloatingactionbutton/button-header-material-3.png) | 
+
+El componente `LargeFloatingActionButton` sigue las mismas reglas e implimentaciones que [FloatingActionButton](/buttons/floating-action-button/) pero el botón como tal es más grande.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun LargeFloatingActionButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    shape: Shape = FloatingActionButtonDefaults.largeShape,
+    containerColor: Color = FloatingActionButtonDefaults.containerColor,
+    contentColor: Color = contentColorFor(containerColor),
+    elevation: FloatingActionButtonElevation = FloatingActionButtonDefaults.elevation(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable () -> Unit,
+)
+```
+
+Atributo | Descripción
+------ | -----------
+onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
+modifier | Modificador que implementará el composable.
+shape | Define la forma del `FloatingActionButton` y su sombra.
+containerColor | El color del fondo del componente.
+contentColor | Color del contenido.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `FloatingActionButtonElevation`.
+interactionSource | Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
+content | Contenido a mostrar dentro del `FloatingActionButton`.
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos 
+
+<Tabs>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente LargeFloatingActionButton - Material 3](../../../assets/buttons/largefloatingactionbutton/button-header-material-3.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun LargeFloatingActionButtonExample() {
+    LargeFloatingActionButton(onClick = { print("Hello") }) {
+        Icon(Icons.Filled.Favorite, "Floating action button.")
+    }
+}
+```
+
+</TabItem>
+</Tabs>

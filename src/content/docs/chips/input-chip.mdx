@@ -1,0 +1,95 @@
+---
+title: InputChip
+description: Aprende a usar el composable InputChip en Jetpack Compose.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material 3| 
+| :------: |
+| ![Imagen del componente Chip de Entrada - Material 3](../../../assets/chip/input-chip/chip-input-material-3-example.webp) | 
+
+El `inputChip` tiene como propósito representar la información proporcionada por el usuario de manera concisa y visualmente clara. Su contenido puede consistir en un ícono acompañado de texto descriptivo. En términos de funcionalidad, brinda al usuario la opción de eliminar el chip, generalmente a través de un botón "X", lo que permite una gestión fácil y rápida de las selecciones. Un ejemplo común de uso incluye la visualización de las selecciones de un menú o la etiquetación de contenido, proporcionando una manera efectiva de mostrar y gestionar la información proporcionada por el usuario de manera compacta y accesible.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@ExperimentalMaterial3Api
+@Composable
+@ComposableInferredTarget
+public fun InputChip(
+    selected: Boolean,
+    onClick: () -> Unit,
+    label: @Composable () -> Unit,
+    modifier: Modifier,
+    enabled: Boolean,
+    leadingIcon: @Composable() (() -> Unit)?,
+    avatar: @Composable() (() -> Unit)?,
+    trailingIcon: @Composable() (() -> Unit)?,
+    shape: Shape,
+    colors: SelectableChipColors,
+    elevation: SelectableChipElevation?,
+    border: SelectableChipBorder?,
+    interactionSource: MutableInteractionSource
+): Unit
+```
+
+Atributo | Descripción
+------ | -----------
+selected | Indica si el chip está seleccionado o no.
+onClick | Se llama cuando se hace clic en el chip.
+label | El contenido del chip definido como un composable.
+modifier | Modificador que se aplicará al chip.
+enabled | Cuando está deshabilitado, el chip no responderá a la entrada del usuario. También aparecerá visualmente deshabilitado y desactivado para los servicios de accesibilidad.
+leadingIcon | Icono opcional que se mostrará al principio del chip, antes del texto de contenido.
+avatar | Avatar opcional que se mostrará en el chip.
+trailingIcon | Icono opcional que se mostrará al final del chip, después del texto de contenido.
+shape | La forma del chip, que puede ser un rectángulo, un círculo, etc.
+colors | SelectableChipColors que se utilizarán para determinar el color de fondo y contenido para este chip en diferentes estados. Consulta ChipDefaults.selectableChipColors.
+elevation | La elevación del chip, que afecta su sombra en estados seleccionados.
+border | Borde que se dibujará alrededor del chip en estados seleccionados. Pasa null aquí para no tener borde.
+interactionSource | La MutableInteractionSource representa el flujo de interacciones para este chip. Puedes crear y pasar tu propia MutableInteractionSource si deseas observar interacciones y personalizar la apariencia/comportamiento de este componente en diferentes interacciones.
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de InputChip de material 3:
+[desde aquí](https://developer.android.com/jetpack/compose/components/chip?hl=es-419#input).
+:::
+
+### Ejemplo de Input Chip
+
+<Tabs>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente Chip de Entrada - Material 3](../../../assets/chip/input-chip/chip-input-material-3-example.webp)</center>
+
+```kotlin frame="terminal"
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun exampleInputChip() {
+    val isChipEnable by remember { mutableStateOf(true) }
+
+    InputChip(
+        modifier = Modifier.padding(20.dp),
+        onClick = { Log.d("Input chip", "Hi from input chip") },
+        label = { Text("Doc de Entrada") },
+        selected = isChipEnable
+        )
+}
+```
+
+</TabItem>
+</Tabs>

@@ -9,7 +9,9 @@ sidebar:
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-![Imagen del componente BadgedBox](@assets/badgedbox/badgedbox-header.webp)
+| Material| Material 3| 
+| :----------------: | :------: |
+![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material.png)|![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material-3.png)
 
 `BadgedBox` es el componente que nos permitirá gestionar de una forma sencilla la clásica vista de notificaciones. Su implementación es muy fácil y personalizable por lo que podemos usarlo tanto para avisar al usuario de alguna novedad o como por ejemplo para mostrar el clásico carrito de compra con el número de productos.
 
@@ -22,16 +24,22 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 ```kotlin frame="terminal"
 @Composable
-fun BadgedBox(
-    badge: @Composable BoxScope.() -> Unit,
+fun BadgeBox(
     modifier: Modifier = Modifier,
+    backgroundColor: Color = MaterialTheme.colors.error,
+    contentColor: Color = contentColorFor(backgroundColor),
+    badgeContent: @Composable (RowScope.() -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit,
 )
 ```
 
-- **badge**: El badged a mostrar - normalmente se usa un componente [Badge](/badges/badge/).
-- **modifier**: Modificador que implementará el composable (_Opcional_).
-- **content**: Contenido que tendrá el badge en la parte superior.
+Atributo | Descripción
+------ | -----------
+modifier | Modificador que implementará el composable (_Opcional_).
+backgroundColor | El color del fondo del componente.
+contentColor | Color del contenido. 
+badgeContent | El contenido a mostrar en el `badge`.
+content | Contenido que tendrá el badge en la parte superior.
 
 </TabItem>
 
@@ -65,22 +73,28 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material">
 
+<center>![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material.png)</center>
+
 ```kotlin frame="terminal"
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BadgedBoxExample() {
     Box(Modifier.size(100.dp), contentAlignment = Alignment.Center) {
-        BadgedBox(badge = { Badge { Text("8") } }) {
+        BadgeBox(content = {
             Icon(
-                Icons.Filled.Favorite,
-                contentDescription = "Favorite"
+                Icons.Filled.Favorite, contentDescription = "Favorite"
             )
-        }
+        }, badgeContent = {
+            Text("8")
+        })
     }
 }
 ```
 
 </TabItem>
 <TabItem label="Material 3">
+
+<center>![Imagen del componente BadgedBox](../../../assets/badges/badgedbox/badgedbox-header-material-3.png)</center>
 
 ```kotlin frame="terminal"
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,0 +1,128 @@
+---
+title: Button
+description: Aprende a usar el composable Button en Jetpack Compose.
+sidebar:
+    order: 0
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material| Material 3| 
+| :----------------: | :------: |
+| ![Imagen del componente Button - Material](../../../assets/buttons/button/button-header-material.png)              | ![Imagen del componente Button - Material 3](../../../assets/buttons/button/button-header-material-3.png) | 
+
+Los `Button` le dan al usuario la posibilidad de activar/ejecutar acciones predefinidas. Este se trata del botón más sencillo de todos y el que se utiliza por defecto.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun Button(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    elevation: ButtonElevation? = ButtonDefaults.elevation(),
+    shape: Shape = MaterialTheme.shapes.small,
+    border: BorderStroke? = null,
+    colors: ButtonColors = ButtonDefaults.buttonColors(),
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    content: @Composable RowScope.() -> Unit
+)
+```
+Atributo | Descripción
+------ | -----------
+onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
+modifier | Modificador que implementará el composable.
+enabled | Habilita o deshabilita el botón.
+interactionSource | Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
+shape | Define la forma del `Button` y su sombra.
+border | Borde para el `Button`.
+colors | Nos permite modificar el color del fondo del `Button` y el del contenido.
+contentPadding | The spacing values to apply internally between the container and the content
+content | Contenido a mostrar dentro del `Button`.
+
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun Button(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = ButtonDefaults.shape,
+    colors: ButtonColors = ButtonDefaults.buttonColors(),
+    elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
+    border: BorderStroke? = null,
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit
+)
+```
+
+Atributo | Descripción
+------ | -----------
+onClick | Función lambda que se ejecutará cuando el usuario pulse el botón.
+modifier | Modificador que implementará el composable.
+enabled | Habilita o deshabilita el botón.
+shape | Define la forma del `Button` y su sombra.
+colors | Nos permite modificar el color del fondo del `Button` y el del contenido.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `ButtonElevation`.
+border | Borde para el `Button`.
+contentPadding | The spacing values to apply internally between the container and the content
+interactionSource | Representa un `stream` de interacciones del botón lo que nos permite modificar su diseño o comportamiento. Por ejemplo que mientras el botón esté pulsado, este encoja.
+content | Contenido a mostrar dentro del `Button`.
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos 
+
+<Tabs>
+<TabItem label="Material">
+
+<center>![Imagen del componente Button - Material](../../../assets/buttons/button/button-header-material.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun ButtonExample() {
+    Button(onClick = { print("Hello") }) {
+        Text(text = "Click me")
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente Button - Material 3](../../../assets/buttons/button/button-header-material-3.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun ButtonExample() {
+    Button(onClick = { print("Hello") }) {
+        Text(text = "Click me")
+    }
+}
+```
+
+</TabItem>
+</Tabs>

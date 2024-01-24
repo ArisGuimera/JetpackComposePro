@@ -1,36 +1,41 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: OpenCompose
+description: La mayor base de datos de `composables` de habla hispana por y para la comunidad.
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: La mayor base de datos de @Composables de habla hispana por y para la comunidad.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/opencomposelogo.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: ¡Ir a la documentación!
+      link: /home/guide/
       icon: right-arrow
       variant: primary
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+
+      <Card title="Navega por los componentes" icon="document">
+        Decenas de `Composables` preparados y configurados para que mejores tus
+        proyectos.
+      </Card>
+
+<Card title="Colabora con OpenCompose" icon="github">
+  Puedes añadir más ejemplos, componentes o vistas completas. ¡Colaboremos entre
+  todos para tener la mejor documentación de habla hispana!
+</Card>
+
+    <Card title="¿Dudas/peticiones?" icon="discord">
+      Entra al Discord de la comunidad.
+    </Card>
+
+  <Card title="Más contenido en YouTube" icon="youtube">
+    Suscríbete a
+    [AristiDevs](https://www.youtube.com/channel/UCIjEgHA1vatSR2K4rfcdNRg?sub_confirmation=1)
+    para más contenido y apoyar el proyecto.
+  </Card>
 </CardGrid>

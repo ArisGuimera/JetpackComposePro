@@ -7,7 +7,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 [comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
 
-![Imagen del componente [Badge]](@assets/badgedbox/badgedbox-header.webp)
+| Material 3| 
+| :------: |
+![Imagen del componente Badge](../../../assets/badges/badge/badge-header-material-3.png)
 
 `Badge` contiene información dinámica como notificaciones o productos de un carrito. Su contenido debería ser un icono o un texto muy corto, como por ejemplo un número.
 
@@ -18,24 +20,6 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 [comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
 
 <Tabs>
-<TabItem label="Material">
-
-```kotlin frame="terminal"
-@Composable
-fun Badge(
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = MaterialTheme.colors.error,
-    contentColor: Color = contentColorFor(backgroundColor),
-    content: @Composable (RowScope.() -> Unit)? = null,
-)
-```
-
-- modifier: Modificador que implementará el composable.
-- backgroundColor: El color del fondo del componente.
-- contentColor: Color del contenido.
-- content: Contenido a mostrar dentro del `Badge` (_Opcional_).
-
-</TabItem>
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
@@ -48,11 +32,12 @@ fun Badge(
     content: @Composable (RowScope.() -> Unit)? = null,
 )
 ```
-
-- modifier: Modificador que implementará el composable.
-- containerColor: El color del fondo del componente.
-- contentColor: Color del contenido.
-- content: Contenido a mostrar dentro del `Badge` (_Opcional_).
+Atributo | Descripción
+------ | -----------
+modifier | Modificador que implementará el composable.
+containerColor | El color del fondo del componente.
+contentColor | Color del contenido.
+content | Contenido a mostrar dentro del `Badge` (_Opcional_).
 
 </TabItem>
 </Tabs>
@@ -67,20 +52,9 @@ Puedes acceder a la documentación oficial de Google
 ### Ejemplos
 
 <Tabs>
-<TabItem label="Material">
-
-```kotlin frame="terminal"
-@Composable
-fun Text(
-    text: String,
-    modifier: Modifier = Modifier,
-    color: Color = Color.Unspecified,
-    fontSize: TextUnit = TextUnit.Unspecified,
-)
-```
-
-</TabItem>
 <TabItem label="Material 3">
+
+<center>![Imagen del componente Badge](../../../assets/badges/badge/badge-header-material-3.png)</center>
 
 ```kotlin frame="terminal"
 @OptIn(ExperimentalMaterial3Api::class)

@@ -3,18 +3,40 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.jetpackcompose.pro',
   integrations: [
     starlight({
+      head: [
+        {
+          tag: "script",
+          attrs: {
+            src: "https://www.googletagmanager.com/gtag/js",
+            "data-gtag-id": "G-WPBWX9JW9W",
+            defer: true,
+          },
+        },
+        {
+          tag: "script",
+          content: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WPBWX9JW9W');`,
+        },
+      ],
       expressiveCode: {
-        themes: ["github-dark-dimmed", "solarized-light"], //Temas de syntax highlighting (Bloques de código)
+        themes: ["github-dark-dimmed", "solarized-light"],
+        //Temas de syntax highlighting (Bloques de código)
         styleOverrides: {
           borderRadius: "0.5rem", //Bordes redondeados en los bloques de código
         },
       },
+
       customCss: [
-        './src/styles/smoothscroll.css', //Para que el scroll sea suave entre secciones
+        "./src/styles/smoothscroll.css", //Para que el scroll sea suave entre secciones
       ],
-      title: "Jetpack Compose Pro",
+
+      title: "OpenCompose",
       locales: {
         root: {
           label: "Español",
@@ -37,92 +59,136 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: "Primeros pasos",
+          items:[
+            {label: 'Información General', link:'/home/guide'}
+          ],
+        },
+        {
           label: "App bars",
-          autogenerate: { directory: "app-bars" },
+          autogenerate: {
+            directory: "app-bars",
+          },
         },
         {
           label: "Badges",
-          autogenerate: { directory: "badges" },
+          autogenerate: {
+            directory: "badges",
+          },
         },
         {
           label: "Buttons",
-          autogenerate: { directory: "buttons" },
+          autogenerate: {
+            directory: "buttons",
+          },
         },
         {
           label: "Cards",
-          autogenerate: { directory: "cards" },
+          autogenerate: {
+            directory: "cards",
+          },
         },
         {
           label: "Carousel",
-          autogenerate: { directory: "carousel" },
+          autogenerate: {
+            directory: "carousel",
+          },
         },
         {
           label: "Checkbox",
-          autogenerate: { directory: "checkbox" },
+          autogenerate: {
+            directory: "checkbox",
+          },
         },
         {
           label: "Chips",
-          autogenerate: { directory: "chips" },
+          autogenerate: {
+            directory: "chips",
+          },
         },
         {
           label: "Pickers",
-          autogenerate: { directory: "pickers" },
+          autogenerate: {
+            directory: "pickers",
+          },
         },
         {
           label: "Dialogs",
-          autogenerate: { directory: "dialogs" },
+          autogenerate: {
+            directory: "dialogs",
+          },
         },
         {
           label: "Divider",
-          autogenerate: { directory: "divider" },
+          autogenerate: {
+            directory: "divider",
+          },
         },
         {
           label: "Lists",
-          autogenerate: { directory: "lists" },
+          autogenerate: {
+            directory: "lists",
+          },
         },
         {
           label: "Menú",
-          autogenerate: { directory: "menu" },
-        },
-        {
-          label: "Navigation",
-          autogenerate: { directory: "navigation" },
+          autogenerate: {
+            directory: "menus",
+          },
         },
         {
           label: "Progress indicator",
-          autogenerate: { directory: "progress-indicator" },
+          autogenerate: {
+            directory: "progress-indicator",
+          },
         },
         {
           label: "Sheets",
-          autogenerate: { directory: "sheets" },
+          autogenerate: {
+            directory: "sheets",
+          },
         },
         {
           label: "Sliders",
-          autogenerate: { directory: "sliders" },
+          autogenerate: {
+            directory: "sliders",
+          },
         },
         {
           label: "Snackbar",
-          autogenerate: { directory: "snackbar" },
+          autogenerate: {
+            directory: "snackbar",
+          },
         },
         {
           label: "Switch",
-          autogenerate: { directory: "switch" },
+          autogenerate: {
+            directory: "switch",
+          },
         },
         {
           label: "Tabs",
-          autogenerate: { directory: "tabs" },
+          autogenerate: {
+            directory: "tabs",
+          },
         },
         {
           label: "Text",
-          autogenerate: { directory: "text" },
+          autogenerate: {
+            directory: "text",
+          },
         },
         {
           label: "Text fields",
-          autogenerate: { directory: "text-fields" },
+          autogenerate: {
+            directory: "text-fields",
+          },
         },
         {
           label: "ToolTips",
-          autogenerate: { directory: "tooltips" },
+          autogenerate: {
+            directory: "tooltips",
+          },
         },
       ],
     }),
