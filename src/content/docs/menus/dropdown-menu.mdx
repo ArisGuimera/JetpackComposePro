@@ -18,33 +18,6 @@ en el layout ya que se despliega en una ventana separada especificamente desde e
 
 ### Definición del componente
 
-<Tabs>
-<TabItem label="Material">
-
-```kotlin frame="terminal"
-@Composable
-fun DropdownMenu(
-    expanded: Boolean,
-    onDismissRequest: () -> Unit,
-    focusable: Boolean = true,
-    modifier: Modifier = Modifier,
-    offset: DpOffset = DpOffset(0.dp, 0.dp),
-    scrollState: ScrollState = rememberScrollState(),
-    content: @Composable ColumnScope.() -> Unit
-): Unit
-```
-
-- expanded: Permitir que se muestre.
-- onDismissRequest: Callback cuando se hace tap fuera del menu.
-- focusable: Perrmitir que pueda ser _"enfocado"_ por el `FocusManager` (_Opcional_).
-- modifier:  Modificador que implementará el composable (_Opcional_).
-- offset: Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
-- scrollState: Un controlador de estado para el desplazamiento vertical (_Opcional_).
-- content: El contenido del menu usualmente una lista de `DropdownMenuItem`.
-
-</TabItem>
-<TabItem label="Material 3">
-
 ```kotlin frame="terminal"
 @Composable
 fun DropdownMenu(
@@ -65,10 +38,6 @@ fun DropdownMenu(
 - properties: Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
 - content: El contenido del menu usualmente una lista de `DropdownMenuItem`.
 
-</TabItem>
-</Tabs>
-
-[comment]: <> (No modifiques el tip)
 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
@@ -78,7 +47,7 @@ Puedes acceder a la documentación oficial de Google
 ### Ejemplos
 
 <Tabs>
-<TabItem label="Material 3 - Boton Icono">
+<TabItem label="Usando Boton Icono">
 
 ```kotlin frame="terminal"
 IconButton(onClick = {isDropdownOpen = true}) {
@@ -105,7 +74,7 @@ IconButton(onClick = {isDropdownOpen = true}) {
 </center>
 
 </TabItem>
-<TabItem label="Material 3 - Box">
+<TabItem label="Usando Box">
 
 ```kotlin frame="terminal"
 Box(modifier = Modifier
