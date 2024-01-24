@@ -41,7 +41,6 @@ fun SliderComposable() {
     }
 }
 ```
-
 - value: Valor actual del Slider (inicializado en 0f en este caso).
 - onValueChange: Cuando el valor del Slider cambia actualiza sliderStepPosition (var sliderStepPosition by remember).
 - steps: Divide el rango de valores en pequeños puntos visibles en la barra, permitiendo solo valores específicos.
@@ -50,7 +49,6 @@ fun SliderComposable() {
 - - thumbColor: Color del círculo que se arrastra para ajustar el valor.
   - activeTrackColor: Color de la parte activa de la barra del Slider.
   - inactiveTrackColor: Color de la parte inactiva de la barra.
-
 
 </TabItem>
 
@@ -87,6 +85,4 @@ fun SliderComposableEjemplo1() {
     }
 }
 ```
-
 </TabItem>
-
