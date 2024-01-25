@@ -14,14 +14,11 @@ Un Jetpack Compose Slider es un componente que permite al usuario seleccionar un
 ## Implementación
 
 ### Definición del componente
-
 [comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
-
 <Tabs>
 <TabItem label="Material">
 
 ```kotlin frame="terminal"
-
 @Composable
 fun SliderComposable() {
 // DOS OPCIONES DE VARIABLES PARA QUE FUNCIONE:
@@ -41,9 +38,7 @@ fun SliderComposable() {
         )
     }
 }
-
 ```
-
 - value: Valor actual del Slider (inicializado en 0f en este caso).
 - onValueChange: Cuando el valor del Slider cambia actualiza sliderStepPosition (var sliderStepPosition by remember).
 - steps: Divide el rango de valores en pequeños puntos visibles en la barra, permitiendo solo valores específicos.
@@ -52,23 +47,16 @@ fun SliderComposable() {
 - - thumbColor: Color del círculo que se arrastra para ajustar el valor.
   - activeTrackColor: Color de la parte activa de la barra del Slider.
   - inactiveTrackColor: Color de la parte inactiva de la barra.
-
 </TabItem>
-
 [comment]: <> (No modifiques el tip)
-
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/jetpack/compose/components/slider?hl=en).
 :::
-
 ### Ejemplos
-
 <Tabs>
 <TabItem label="Material">
-
 ```kotlin frame="terminal"
-
 @Composable
 fun SliderComposableEjemplo1() {
 // DOS OPCIONES DE VARIABLES PARA QUE FUNCIONE:
@@ -89,5 +77,4 @@ fun SliderComposableEjemplo1() {
     }
 }
 ```
-
 </TabItem>
