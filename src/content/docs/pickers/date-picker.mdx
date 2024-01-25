@@ -75,11 +75,11 @@ Puedes acceder a la documentación oficial de DatePicker de material 3:
 ### Ejemplo de DatePicker
 
 <Tabs>
-<TabItem label="Modo calendario">
+<TabItem label="Material 3">
 
 <center>
   ![Imagen del componente SuggestionChip - Material
-  ](../../../assets/pickers/datepicker/date-picker-calendar-material-3-example.png)
+  ](../../../assets/pickers/datepicker/date-picker-material-3-example.png)
 </center>
 
 ```kotlin frame="terminal"
@@ -115,49 +115,7 @@ fun DatePickerScreen(
     }
 
 }
-```
 
-</TabItem>
-<TabItem label="Modo entrada de datos">
-
-<center>
-  ![Imagen del componente SuggestionChip - Material
-  ](../../../assets/pickers/datepicker/date-picker-data-entry-mode-material-3-example.png)
-</center>
-
-```kotlin frame="terminal"
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DatePickerScreen(
-    modifier: Modifier = Modifier
-) {
-
-    val datePickerState = rememberDatePickerState()
-
-
-    Column(
-        modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        DatePicker(state = datePickerState)
-
-        Text(text = "Selected ${datePickerState.selectedDateMillis}")
-
-
-    }
-
-}
 ```
 
 </TabItem>
