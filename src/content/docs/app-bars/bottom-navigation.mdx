@@ -11,7 +11,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 BottomNavigation permite la navegación entre pantallas principales en una aplicación. 
 
-BottomNavigation debería contener varios `BottomNavigationItem`s que reprensentarían cada una de las pantallas principales.
+BottomNavigation debería contener varios `BottomNavigationItem` que reprensentarían cada una de las pantallas principales.
 
 ## Implementación
 
@@ -34,7 +34,7 @@ fun BottomNavigation(
     contentColor: Color = contentColorFor(backgroundColor),
     elevation: Dp = BottomNavigationDefaults.Elevation,
     content: @Composable RowScope.() -> Unit
-): Unit
+)
 ```
 
 Atributo | Descripción
@@ -55,7 +55,7 @@ fun BottomNavigation(
     contentColor: Color = contentColorFor(backgroundColor),
     elevation: Dp = BottomNavigationDefaults.Elevation,
     content: @Composable RowScope.() -> Unit
-): Unit
+)
 ```
 Esta segunda opción proporciona la capacidad de especificar `WindowInsets`. Valores recomendados se pueden encontrar en [`BottomNavigationDefaults.windowInsets`](https://developer.android.com/reference/kotlin/androidx/compose/material/BottomNavigationDefaults#windowInsets())
 
@@ -66,7 +66,7 @@ modifier | Modificador que implementará el composable (_Opcional_).
 backgroundColor | El color del fondo del componente.
 contentColor | Color del contenido.
 elevation | Permite modificar la elevación del componente.
-content | Destinos dentro de este BottomNavigation, esto debe contener múltiples `BottomNavigationItem`s.
+content | Destinos dentro de este BottomNavigation, esto debe contener múltiples `BottomNavigationItem`.
 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
@@ -100,7 +100,7 @@ containerColor | El color del fondo del componente. Usar `Color.Transparent` par
 contentColor | Color del contenido.
 tonalElevation | Añade un color de elevacíon en relación al color del `containerColor`.
 windowInsets | El espacio que respetará de bordes sobre la pantalla del móvil. Más información en la [documentación oficial](https://developer.android.com/jetpack/compose/layouts/insets?hl=es-419).
-content | Contenido que almacenará la `NavigationBar`, nomrmalmente 3-5 `NavigationBarItem`s.
+content | Contenido que almacenará la `NavigationBar`, nomrmalmente 3-5 `NavigationBarItem`.
 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
