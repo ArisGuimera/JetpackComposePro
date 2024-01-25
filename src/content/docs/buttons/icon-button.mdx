@@ -7,7 +7,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 [comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
 
-![Imagen del componente [IconButton]](../../../assets/buttons/iconbutton/iconbutton-default.webp)
+Material | Material3
+------ | -----------
+![Imagen del componente [IconButton]](../../../assets/buttons/iconbutton/iconbutton-m-default.webp)|![Imagen del componente [IconButton]](../../../assets/buttons/iconbutton/iconbutton-m3-default.webp)|
 
 El componente `IconButton` permite que un ícono actúe como un `Button`, ejecuta una acción cuando el usuario hace click en este componente. Es usado cuando se requiere un botón compacto, como en `TopAppBar`.
 
@@ -78,6 +80,10 @@ Puedes acceder a la documentación oficial de Google
 <Tabs>
 <TabItem label="Material">
 
+<center>
+![IconButton](../../../assets/buttons/iconbutton/iconbutton-sample.webp)
+</center>
+
 ```kotlin frame="terminal"
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
@@ -93,12 +99,12 @@ fun MyIconButton() {
 }
 ```
 
-<center>
-![IconButton](../../../assets/buttons/iconbutton/iconbutton-sample.webp)
-</center>
-
 </TabItem>
 <TabItem label="Material 3">
+
+<center>
+![IconButton](../../../assets/buttons/iconbutton/iconbutton3-sample.webp)
+</center>
 
 ```kotlin frame="terminal"
 import androidx.compose.material.icons.Icons
@@ -121,9 +127,6 @@ fun MyIconButton() {
     }
 }
 ```
-<center>
-![IconButton](../../../assets/buttons/iconbutton/iconbutton3-sample.webp)
-</center>
 
 </TabItem>
 </Tabs>
