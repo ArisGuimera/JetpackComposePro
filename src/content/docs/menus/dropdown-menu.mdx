@@ -47,7 +47,10 @@ Puedes acceder a la documentación oficial de Google
 ### Ejemplos
 
 <Tabs>
-<TabItem label="Usando Boton Icono">
+<TabItem label="Material - Boton Icono">
+<center>
+![DropdownMenu Ejemplo 1](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo1.png)
+</center>
 
 ```kotlin frame="terminal"
 IconButton(onClick = {isDropdownOpen = true}) {
@@ -69,40 +72,41 @@ IconButton(onClick = {isDropdownOpen = true}) {
     }
 }
 ```
-<center>
-![DropdownMenu Ejemplo 1](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo1.png)
-</center>
 
 </TabItem>
-<TabItem label="Usando Box">
+<TabItem label="Material 3 - Box">
+
+<center>
+![DropdownMenu Ejemplo 2](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo2.png)
+</center>
 
 ```kotlin frame="terminal"
+val options = listOf(
+    "Edit",
+    "Share",
+    "Copy",
+    "Hide",
+    "Remove"
+)
 Box(modifier = Modifier
     .fillMaxSize()
-    .wrapContentSize(Alignment.TopEnd)) {
-
+    .wrapContentSize(Alignment.Center)) {
     IconButton(onClick = { isDropdownOpen = true }) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_dots),
-            tint = Color.LightGray,
+            imageVector = Icons.Default.MoreVert,
+            tint = Color.Black,
             contentDescription = null
         )
     }
     DropdownMenu(
         expanded = isDropdownOpen,
-        modifier = Modifier.background(color = Color.Black),
-        offset = DpOffset(0.dp, -20.dp), // aparece 20dp más arriba de su posición en el Box
-        properties = PopupProperties(dismissOnBackPress = true),
-        onDismissRequest = { isDropdownOpen = false }
-    ) {
-        Text(text = "Edit") //  Mejor usar DropdowMenuItem
-        Text(text = "Share")
-        Text(text = "Delete")
+        onDismissRequest = { isDropdownOpen = false },
+    ){
+        options.forEach { option ->
+            Text(text = option, modifier = Modifier.padding(8.dp))
+        }
     }
 }
 ```
-<center>
-![DropdownMenu Ejemplo 2](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo2.png)
-</center>
 </TabItem>
 </Tabs>
