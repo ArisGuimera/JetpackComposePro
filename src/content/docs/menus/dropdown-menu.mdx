@@ -7,9 +7,13 @@ sidebar:
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-![Imagen del componente DropdownMenu](../../../assets/menus/dropdown-menu/dropdown-menu-material.png)
+| Material| Material 3| 
+| :----------------: | :------: |
+| ![Imagen del componente DropdownMenu - Material](../../../assets/menus/dropdown-menu/dropdown-menu-material.png)   | ![Imagen del componente DropdownMenu - Material 3](../../../assets/menus/dropdown-menu/dropdown-menu-material3.png)
+ | 
 
-El DropdownMenu es un componente que se comporta de manera similar al `Popup` en android, este utilizará la posición actual de su padre 
+
+El `DropdownMenu` es un componente que se comporta de manera similar al `Popup` en android, este utilizará la posición actual de su padre 
 en el layout principal como una _ancla_ donde se desplegará el DropdownMenu, es importante recodar que el compinente no tomará ningun espacio adicional
 en el layout ya que se despliega en una ventana separada especificamente desde el top del componente padre. 
 
@@ -17,6 +21,11 @@ en el layout ya que se despliega en una ventana separada especificamente desde e
 ## Implementación
 
 ### Definición del componente
+
+El componente se ha mantenido igual desde Material 1, existe otro DorpdownMenu pero este se utiliza en aplicaciones de escritorio, consulta la documentacion oficial para ver más.
+
+<Tabs>
+<TabItem label="Material">
 
 ```kotlin frame="terminal"
 @Composable
@@ -30,14 +39,46 @@ fun DropdownMenu(
     content: @Composable ColumnScope.() -> Unit
 ): Unit
 ```
-- expanded: Permitir que se muestre.
-- onDismissRequest: Callback cuando se hace tap fuera del menu.
-- modifier:  Modificador que implementará el composable (_Opcional_),
-- offset: Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
-- scrollState: Un controlador de estado para el desplazamiento vertical (_Opcional_).
-- properties: Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
-- content: El contenido del menu usualmente una lista de `DropdownMenuItem`.
 
+Atributo | Descripción
+------ | -----------
+expanded | Permitir que se muestre.
+onDismissRequest | Callback cuando se hace tap fuera del menu.
+modifier |  Modificador que implementará el composable (_Opcional_),
+offset | Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
+scrollState | Un controlador de estado para el desplazamiento vertical (_Opcional_).
+properties | Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
+content | El contenido del menu usualmente una lista de `DropdownMenuItem`.
+
+
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun DropdownMenu(
+    expanded: Boolean,
+    onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier,
+    offset: DpOffset = DpOffset(0.dp, 0.dp),
+    scrollState: ScrollState = rememberScrollState(),
+    properties: PopupProperties = PopupProperties(focusable = true),
+    content: @Composable ColumnScope.() -> Unit
+): Unit
+```
+
+Atributo | Descripción
+------ | -----------
+expanded | Permitir que se muestre.
+onDismissRequest | Callback cuando se hace tap fuera del menu.
+modifier |  Modificador que implementará el composable (_Opcional_),
+offset | Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
+scrollState | Un controlador de estado para el desplazamiento vertical (_Opcional_).
+properties | Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
+content | El contenido del menu usualmente una lista de `DropdownMenuItem`.
+
+</TabItem>
+</Tabs>
 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
@@ -47,7 +88,7 @@ Puedes acceder a la documentación oficial de Google
 ### Ejemplos
 
 <Tabs>
-<TabItem label="Material - Boton Icono">
+<TabItem label="Material">
 <center>
 ![DropdownMenu Ejemplo 1](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo1.png)
 </center>
@@ -74,7 +115,7 @@ IconButton(onClick = {isDropdownOpen = true}) {
 ```
 
 </TabItem>
-<TabItem label="Material 3 - Box">
+<TabItem label="Material 3">
 
 <center>
 ![DropdownMenu Ejemplo 2](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo2.png)
