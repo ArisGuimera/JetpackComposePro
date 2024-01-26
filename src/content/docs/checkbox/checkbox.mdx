@@ -39,13 +39,14 @@ fun Checkbox(
     colors: CheckboxColors = CheckboxDefaults.colors()
 ): Unit
 ```
-
-- **checked**: Si esta casilla de verificación está marcada o desactivada.
-- **onCheckedChange**: devolución de llamada que se invocará cuando se haga clic en la casilla de verificación, por lo tanto, se solicita el cambio de estado comprobado. Si es nulo, es pasivo y depende completamente de un componente de nivel superior para controlar el estado "comprobado".
-- **modifier**: Modificador a aplicar a esta casilla de verificación.
-- **enabled**: si el componente está habilitado o atenuado.
-- **interactionSource**: MutableInteractionSource que representa el flujo de interacciones para esta casilla de verificación. Puede crear y pasar su propio MutableInteractionSource recordado si desea observar las interacciones y personalizar la apariencia / comportamiento de esta casilla de verificación en diferentes interacciones.
-- **colors**: Colores de la casilla de verificación que se utilizarán para determinar el color de la marca de verificación / casilla / borde en diferentes estados. Consulte CheckboxDefaults.colors.
+Atributo | Descripción
+------ | -----------
+checked | Si esta `casilla de verificación` está marcada o desactivada.
+onCheckedChange | devolución de llamada que se invocará cuando se haga clic en la `casilla de verificación`, por lo tanto, se solicita el cambio de estado comprobado. Si es nulo, es pasivo y depende completamente de un componente de nivel superior para controlar el estado "comprobado".
+modifier | Modificador a aplicar a esta `casilla de verificación`.
+enabled | si el componente está habilitado o atenuado.
+interactionSource | MutableInteractionSource que representa el flujo de interacciones para esta `casilla de verificación`. Puede crear y pasar su propio MutableInteractionSource recordado si desea observar las interacciones y personalizar la apariencia / comportamiento de esta `casilla de verificación` en diferentes interacciones.
+colors | Colores de la `casilla de verificación` que se utilizarán para determinar el color de la marca de verificación / casilla / borde en diferentes estados. Consulte CheckboxDefaults.colors.
 
 </TabItem>
 
@@ -62,13 +63,14 @@ fun Checkbox(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ): Unit
 ```
-
-- **checked**: Si esta casilla de verificación está marcada o desactivada.
-- **onCheckedChange**: Se llama cuando se hace clic en esta casilla de verificación. Si es nula, esta casilla de verificación no será interactiva, a menos que otra cosa controle sus eventos de entrada y actualice su estado.
-- **modifier**: Modificador a aplicar a esta casilla de verificación.
-- **enabled**: Controla el estado habilitado de esta casilla de verificación. Cuando es false, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
-- **colors**: Colores de la casilla de verificación que se usarán para resolver los colores utilizados para esta casilla de verificación en diferentes estados. Consulte CheckboxDefaults.colors.
-- **interactionSource**: la MutableInteractionSource representa la secuencia de interacciones para esta casilla de verificación. Puede crear y pasar su propia instancia recordada para observar las interacciones y personalizar la apariencia / comportamiento de esta casilla de verificación en diferentes estados.
+Atributo | Descripción
+------ | -----------
+checked | Si esta `casilla de verificación` está marcada o desactivada.
+onCheckedChange | Se llama cuando se hace clic en esta `casilla de verificación`. Si es nula, esta `casilla de verificación` no será interactiva, a menos que otra cosa controle sus eventos de entrada y actualice su estado.
+modifier | Modificador a aplicar a esta `casilla de verificación`.
+enabled | Controla el estado habilitado de esta `casilla de verificación`. Cuando es false, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
+colors | Colores de la `casilla de verificación` que se usarán para resolver los colores utilizados para esta `casilla de verificación` en diferentes estados. Consulte CheckboxDefaults.colors.
+interactionSource | la MutableInteractionSource representa la secuencia de interacciones para esta `casilla de verificación`. Puede crear y pasar su propia instancia recordada para observar las interacciones y personalizar la apariencia / comportamiento de esta `casilla de verificación` en diferentes estados.
 
 </TabItem>
 </Tabs>
