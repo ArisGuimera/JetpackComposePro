@@ -3,13 +3,30 @@
 
 // import type { HTMLAttributes } from 'astro/types';
 
+import dialogIMG from "../assets/alertDialog/alertDialog-header-ExampleMaterial3.webp";
+import chipIMG from "../assets/chip/assist-chip/chip-assist-material-3-example.webp"; 
+import buttonIMG from "../assets/buttons/button/button-header-material-3.png"; 
+import appBarIMG from "../assets/appbars/bottomappbar/bottomappbar-header-material-3.png"; 
+import badgeIMG from "../assets/badges/badge/badge-header-material-3.png"; 
+import switchIMG from "../assets/switch/switch-header.webp"; 
+
 interface Props {
   title: string;
   description?: string;
-  imagePath?: string;
 }
 
-const { title, description, imagePath, ...attributes } = Astro.props;
+const { title, description, ...attributes } = Astro.props;
+
+const imageMapping: { [key: string]: string } = {
+  "Dialogs": dialogIMG.src,
+  "Chips": chipIMG.src,
+  "Buttons": buttonIMG.src,
+  "App Bars": appBarIMG.src,
+  "Badges": badgeIMG.src,
+  "Switch": switchIMG.src
+};
+
+const imagePath = imageMapping[title]
 ---
 
 <div>
