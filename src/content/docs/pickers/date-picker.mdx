@@ -98,24 +98,15 @@ import androidx.compose.ui.Modifier
 fun DatePickerScreen(
     modifier: Modifier = Modifier
 ) {
-
     val datePickerState = rememberDatePickerState()
-
-
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         DatePicker(state = datePickerState)
-
         Text(text = "Selected ${datePickerState.selectedDateMillis}")
-
-
     }
-
 }
-
 ```
 
 </TabItem>
