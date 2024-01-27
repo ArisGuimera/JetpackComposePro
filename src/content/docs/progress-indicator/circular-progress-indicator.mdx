@@ -14,7 +14,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 </center>
 
 
-Perteneciente a los indicadores de progreso, el `CircularProgressIndicator` es un componente definido como el trazo de un diámetro circular animado, es utilizado para representar visualmente el avance de una operación. También puede ser utilizado para indicar la ejecución de alguna tarea sin proporcionar indicios de que tan próxima esté a finalizar.
+El `CircularProgressIndicator` es un componente definido como el trazo de un diámetro circular animado, es utilizado para representar visualmente el avance de una operación. 
+
+También puede ser utilizado para indicar la ejecución de alguna tarea sin proporcionar indicios de que tan próxima esté a finalizar.
 
 
 ## Implementación
@@ -36,7 +38,7 @@ fun CircularProgressIndicator(
     strokeWidth: Dp = ProgressIndicatorDefaults.StrokeWidth,
     backgroundColor: Color = Color.Transparent,
     strokeCap: StrokeCap = StrokeCap.Square
-): Unit
+)
 ```
 
 #### Indicador determinado
@@ -50,7 +52,7 @@ fun CircularProgressIndicator(
     strokeWidth: Dp = ProgressIndicatorDefaults.StrokeWidth,
     backgroundColor: Color = Color.Transparent,
     strokeCap: StrokeCap = StrokeCap.Butt
-): Unit
+)
 ```
 
 Atributo | Descripción
@@ -76,7 +78,7 @@ fun CircularProgressIndicator(
     strokeWidth: Dp = ProgressIndicatorDefaults.CircularStrokeWidth,
     trackColor: Color = ProgressIndicatorDefaults.circularTrackColor,
     strokeCap: StrokeCap = ProgressIndicatorDefaults.CircularIndeterminateStrokeCap
-): Unit
+)
 ```
 
 #### Indicador determinado
@@ -90,7 +92,7 @@ fun CircularProgressIndicator(
     strokeWidth: Dp = ProgressIndicatorDefaults.CircularStrokeWidth,
     trackColor: Color = ProgressIndicatorDefaults.circularTrackColor,
     strokeCap: StrokeCap = ProgressIndicatorDefaults.CircularDeterminateStrokeCap
-): Unit
+)
 ```
 Atributo | Descripción
 -------- | -----------
@@ -109,10 +111,6 @@ strokeCap| Capa para usar en los extremos del indicador.
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
-:::
-
-:::tip[Fuente]
-También te recomendamos dar un vistazo a la página oficial de [Material](https://m2.material.io/components/progress-indicators) y [Material3](https://m3.material.io/components/progress-indicators/overview) donde podrás encontrar guías de uso, especificaciones visuales del componente y consideraciones de accesibilidad.
 :::
 
 ### Ejemplos
@@ -292,7 +290,9 @@ suspend fun loadProgress(updateProcess: (Float) -> Unit) {
 </Tabs>
 
 :::note[Animación del componente]
-Por defecto el componente no tiene especificado ninguna animación entre los valores del progreso, por lo que el cambio del componente en la UI será instantáneo. No obstante es posible apoyarse de `ProgressIndicatorDefaults.ProgressAnimationSpec` para animar el cambio del componente a lo largo del progreso tal y como se muestra en el ejemplo de la parte superior.
+Por defecto el componente no tiene especificado ninguna animación entre los valores del progreso, por lo que el cambio del componente en la UI será instantáneo.
+
+No obstante, con ayuda de `ProgressAnimationSpec` es posible animar el cambio del componente a lo largo del progreso tal y como se muestra en el ejemplo de la parte superior.
 :::
 
 
