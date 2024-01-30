@@ -1,0 +1,164 @@
+---
+title: Tab
+description: Aprende a usar el composable Tab en Jetpack Compose.
+sidebar:
+  order: 0
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+![Tab](../../../assets/tab/tab-header.webp)
+
+El componente `Tab`, también conocido como pestaña de navegación. Organiza el contenido en diferentes pantallas, conjuntos de datos y otras interacciones.
+
+Un tab representa una sola página de contenido mediante una etiqueta de texto y/o un icono. Representa su estado seleccionado teniendo la etiqueta de texto y/o la imagen con la propiedad **selectedContentColor**.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un `TabItem` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun Tab(
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    text: (@Composable () -> Unit)? = null,
+    icon: (@Composable () -> Unit)? = null,
+    interactionSource: MutableInteractionSource? = null,
+    selectedContentColor: Color = LocalContentColor.current,
+    unselectedContentColor: Color = selectedContentColor.copy(alpha = ContentAlpha.medium)
+): Unit
+```
+
+| Atributo                | Descripción                                                                                                                                                                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| selected:               | Si el Tab esta seleccionado o no                                                                                                                                                                      |
+| onClick:                | Se llama cuando se hace clic en este tab                                                                                                                                                              |
+| modifier:               | Modificador opcional para este Tab.                                                                                                                                                                   |
+| enabled:                | Controla el estado habilitado del tab. Cuando esta en falso este componente no responderá a la interaccion del usuario y aparecera visualmente deshabilitado.                                         |
+| text:                   | El texto que se mostrará en el tab.                                                                                                                                                                   |
+| icon:                   | El icono que se mostrará en el tab.                                                                                                                                                                   |
+| selectedContentColor:   | Define el color para el contenido del tab cuando está seleccionado, y el color de la ondulación (ripple).                                                                                             |
+| unselectedContentColor: | El color del contenido del tab cuando no esta seleccionado.                                                                                                                                           |
+| interactionSource:      | Representa el flujo de interacciones del usuario con el tab como dar click o deslizar. Podemos crear animaciones, efectos visuales y comportamientos personalizados en respuesta a las interacciones. |
+| content                 | Representa el contenido del `tab` .                                                                                                                                                                   |
+
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun Tab(
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    text: (@Composable () -> Unit)? = null,
+    icon: (@Composable () -> Unit)? = null,
+    selectedContentColor: Color = LocalContentColor.current,
+    unselectedContentColor: Color = selectedContentColor,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+): Unit
+```
+
+| Atributo                | Descripción                                                                                                                                                                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| selected:               | Si el Tab esta seleccionado o no.                                                                                                                                                                     |
+| onClick:                | Se llama cuando se hace clic en este tab                                                                                                                                                              |
+| modifier:               | Modificador que implementará el composable.                                                                                                                                                           |
+| enabled:                | Controla el estado habilitado del tab. Cuando esta en falso este componente no responderá a la interaccion del usuario y aparecera visualmente deshabilitado.                                         |
+| text:                   | El texto que se mostrará en el tab.                                                                                                                                                                   |
+| icon:                   | El icono que se mostrará en el tab.                                                                                                                                                                   |
+| selectedContentColor:   | Define el color para el contenido del tab cuando está seleccionado, y el color de la ondulación (ripple).                                                                                             |
+| unselectedContentColor: | El color del contenido del tab cuando no esta seleccionado.                                                                                                                                           |
+| interactionSource       | Representa el flujo de interacciones del usuario con el tab como dar click o deslizar. Podemos crear animaciones, efectos visuales y comportamientos personalizados en respuesta a las interacciones. |
+| content                 | Representa el contenido del `tab`                                                                                                                                                                     |
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](<https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Tab(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,kotlin.Function0,kotlin.Function0,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.foundation.interaction.MutableInteractionSource)>).
+:::
+
+### Ejemplos
+
+<Tabs>
+<TabItem label="Material">
+
+<center>
+  ![Imagen del componente Button -
+  Material](../../../assets/buttons/button/button-header-material.png)
+</center>
+
+```kotlin frame="terminal"
+@Composable
+fun Tab(selected, onClick) {
+    Column(
+        Modifier.padding(10.dp).height(50.dp).fillMaxWidth(),
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        Box(
+            Modifier.size(10.dp)
+                .align(Alignment.CenterHorizontally)
+                .background(color = if (selected) Color.Red else Color.White)
+        )
+        Text(
+            text = title,
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Material 3">
+
+<center>
+  ![Imagen del componente Button - Material
+  3](../../../assets/buttons/button/button-header-material-3.png)
+</center>
+
+```kotlin frame="terminal"
+@Composable
+fun Tab(selected, onClick) {
+    Column(
+        Modifier
+            .padding(10.dp)
+            .height(50.dp)
+            .fillMaxWidth(),
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        Box(
+            Modifier
+                .size(10.dp)
+                .align(Alignment.CenterHorizontally)
+                .background(
+                    color = if (selected) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.background
+                )
+        )
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
+    }
+}
+```
+
+</TabItem>
+</Tabs>
