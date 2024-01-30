@@ -7,11 +7,13 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 [comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
 
-| Material2 | Material3 |
-|-----------|-----------|
-| ![TimePickerM2](../../../assets/pickers/timePicker/timePicker_m2.webp)  |  ![TimePickerM3](../../../assets/pickers/timePicker/timePicker_m3.webp) |
+| Material3 |
+|-----------|
+|  ![TimePickerM3](../../../assets/pickers/timePicker/timePicker_m3.webp) |
 
-Time picker ayuda a los usuarios a seleccionar un hora, o establecer una hora determinada.
+`Timepicker` ayuda a los usuarios a seleccionar un hora, o establecer una hora determinada.
+
+Muestra un selector que permite al usuario seleccionar la hora. Suscríbete a las actualizaciones a través de `TimePickerState`.
 
 ## Implementación
 
@@ -20,26 +22,6 @@ Time picker ayuda a los usuarios a seleccionar un hora, o establecer una hora de
 [comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
 
 <Tabs>
-<TabItem label="Material">
-
-```kotlin frame="terminal"
-@Composable
-fun TimePickerDialog(
-    context: Context,
-    attrs: AttributeSet,
-    initialHour: Int,
-    initialMinute: Int,
-    is24Hour: boolean
-)
-```
-| Nombre    |   Descripción |
-|-----------|---------------|
-|   context         | Interfaz con información global sobre el entorno de una aplicación |
-|   attrs           | Colección de atributos |
-|   initialHour     | Esto representa la hora predeterminada para el time picker. El valor predeterminado es 0 y oscila entre 0 y 23 |
-|   initialMinute   | Esto representa el minuto predeterminado para el time picker. El valor predeterminado es 0 y oscila entre 0 y 59 |
-|   is24Hour        |   Espera un valor booleano donde "false" es para el formato de 12 horas y "true" es para el formato de 24 horas. El valor predeterminado se selecciona de la configuración de su sistema |
-</TabItem>
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
@@ -52,16 +34,18 @@ fun TimePicker(
     layoutType: TimePickerLayoutType = TimePickerDefaults.layoutType(),
 )
 ```
+
+#### Parametros
+
 | Nombre| Descripción |
 |----------|----------|
-| state    | estado para este componente, permite suscribirse a cambios de TimePickerState.hour y TimePickerState.minute, y establecer la hora por defecto para este componente.  |
-| modifiers| modificador que va a ser aplicado a este componente   |
-| colors   | colores TimePickerColors que seran usados para resolver los colores de este time picker en diferentes estados. Ver TimePickerDefaults.colors.   |
-|layoutType| los diferentes TimePickerLayoutType soportados por este time picker, cambiara la posicion y tamaño de diferentes componentes de el timepicker     |
+| state    | Estado para este componente, permite suscribirse a cambios de `TimePickerState.hour` y `TimePickerState.minute`, y establecer la hora por defecto para este componente.  |
+| modifiers| Modificador que va a ser aplicado a este componente   |
+| colors   | Colores `TimePickerColors` que seran usados para resolver los colores de este timepicker en diferentes estados.  |
+|layoutType| Los diferentes `TimePickerLayoutType` soportados por este time picker, cambiara la posicion y tamaño de diferentes componentes de el timepicker     |
 </TabItem>
 </Tabs>
 
-#### Parametros
 
 
 
@@ -73,28 +57,12 @@ Puedes acceder a la documentación oficial de Google
 :::
 
 ### Ejemplos
+
 <Tabs>
-<TabItem  label="Material">
-![TimePicker Ejemplo](../../../assets/pickers/timePicker/timePicker_m2_example.webp)
-```kotlin
-@Composable
-fun TimePicker(context: Context) {
-    val calendar = Calendar.getInstance()
-    val hour = calendar[Calendar.HOUR_OF_DAY]
-    val minute = calendar[Calendar.MINUTE]
-    val time = remember { mutableStateOf("") }
-    val timePickerDialog = TimePickerDialog(
-        context,
-        { _, hour: Int, minute: Int ->
-            time.value = "$hour:$minute"
-        }, hour, minute, false
-    )
-    timePickerDialog.show()
-}
-```
-</TabItem>
 <TabItem label="Material3">
+
 ![TimePicker Ejemplo](../../../assets/pickers/timePicker/timePicker_m3_example.webp)
+
 ```kotlin frame="terminal"
 @Composable
 @ExperimentalMaterial3Api
@@ -111,8 +79,3 @@ fun MyTimePicker(){
 ```
 </TabItem>
 </Tabs>
-
-
-## Diferencias con Material 2
-
- - Color: Nuevas asignaciones de color y compatibilidad con colores dinámicos
