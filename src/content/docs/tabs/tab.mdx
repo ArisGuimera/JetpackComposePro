@@ -96,67 +96,87 @@ Puedes acceder a la documentación oficial de Google
 ### Ejemplos
 
 <Tabs>
-<TabItem label="Material">
+<TabItem label="Tabs Secundarios">
 
 <center>
-  ![Imagen del componente Button -
-  Material](../../../assets/buttons/button/button-header-material.png)
+  ![Imagen del componente Tab Secondary](../../../assets/tab/tab-secondary.webp)
 </center>
 
 ```kotlin frame="terminal"
 @Composable
-fun Tab(selected, onClick) {
-    Column(
-        Modifier.padding(10.dp).height(50.dp).fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        Box(
-            Modifier.size(10.dp)
-                .align(Alignment.CenterHorizontally)
-                .background(color = if (selected) Color.Red else Color.White)
-        )
-        Text(
-            text = title,
-            style = MaterialTheme.typography.body1,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
+fun TabExample() {
+
+    val tabs = listOf("Home", "Profile", "Setting")
+    val selectedTab = remember { mutableStateOf(0) }
+
+    TabRow(selectedTabIndex = selectedTab.value) {
+        tabs.forEachIndexed { index, title ->
+            Tab(
+                selected = selectedTab.value == index,
+                onClick = { selectedTab.value = index },
+                text = { Text(text = title) },
+            )
+        }
     }
 }
 ```
 
 </TabItem>
-<TabItem label="Material 3">
+<TabItem label="Tabs Primarios">
 
 <center>
-  ![Imagen del componente Button - Material
-  3](../../../assets/buttons/button/button-header-material-3.png)
+  ![Imagen del componente Tab Primary](../../../assets/tab/tab-primary.webp)
 </center>
 
 ```kotlin frame="terminal"
 @Composable
-fun Tab(selected, onClick) {
-    Column(
-        Modifier
-            .padding(10.dp)
-            .height(50.dp)
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        Box(
-            Modifier
-                .size(10.dp)
-                .align(Alignment.CenterHorizontally)
-                .background(
-                    color = if (selected) MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.background
+fun TabExample() {
+    val tabs = listOf(
+        TabData("Home", Icons.Default.Home),
+        TabData("Profile", Icons.Default.Person),
+        TabData("Setting", Icons.Default.Settings)
+    )
+    val selectedTab = remember { mutableStateOf(0) }
+
+    Column {
+        TabRow(selectedTabIndex = selectedTab.value) {
+            tabs.forEachIndexed { index, tab ->
+                Tab(
+                    selected = selectedTab.value == index,
+                    onClick = { selectedTab.value = index },
+                    text = { Text(text = tab.title) },
+                    icon = {Icon(
+                        imageVector = tab.icon,
+                        contentDescription = null // Provide a content description if needed
+                    )}
                 )
-        )
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
+            }
+        }
+
+        // Contenido para cada tab
+        when (selectedTab.value) {
+            0 -> HomeScreen()
+            1 -> ProfileScreen()
+            2 -> SettingScreen()
+        }
     }
+}
+//Creamos una data class para el texto y el titulo del Tab
+data class TabData(val title: String, val icon: ImageVector)
+
+@Composable
+fun HomeScreen() {
+    // Contenido pantalla Home
+}
+
+@Composable
+fun ProfileScreen() {
+    // Contenido pantalla Profile
+}
+
+@Composable
+fun SettingScreen() {
+    // Contenido pantalla Setting
 }
 ```
 
