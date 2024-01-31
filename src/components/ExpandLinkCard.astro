@@ -9,6 +9,10 @@ import buttonIMG from "../assets/buttons/button/button-header-material-3.png";
 import appBarIMG from "../assets/appbars/bottomappbar/bottomappbar-header-material-3.png"; 
 import badgeIMG from "../assets/badges/badge/badge-header-material-3.png"; 
 import switchIMG from "../assets/switch/switch-header.webp"; 
+import textFieldIMG from "../assets/outlinedtextfield/outlinedtextfield3-header.webp";
+import textIMG from "../assets/text/text/text-plain-material-3.png";
+import bottomSheetIMG from "../assets/sheets/header-m3-example.webp";
+import checkBoxIMG from "../assets/checkbox/checkbox-header-material-3.png";
 
 interface Props {
   title: string;
@@ -23,7 +27,11 @@ const imageMapping: { [key: string]: string } = {
   "Buttons": buttonIMG.src,
   "App Bars": appBarIMG.src,
   "Badges": badgeIMG.src,
-  "Switch": switchIMG.src
+  "Switch": switchIMG.src,
+  "Texts Fields": textFieldIMG.src,
+  "Texts": textIMG.src,
+  "Sheets": bottomSheetIMG.src,
+  "Checkbox": checkBoxIMG.src
 };
 
 const imagePath = imageMapping[title]
