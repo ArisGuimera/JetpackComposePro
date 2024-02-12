@@ -9,9 +9,9 @@ sidebar:
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-| Material 3 |
-| -------- |
-|![Imagen del componente [Card]](@assets/card/cards-header.webp)|
+| Material 3 (Claro)                                            | Material 3 (Oscuro)                                          |
+| ------------------------------------------------------------- | ------------------------------------------------------------ |
+| ![Imagen del componente [Card]](@assets/card/white_card.webp) | ![Imagen del componente [Card]](@assets/card/dark_card.webp) |
 
 El elemento componible `Card` actúa como un contenedor. En general, en ellas se suele poner un contenido que se quiere destacar, como por ejemplo una imagen o un texto.
 
@@ -92,6 +92,9 @@ Puedes acceder a la documentación oficial de Google
 
 ### Ejemplos
 
+| Material 3 (Claro)                                            | Material 3 (Oscuro)                                          |
+| ------------------------------------------------------------- | ------------------------------------------------------------ |
+| ![Imagen del componente [Card]](@assets/card/white_card.webp) | ![Imagen del componente [Card]](@assets/card/dark_card.webp) |
 <Tabs>
 <TabItem label="Material 3">
 
@@ -103,20 +106,31 @@ fun FilledCardExample() {
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         ),
         modifier = Modifier
-            .size(width = 240.dp, height = 100.dp)
+            .size(width = 300.dp, height = 150.dp)
     ) {
-        Text(
-            text = "Filled",
-            modifier = Modifier
-                .padding(16.dp),
-            textAlign = TextAlign.Center,
-        )
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = "Filled Card",
+                modifier = Modifier
+                    .padding(16.dp),
+                textAlign = TextAlign.Start,
+                style = MaterialTheme.typography.bodyLarge,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.ExtraBold
+            )
+            Text(
+                text = "This is a filled card. It has a background color.",
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                textAlign = TextAlign.Start,
+            )
+        }
     }
 }
 ```
 
 :::tip[Información]
-Fragmento de código extraído de la documentación oficial de Google. Puedes acceder a ella [desde aquí](https://developer.android.com/jetpack/compose/components/card#filled).
+Fragmento de código extraído de la documentación oficial de Google y modificado ligeramente. Puedes acceder al original [desde aquí](https://developer.android.com/jetpack/compose/components/card#filled).
 :::
 
 </TabItem>
