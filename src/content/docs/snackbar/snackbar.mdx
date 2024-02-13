@@ -10,7 +10,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 |-----------|-----------|
 | ![Snackbar material2](../../../assets/snackbar/snackbar_m2.webp) | ![Snackbar ,3](../../../assets/snackbar/snackbar_m3.webp) |
 
-El componente de Snackbar funciona como una breve notificación que se muestra en la parte inferior de la pantalla. 
+El componente de `Snackbar` funciona como una breve notificación que se muestra en la parte inferior de la pantalla. 
 Proporciona comentarios sobre una operación o acción sin interrumpir la experiencia del usuario. 
 
 Los Snackbars desaparecen después de unos segundos. El usuario también puede descartarlo con una acción, como presionar un botón.
@@ -40,12 +40,12 @@ fun Snackbar(
 | Parametro | Descripción |
 |-----------|-------------|
 | modifier | Modificador que implementará el composable. |
-| action | Componente de acción/botón para agregar como acción al Snackbar. Considere usar SnackbarDefaults. |
+| action | Componente de acción/botón para agregar como acción al `Snackbar`. Considere usar SnackbarDefaults. |
 | actionOnNewLine | Si la acción debe colocarse o no en una línea separada. Recomendado para acciones con texto de acción largo. |
-| shape | Define la forma del Snackbar así como su sombra. |
-| backgroundColor | Color de fondo del Snackbar. |
-| contentColor | Color del contenido que se utilizará dentro del snackbar. |
-| elevation | La coordenada "z" en la que colocar el SnackBar. Esto controla el tamaño de la sombra debajo de SnackBar. |
+| shape | Define la forma del `Snackbar` así como su sombra. |
+| backgroundColor | Color de fondo del `Snackbar`. |
+| contentColor | Color del contenido que se utilizará dentro del `Snackbar`. |
+| elevation | La coordenada "z" en la que colocar el `SnackBar`. Esto controla el tamaño de la sombra debajo del `SnackBar`. |
 | content | Contenido para mostrar información sobre un proceso que una aplicación ha realizado o realizará. |
 
 </TabItem>
@@ -69,14 +69,14 @@ fun Snackbar(
 | Parametro | Descripción |
 |-----------|-------------|
 | modifier | Modificador que implementará el composable. |
-| action | Componente de acción/botón para agregar como acción al Snackbar. Considere usar SnackbarDefaults. |
-| dismissAction | Componente de acción/botón que se agrega como acción de cierre adicional cuando un Snackbar no se desprecia a sí mismo. |
+| action | Componente de acción/botón para agregar como acción al `Snackbar`. Considere usar SnackbarDefaults. |
+| dismissAction | Componente de acción/botón que se agrega como acción de cierre adicional cuando un `Snackbar` no se desprecia a sí mismo. |
 | actionOnNewLine | Si la acción debe colocarse o no en una línea separada. Recomendado para acciones con texto de acción largo. |
-| shape | Define la forma del contenedor de este snackbar. |
-| containerColor | Color utilizado para el fondo de este snackbar. Utilice Color.Transparent para no tener color. |
-| contentColor | Color para el contenido dentro de este snackbar. |
-| actionContentColor | Color de contenido para la acción opcional dentro del snackbar |
-| dismissActionContentColor | Color de contenido para la dismissAction opcional dentro del snackbar. |
+| shape | Define la forma del contenedor de este `Snackbar`. |
+| containerColor | Color utilizado para el fondo de este `Snackbar`. Utilice Color.Transparent para no tener color. |
+| contentColor | Color para el contenido dentro de este `Snackbar`. |
+| actionContentColor | Color de contenido para la acción opcional dentro del `Snackbar` |
+| dismissActionContentColor | Color de contenido para la dismissAction opcional dentro del `Snackbar`. |
 | content | Contenido para mostrar información sobre un proceso que una aplicación ha realizado o realizará. |
 </TabItem>
 </Tabs>
@@ -92,15 +92,15 @@ Puedes acceder a la documentación oficial de Google
 
 <Tabs>
 <TabItem label="Material">
-#### Por Defecto
+#### Genérico
 | Inicio  | Resultado  |
 |---------|-----------|
 | ![Snackbar default m2](../../../assets/snackbar/example_snackbar_default_m2_start.webp) | ![Snackbar default m2](../../../assets/snackbar/example_snackbar_default_m2_end.webp) |
 
-Esta versión del Snackbar está diseñada para trabajar con el SnackbarData provista por el SnackbarHost, el cual normalmente es usado dentro del Scaffold.
+Esta versión del `Snackbar` está diseñada para trabajar con el SnackbarData provista por el SnackbarHost, el cual normalmente es usado dentro del Scaffold.
 
-Este componente provee solo la visualización del Snackbar. 
-Si necesitas mostrar el Snackbar por defecto en la pantalla, usa ScaffoldState.snackbarHostState y SnackbarHostState.showSnackbar:
+Este componente provee solo la visualización del `Snackbar`. 
+Si necesitas mostrar el `Snackbar` genérico en la pantalla, usa ScaffoldState.snackbarHostState y SnackbarHostState.showSnackbar:
 ```kotlin frame="terminal"
 @Composable
 fun MySnackbar() {
@@ -134,7 +134,7 @@ fun MySnackbar() {
 |---------|-----------|
 | ![Snackbar custom m2](../../../assets/snackbar/example_snackbar_custom_m2_start.webp) | ![Snackbar custom m2](../../../assets/snackbar/example_snackbar_custom_m2_end.webp) |
 
-Si quieres personalizar la apariencia del Snackbar, puedes pasar tu propia versión como un componente hijo del SnackbarHost al Scaffold.
+Si quieres personalizar la apariencia del `Snackbar`, puedes pasar tu propia versión como un componente hijo del SnackbarHost al Scaffold.
 ```kotlin frame="terminal"
 @Composable
 fun CustomSnackbar() {
@@ -235,15 +235,15 @@ fun MyCustomSnackbar() {
 
 </TabItem>
 <TabItem label="Material 3">
-#### Por defecto
+#### Genérico
 | Inicio  | Resultado |
 |---------|-----------|
-| ![Snackbar por defecto m3](../../../assets/snackbar/example_snackbar_default_m3_start.webp) | ![Snackbar por defecto m3](../../../assets/snackbar/example_snackbar_default_m3_end.webp) |
+| ![Snackbar genérico m3](../../../assets/snackbar/example_snackbar_default_m3_start.webp) | ![Snackbar genérico m3](../../../assets/snackbar/example_snackbar_default_m3_end.webp) |
 
-Esta versión del Snackbar está diseñada para trabajar con el SnackbarData provista por el SnackbarHost, el cual normalmente es usado dentro del Scaffold.
+Esta versión del `Snackbar` está diseñada para trabajar con el SnackbarData provista por el SnackbarHost, el cual normalmente es usado dentro del Scaffold.
 
-Este componente provee solo la visualización del Snackbar. 
-Si necesitas mostrar el Snackbar por defecto en la pantalla, usa ScaffoldState.snackbarHostState y SnackbarHostState.showSnackbar:
+Este componente provee solo la visualización del `Snackbar`. 
+Si necesitas mostrar el `Snackbar` genérico en la pantalla, usa ScaffoldState.snackbarHostState y SnackbarHostState.showSnackbar:
 
 ```kotlin frame="terminal"
 @Composable
@@ -290,7 +290,7 @@ fun DefaultSnackbar() {
 |---------|-----------|
 | ![Snackbar custom m3](../../../assets/snackbar/example_snackbar_custom_m3_start.webp) | ![Snackbar custom m3](../../../assets/snackbar/example_snackbar_custom_m3_end.webp) |
 
-Si quieres personalizar la apariencia del Snackbar, puedes pasar tu propia versión como un componente hijo del SnackbarHost al Scaffold.
+Si quieres personalizar la apariencia del `Snackbar`, puedes pasar tu propia versión como un componente hijo del SnackbarHost al Scaffold.
 ```kotlin frame="terminal"
 @Composable
 fun CustomSnackbar() {
