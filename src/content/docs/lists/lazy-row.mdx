@@ -7,12 +7,13 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ![Imagen de ejemplo de uso de LazyRow](../../../assets/lists/lazyrow/lazyRow.png) 
 
-El `LazyRow` es un componente que fue agregado oficalmente en la versión 1.2 de Jetpack Compose, antes de este existió el `ScrollableRow` pero este ha sido removido de toda documentación oficial
-por el mismo motivo de incentivar/obligar el uso `LazyRow`, previo a 1.2 existen referencias de este como un componente en desarrollo, cabe mencionar que `LazyRow` no pertenece a **material.io** por lo que sus variantes han sido las funciones de extensión que este permite
+El `LazyRow` es un componente que crea y dispone los elementos que están visibles en el viewport del mismo, produciendo un desplazamiento horizontal, este sigue los principios de un `RecyclerView`
+los cuales son --reciclar-- los elementos individuales, reutilizar la vista para los elementos nuevos que se desplazaron y permitir mostrarlos. 
+
+El primer `LazyRow` estable se añadió en la versión 1.2 de Jetpack Compose, antes de este existió el `ScrollableRow` pero este ha sido removido de toda documentación oficial
+por el mismo motivo de incentivar/obligar el uso de su reemplazo `LazyRow`, previo a 1.2 existen referencias de este como un componente en desarrollo, cabe mencionar que `LazyRow` no pertenece a **material.io** por lo que sus variantes han sido las funciones de extensión que este permite
  y ciertas mejoras en su comportamiento/procesamiento, para saber más sobre por qué `ScrollableRow` fue reemplazado por `LazyRow` visita el commit ofical de AOSP [aquí.](https://android-review.googlesource.com/c/platform/frameworks/support/+/1530328)
 
-Continuando la explicación del componente, este crea y dispone los elementos que están visibles en el viewport del mismo, produciendo un desplazamiento horizontal, este sigue los principios de un `RecyclerView`
-los cuales son reciclar los elementos individuales, reutilizar la vista para los elementos nuevos que se desplazaron y permitir mostrarlos. 
 ## Implementación
 
 ### Definición del componente
@@ -31,7 +32,7 @@ fun LazyRow(
     flingBehavior: FlingBehavior = ScrollableDefaults.flingBehavior(),
     userScrollEnabled: Boolean = true,
     content: LazyListScope.() -> Unit
-): Unit
+)
 ```
 
 Atributo | Descripción
@@ -56,7 +57,12 @@ Puedes acceder a la documentación oficial de Google
 Existen tres formas para añadir elementos en `LazyRow` mediante sus funciones de extensión:
 
 <Tabs>
-<TabItem label="LazyRow - item">
+<TabItem label="Foundation">
+
+##### LazyRow con item
+
+Usando `item` para definir el elemento que será renderizarado en la pantalla, puedes declarar elemento por elemento simplemente instanciando un nuevo `item` en el contenido de `LazyRow`.
+
 <center>
 ![LazyRow Ejemplo item](../../../assets/lists/lazyrow/lazyRowItem.png)
 </center>
@@ -73,9 +79,10 @@ LazyRow(
 }
 ```
 
-Usando `item` para definir el elemento que será renderizarado en la pantalla, puedes declarar elemento por elemento simplemente instanciando un nuevo `item` en el contenido de `LazyRow`.
-</TabItem>
-<TabItem label="LazyRow - items">
+##### LazyRow con items
+
+Con `items` debes definir el número total de elementos, consecuentemente la invocación lambda proporcionará el index de cada elemento con el nombre de `it`,
+esto parece ser lo mismo que un forEach como el ejemplo anterior pero difieren en sintaxis y método de iteración, el forEach itera directamente sobre los elementos de la lista mientras que `items` es más conciso y se basa en índices.
 
 <center>
 ![LazyRow Ejemplo items](../../../assets/lists/lazyrow/lazyRowItems.png )
@@ -91,10 +98,9 @@ LazyRow(
 }
 ```
 
-Con `items` debes definir el número total de elementos, consecuentemente la invocación lambda proporcionará el index de cada elemento con el nombre de `it`,
-esto parece ser lo mismo que un forEach como el ejemplo anterior pero difieren en sintaxis y método de iteración, el forEach itera directamente sobre los elementos de la lista mientras que `items` es más conciso y se basa en índices.
-</TabItem>
-<TabItem label="LazyRow - itemsIndexed">
+##### LazyRow con itemsIndexed
+
+El uso de `itemsIndexed` permite acceder tanto al índice como al valor de cada elemento directamente dentro de la función Composable, lo que brinda más flexibilidad en la creación de elementos según la posición dentro de la lista.
 
 <center>
 ![LazyRow Ejemplo itemsIndexed](../../../assets/lists/lazyrow/lazyRowIidexedItems.png)
@@ -110,7 +116,9 @@ LazyRow(
 }
 ```
 
-El uso de `itemsIndexed` permite acceder tanto al índice como al valor de cada elemento directamente dentro de la función Composable, lo que brinda más flexibilidad en la creación de elementos según la posición dentro de la lista.
+:::note[Nota]
+Puedes combinar el uso de `item`, `items` e `itemsIndexed`, ¡En la misma `LazyRow`!
+:::
 </TabItem>
 </Tabs>
 
