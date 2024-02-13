@@ -4,8 +4,20 @@ description: El componente LazyColumn de Jetpack Compose es un contenedor para c
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import LazyColumnMaterial3 from '../../../assets/lazy-column/lazy_column_material3.png';
+import LazyColumnExample from '../../../assets/lazy-column/lazy_column_example.png';
+import LazyColumnHeaderExample from '../../../assets/lazy-column/lazy_column_header_example.png';
 
-El componente LazyColumn de Jetpack Compose es una alternativa eficiente a RecyclerView para manejar listas verticales. Pero a diferencia de éste, que carga todas las vistas necesarias para llenar la pantalla inicialmente, LazyColumn solo carga los elementos visibles, optimizando así el rendimiento al manejar grandes conjuntos de datos. Además, ofrece una gran flexibilidad y simplicidad, debido a que solo necesitas pasar tus datos y una función que describe cómo se debe dibujar cada elemento. No hay necesidad de definir adaptadores ni de inflar layouts XML, lo que simplifica enormemente el código y aumenta la legibilidad.
+
+| Material 3 | 
+| :------: |
+| <Image src={LazyColumnMaterial3} alt="Imagen de ejemplo de LazyColumn" width="450rem"/> | 
+
+
+El componente LazyColumn de Jetpack Compose es una alternativa eficiente a RecyclerView para manejar listas verticales. Pero a diferencia de éste, que carga todas las vistas necesarias para llenar la pantalla inicialmente, LazyColumn solo carga los elementos visibles, optimizando así el rendimiento al manejar grandes conjuntos de datos. 
+
+Además, LazyColumn ofrece una gran flexibilidad y simplicidad, debido a que solo necesitas pasar tus datos y una función que describe cómo se debe dibujar cada elemento. No hay necesidad de definir adaptadores ni de inflar layouts XML, lo que simplifica enormemente el código y aumenta la legibilidad.
 
 
 ## Implementación
@@ -29,15 +41,15 @@ fun LazyColumn(
 
 Atributo | Descripción 
 ---------|-------------
-modifier | El modificador a aplicar a este diseño. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier">🔗</a> 
-state | Se utilizado para controlar o observar el estado de la lista. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/LazyListState">🔗</a>
-contentPadding | Un padding alrededor de todo el contenido. Se utiliza para agregar un padding antes del primer elemento o después del último. Si se quiere agregar un espaciado entre cada elemento, se debe usar `verticalArrangement`. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/PaddingValues">🔗</a>
-reverseLayout | Invierte la dirección de desplazamiento y diseño. Cuando es verdadero, los elementos se colocan en orden inverso. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary#LazyColumn(androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.LazyListState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Function1))">🔗</a> 
-verticalArrangement | Especifica la disposición vertical de los hijos del diseño. Permite agregar un espaciado entre los elementos y especificar la disposición de los elementos cuando no hay suficientes para llenar el tamaño mínimo completo. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/Arrangement.Vertical">🔗</a> 
-horizontalAlignment | Especifica la alineación horizontal aplicada a los elementos. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/Alignment.Horizontal">🔗</a> 
-flingBehavior | Lógica que describe el comportamiento de *fling*. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/FlingBehavior">🔗</a> 
-userScrollEnabled | Determina si se permite el desplazamiento a través de los gestos del usuario o las acciones de accesibilidad. Aún se puede desplazar programáticamente usando el estado incluso cuando está deshabilitado. <a style="text-decoration: none;" href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/gestures/ScrollableState">🔗</a> 
-content | Un bloque que describe el contenido. Dentro de este bloque, se pueden usar métodos como `LazyListScope.item` para agregar un único elemento o `LazyListScope.items` para agregar una lista de elementos. <a style="text-decoration: none;" href="https://developer.android.com/jetpack/compose/lists">🔗</a> 
+modifier | El modificador a aplicar a este diseño. 
+state | Se utilizado para controlar o observar el estado de la lista. 
+contentPadding | Un padding alrededor de todo el contenido. Se utiliza para agregar un padding antes del primer elemento o después del último. Si se quiere agregar un espaciado entre cada elemento, se debe usar `verticalArrangement`.
+reverseLayout | Invierte la dirección de desplazamiento y diseño. Cuando es verdadero, los elementos se colocan en orden inverso.
+verticalArrangement | Especifica la disposición vertical de los hijos del diseño. Permite agregar un espaciado entre los elementos y especificar la disposición de los elementos cuando no hay suficientes para llenar el tamaño mínimo completo.
+horizontalAlignment | Especifica la alineación horizontal aplicada a los elementos.
+flingBehavior | Lógica que describe el comportamiento de *fling*.
+userScrollEnabled | Determina si se permite el desplazamiento a través de los gestos del usuario o las acciones de accesibilidad. Aún se puede desplazar programáticamente usando el estado incluso cuando está deshabilitado.
+content | Un bloque que describe el contenido. Dentro de este bloque, se pueden usar métodos como `LazyListScope.item` para agregar un único elemento o `LazyListScope.items` para agregar una lista de elementos.
 
 [comment]: <> (No modifiques el tip)
 
@@ -49,9 +61,9 @@ Puedes acceder a la documentación oficial de Google
 ### Ejemplos 
 
 <Tabs>
-<TabItem label="LazyColumn">
+<TabItem label="Material 3 - LazyColumn">
 
-<center>![Imagen del componente LazyColumn - Material3](../../../assets/lazy-column/simple_lazy_column.gif)</center>
+<center><Image src={LazyColumnExample} alt="Imagen de ejemplo de LazyColumn" width="450rem"/></center>
 ```kotlin frame="terminal"
 data class Item(val title: String, val description: String)
 
@@ -104,8 +116,8 @@ fun LazyColumnExample() {
 
 </TabItem>
 
-<TabItem label="LazyColumn con cabecera">
-<center>![Imagen del componente LazyColumn con cabecera - Material3](../../../assets/lazy-column/lazy_column_sticky_header.gif)</center>
+<TabItem label="Material 3 - LazyColumn con cabecera">
+<center><Image src={LazyColumnHeaderExample} alt="Imagen de ejemplo de LazyColumn" width="450rem"/></center>
 ```kotlin frame="terminal"
 data class Item(val title: String, val description: String, val index: Int = 0)
 
