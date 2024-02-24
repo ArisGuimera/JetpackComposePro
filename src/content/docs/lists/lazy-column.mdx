@@ -5,14 +5,14 @@ description: El componente LazyColumn de Jetpack Compose es un contenedor para c
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { Image } from 'astro:assets';
-import LazyColumnMaterial3 from '../../../assets/lazy-column/lazy_column_material3.png';
+import LazyColumnFoundation from '../../../assets/lazy-column/lazy_column_foundation.png';
 import LazyColumnExample from '../../../assets/lazy-column/lazy_column_example.png';
 import LazyColumnHeaderExample from '../../../assets/lazy-column/lazy_column_header_example.png';
 
 
-| Material 3 | 
+| Foundation | 
 | :------: |
-| <Image src={LazyColumnMaterial3} alt="Imagen de ejemplo de LazyColumn" width="450rem"/> | 
+| <Image src={LazyColumnFoundation} alt="Imagen de ejemplo de LazyColumn" width="450rem"/> | 
 
 
 El componente LazyColumn de Jetpack Compose es una alternativa eficiente a RecyclerView para manejar listas verticales. Pero a diferencia de éste, que carga todas las vistas necesarias para llenar la pantalla inicialmente, LazyColumn solo carga los elementos visibles, optimizando así el rendimiento al manejar grandes conjuntos de datos. 
@@ -23,6 +23,9 @@ Además, LazyColumn ofrece una gran flexibilidad y simplicidad, debido a que sol
 ## Implementación
 
 ### Definición del componente
+
+<Tabs>
+<TabItem label="Foundation">
 
 ```kotlin 
 @Composable
@@ -58,10 +61,15 @@ Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary#LazyColumn(androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.LazyListState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Boolean,kotlin.Function1)).
 :::
 
+</TabItem>
+</Tabs>
+
 ### Ejemplos 
 
 <Tabs>
-<TabItem label="Material 3 - LazyColumn">
+<TabItem label="Foundation">
+
+#### LazyColumn
 
 <center><Image src={LazyColumnExample} alt="Imagen de ejemplo de LazyColumn" width="450rem"/></center>
 ```kotlin frame="terminal"
@@ -114,9 +122,8 @@ fun LazyColumnExample() {
 }
 ```
 
-</TabItem>
+#### LazyColumn con encabezados
 
-<TabItem label="Material 3 - LazyColumn con cabecera">
 <center><Image src={LazyColumnHeaderExample} alt="Imagen de ejemplo de LazyColumn" width="450rem"/></center>
 ```kotlin frame="terminal"
 data class Item(val title: String, val description: String, val index: Int = 0)
