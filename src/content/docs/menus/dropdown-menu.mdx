@@ -9,145 +9,273 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 | Material| Material 3| 
 | :----------------: | :------: |
-| ![Imagen del componente DropdownMenu - Material](../../../assets/menus/dropdown-menu/dropdown-menu-material.png)   | ![Imagen del componente DropdownMenu - Material 3](../../../assets/menus/dropdown-menu/dropdown-menu-material3.png)
- | 
+![Imagen del componente - Material [DropdownMenu]](../../../assets/menus/dropdownmenu/MaterialDesignCut.png)|![Imagen del componente - Material 3 [DropdownMenu]](../../../assets/menus/dropdownmenu/Material3.png)
 
-
-El `DropdownMenu` es un componente que se comporta de manera similar al `Popup` en android, este utilizará la posición actual de su padre 
-en el layout principal como una _ancla_ donde se desplegará el DropdownMenu, es importante recodar que el compinente no tomará ningun espacio adicional
-en el layout ya que se despliega en una ventana separada especificamente desde el top del componente padre. 
-
-
+Un DropdownMenu es un componente de Jetpack Compose que representa un menú desplegable. Se utiliza para definir cada opción seleccionable en el menú.
+ Cada DropdownMenuItem puede contener cualquier contenido Compose, como texto, iconos o cualquier otro componente.
 ## Implementación
-
 ### Definición del componente
 
-El componente se ha mantenido igual desde Material 1, existe otro DorpdownMenu pero este se utiliza en aplicaciones de escritorio, consulta la documentacion oficial para ver más.
-
 <Tabs>
+
 <TabItem label="Material">
 
 ```kotlin frame="terminal"
 @Composable
-fun DropdownMenu(
-    expanded: Boolean,
-    onDismissRequest: () -> Unit,
+fun MaterialDropdownMenu(
+    text: @Composable () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    offset: DpOffset = DpOffset(0.dp, 0.dp),
-    scrollState: ScrollState = rememberScrollState(),
-    properties: PopupProperties = PopupProperties(focusable = true),
-    content: @Composable ColumnScope.() -> Unit
-): Unit
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    enabled: Boolean = true,
+    colors: MenuItemColors = MenuDefaults.itemColors(),
+    contentPadding: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+)
 ```
+#### Los parámetros del componente en Material son los siguientes:
 
 Atributo | Descripción
 ------ | -----------
-expanded | Permitir que se muestre.
-onDismissRequest | Callback cuando se hace tap fuera del menu.
-modifier |  Modificador que implementará el composable (_Opcional_),
-offset | Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
-scrollState | Un controlador de estado para el desplazamiento vertical (_Opcional_).
-properties | Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
-content | El contenido del menu usualmente una lista de `DropdownMenuItem`.
-
+text | Es el nombre del DropdownMenu.
+modifier | El modifier que se aplicará al DropdownMenu.
+onClick | Es llamado cuando el item del DropdownMenu es clickeado.
+leadingIcon | Icono principal opcional que se mostrará al principio del texto del DropdownMenu.
+trailingIcon | Icono final opcional que se mostrará al final del texto del DropdownMenu.
+colors | Colores del DropdownMenu en diferentes estados.
+enabled | Si el DropdownMenu está habilitado o no. Cuando es falso, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
+interactionSource | Podemos ver y customizar a nuestro gusto la interaccion con el DropdownMenu, por ejemplo, podemos activar o desactivar el efecto domino (ripple effect).
 
 </TabItem>
+
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
 @Composable
 fun DropdownMenu(
-    expanded: Boolean,
-    onDismissRequest: () -> Unit,
+    text: @Composable () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    offset: DpOffset = DpOffset(0.dp, 0.dp),
-    scrollState: ScrollState = rememberScrollState(),
-    properties: PopupProperties = PopupProperties(focusable = true),
-    content: @Composable ColumnScope.() -> Unit
-): Unit
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    enabled: Boolean = true,
+    colors: MenuItemColors = MenuDefaults.itemColors(),
+    contentPadding: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },     
+)
 ```
+#### Los parámetros del componente DropdownMenu:
 
 Atributo | Descripción
 ------ | -----------
-expanded | Permitir que se muestre.
-onDismissRequest | Callback cuando se hace tap fuera del menu.
-modifier |  Modificador que implementará el composable (_Opcional_),
-offset | Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
-scrollState | Un controlador de estado para el desplazamiento vertical (_Opcional_).
-properties | Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
-content | El contenido del menu usualmente una lista de `DropdownMenuItem`.
+text | Es el nombre del DropdownMenu.
+modifier | El modifier que se aplicará al DropdownMenu.
+onClick | Es llamado cuando el item del DropdownMenu es clickeado.
+leadingIcon | Icono principal opcional que se mostrará al principio del texto del DropdownMenu.
+trailingIcon | Icono final opcional que se mostrará al final del texto del DropdownMenu.
+colors | Colores del DropdownMenu en diferentes estados.
+enabled | Si el DropdownMenu está habilitado o no. Cuando es falso, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
+interactionSource | Podemos ver y customizar a nuestro gusto la interaccion con el DropdownMenu, por ejemplo, podemos activar o desactivar el efecto domino (ripple effect).
 
 </TabItem>
+
 </Tabs>
+
+[comment]: <> (No modifiques el tip)
 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
-[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#DropdownMenu(kotlin.Boolean,kotlin.Function0,kotlin.Boolean,androidx.compose.ui.Modifier,androidx.compose.ui.unit.DpOffset,androidx.compose.foundation.ScrollState,kotlin.Function1)).
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
 :::
 
 ### Ejemplos
 
 <Tabs>
+
 <TabItem label="Material">
-<center>
-![DropdownMenu Ejemplo 1](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo1.png)
-</center>
+
+<center>![Imagen del componente DropdownMenu- Material Design](../../../assets/menus/dropdownmenu/MaterialDesign1.png)</center>
 
 ```kotlin frame="terminal"
-IconButton(onClick = {isDropdownOpen = true}) {
-    Icon(
-        painter = painterResource(id = R.drawable.ic_dots),
-        tint = Color.White,
-        contentDescription = null
-    )
-      DropdownMenu(
-        expanded = isDropdownOpen,
-        modifier = Modifier.background(color = Color.Black),
-        offset = DpOffset(0.dp, -20.dp), // aparece 20dp más arriba del IconButton
-        properties = PopupProperties(dismissOnBackPress = true), // cerrar el menu si se navega hacia atrás
-        onDismissRequest = { isDropdownOpen = false }
+@Composable
+fun DropDownMenu() {
+    var expanded by remember { mutableStateOf(false) }
+    val contextForToast = LocalContext.current.applicationContext
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Edit") // Mejor usar DropdowMenuItem
-        Text(text = "Share")
-        Text(text = "Delete")
+        Text(text = "DropdownMenu", Modifier.padding(top = 10.dp), fontSize = 20.sp)
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 15.dp)
+                .wrapContentSize(align = Alignment.TopStart),
+            contentAlignment = Alignment.Center
+        ) {
+            IconButton(
+                onClick = {
+                    expanded = true
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = "Open Menu"
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(
+                    onClick = {
+                        Toast.makeText(contextForToast, "¡Suscrito!", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Favorite,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Text("¡Suscríbete!")
+                }
+
+                DropdownMenuItem(
+                    onClick = {
+                        Toast.makeText(contextForToast, "Suscribir", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Check,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Text("¡Suscribirse!")
+                }
+
+                DropdownMenuItem(
+                    onClick = {
+                        Toast.makeText(contextForToast, "JetpackCompose.pro", Toast.LENGTH_SHORT)
+                            .show()
+                        expanded = false
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Home,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Text("JetpackCompose.pro")
+                }
+            }
+        }
     }
 }
-```
 
+```
 </TabItem>
+
 <TabItem label="Material 3">
 
-<center>
-![DropdownMenu Ejemplo 2](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo2.png)
-</center>
+<center>![Imagen del componente DropdownMenu- Material 3](../../../assets/menus/dropdownmenu/Material31.png)</center>
 
 ```kotlin frame="terminal"
-val options = listOf(
-    "Edit",
-    "Share",
-    "Copy",
-    "Hide",
-    "Remove"
-)
-Box(modifier = Modifier
-    .fillMaxSize()
-    .wrapContentSize(Alignment.Center)) {
-    IconButton(onClick = { isDropdownOpen = true }) {
-        Icon(
-            imageVector = Icons.Default.MoreVert,
-            tint = Color.Black,
-            contentDescription = null
-        )
-    }
-    DropdownMenu(
-        expanded = isDropdownOpen,
-        onDismissRequest = { isDropdownOpen = false },
-    ){
-        options.forEach { option ->
-            Text(text = option, modifier = Modifier.padding(8.dp))
+@Composable
+fun DropDownMenu() {
+    var expanded by remember { mutableStateOf(false) }
+    val contextForToast = LocalContext.current.applicationContext
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "DropdownMenuItem", Modifier.padding(top = 10.dp), fontSize = 20.sp)
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 15.dp)
+                .wrapContentSize(align = Alignment.TopStart),
+            contentAlignment = Alignment.Center
+        ) {
+            IconButton(
+                onClick = {
+                    expanded = true
+                }
+            ) {
+                Icon(
+                    Icons.Default.MoreVert,
+                    contentDescription = "Open Menu"
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(
+                    text = {
+                        Text("¡Suscríbete!")
+                    },
+                    onClick = {
+                        Toast.makeText(contextForToast, "¡Suscrito😎!", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Favorite,
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.Red
+                        )
+                    }
+                )
+
+                DropdownMenuItem(
+                    text = {
+                        Text("¡Suscribirse!")
+                    },
+                    onClick = {
+                        Toast.makeText(contextForToast, "Suscribir🙏", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Check,
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.DarkGray
+                        )
+                    }
+                )
+
+                DropdownMenuItem(
+                    text = {
+                        Text("JetpackCompose.pro")
+                    },
+                    onClick = {
+                        Toast.makeText(contextForToast, "JetpackCompose.pro", Toast.LENGTH_SHORT)
+                            .show()
+                        expanded = false
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Home,
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.DarkGray
+                        )
+                    }
+                )
+            }
         }
     }
 }
 ```
+
 </TabItem>
 </Tabs>
+
