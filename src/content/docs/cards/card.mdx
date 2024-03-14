@@ -1,4 +1,137 @@
 ---
 title: Card
 description: Aprende a usar el composable Card en Jetpack Compose.
+sidebar:
+  badge:
+    text: Nuevo
+    variant: tip
 ---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+| Material 3 (Claro)                                            | Material 3 (Oscuro)                                          |
+| ------------------------------------------------------------- | ------------------------------------------------------------ |
+| ![Imagen del componente [Card]](@assets/card/white_card.webp) | ![Imagen del componente [Card]](@assets/card/dark_card.webp) |
+
+El elemento componible `Card` actúa como un contenedor. En general, en ellas se suele poner un contenido que se quiere destacar, como por ejemplo una imagen o un texto.
+
+## Implementación
+
+### Definición del componente
+
+<Tabs>
+<TabItem label="Material">
+```kotlin frame="terminal"
+@ExperimentalMaterialApi
+@Composable
+@NonRestartableComposable
+fun Card(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = MaterialTheme.shapes.medium,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    contentColor: Color = contentColorFor(backgroundColor),
+    border: BorderStroke? = null,
+    elevation: Dp = 1.dp,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable () -> Unit
+)
+```
+|Atributo | Descripción |
+|------ | ----------- |
+|onClick | Función que se ejecutará cuando se haga click en la tarjeta.|
+|modifier | Modificador que implementará el composable.|
+|enabled | Indica si la tarjeta está habilitada o no. Por defecto es `true`.|
+|shape | Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.|
+|colors | Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`.|
+|elevation | Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.|
+|border | Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.|
+|interactionSource| Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.|
+|content | Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.|
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@ExperimentalMaterial3Api
+@Composable
+fun Card(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = CardDefaults.shape,
+    colors: CardColors = CardDefaults.cardColors(),
+    elevation: CardElevation = CardDefaults.cardElevation(),
+    border: BorderStroke? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable ColumnScope.() -> Unit
+)
+```
+
+| Atributo          | Descripción                                                                                                                   |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| onClick           | Función que se ejecutará cuando se haga click en la tarjeta.                                                                  |
+| modifier          | Modificador que implementará el composable.                                                                                   |
+| enabled           | Indica si la tarjeta está habilitada o no. Por defecto es `true`.                                                             |
+| shape             | Forma de la tarjeta. Se suele usar para redondear las esquinas de la tarjeta.                                                 |
+| colors            | Permite cambiar los colores de la tarjeta. Se pueden modificar usando la extensión `.cardColors()` del objeto `CardDefaults`. |
+| elevation         | Elevación de la tarjeta. Se puede usar para darle profundidad a la tarjeta.                                                   |
+| border            | Borde de la tarjeta. Modifica la línea que rodea la tarjeta. Por defecto es `null`, lo que significa que no tiene.            |
+| interactionSource | Fuente de interacción. Se usa para detectar interacciones con la tarjeta, como por ejemplo un click.                          |
+| content           | Es el contenido de la tarjeta. Dentro de este parámetro va todo lo que queremos mostrar dentro de la misma.                   |
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/jetpack/compose/components/card).
+:::
+
+### Ejemplos
+
+| Material 3 (Claro)                                            | Material 3 (Oscuro)                                          |
+| ------------------------------------------------------------- | ------------------------------------------------------------ |
+| ![Imagen del componente [Card]](@assets/card/white_card.webp) | ![Imagen del componente [Card]](@assets/card/dark_card.webp) |
+<Tabs>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun FilledCardExample() {
+    Card(
+        colors = CardDefaults.cardColors( // Ver apartado "CardDefaults"
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+        modifier = Modifier
+            .size(width = 300.dp, height = 150.dp)
+    ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = "Filled Card",
+                modifier = Modifier
+                    .padding(16.dp),
+                textAlign = TextAlign.Start,
+                style = MaterialTheme.typography.bodyLarge,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.ExtraBold
+            )
+            Text(
+                text = "This is a filled card. It has a background color.",
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                textAlign = TextAlign.Start,
+            )
+        }
+    }
+}
+```
+
+:::tip[Información]
+Fragmento de código extraído de la documentación oficial de Google y modificado ligeramente. Puedes acceder al original [desde aquí](https://developer.android.com/jetpack/compose/components/card#filled).
+:::
+
+</TabItem>
+</Tabs>
