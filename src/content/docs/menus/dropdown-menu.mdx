@@ -1,6 +1,6 @@
 ---
 title: DropdownMenu
-description: Aprende a usar el composable DropdownMenuItem en Jetpack Compose.
+description: Aprende a usar el composable DropdownMenu en Jetpack Compose.
 sidebar:
     order: 1
 ---
@@ -11,32 +11,13 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 | :----------------: | :------: |
 ![Imagen del componente - Material [DropdownMenu]](../../../assets/menus/dropdownmenu/MaterialDesignCut.png)|![Imagen del componente - Material 3 [DropdownMenu]](../../../assets/menus/dropdownmenu/Material3.png)
 
-Un DropdownMenu es un componente de Jetpack Compose que representa un menú desplegable. 
-Se utiliza para definir cada opción seleccionable en el menú. Cada DropdownMenuItem puede contener cualquier contenido Compose,
-como texto, iconos o cualquier otro componente.
-
-
+Un DropdownMenu es un componente de Jetpack Compose que representa un menú desplegable. Se utiliza para definir cada opción seleccionable en el menú.
+ Cada DropdownMenuItem puede contener cualquier contenido Compose, como texto, iconos o cualquier otro componente.
 ## Implementación
 ### Definición del componente
 
 <Tabs>
 
-| ![Imagen del componente DropdownMenu - Material](../../../assets/menus/dropdown-menu/dropdown-menu-material.png)   | ![Imagen del componente DropdownMenu - Material 3](../../../assets/menus/dropdown-menu/dropdown-menu-material3.png)
- | 
-
-
-El `DropdownMenu` es un componente que se comporta de manera similar al `Popup` en android, este utilizará la posición actual de su padre 
-en el layout principal como una _ancla_ donde se desplegará el DropdownMenu, es importante recodar que el compinente no tomará ningun espacio adicional
-en el layout ya que se despliega en una ventana separada especificamente desde el top del componente padre. 
-
-
-## Implementación
-
-### Definición del componente
-
-El componente se ha mantenido igual desde Material 1, existe otro DorpdownMenu pero este se utiliza en aplicaciones de escritorio, consulta la documentacion oficial para ver más.
-
-<Tabs>
 <TabItem label="Material">
 
 ```kotlin frame="terminal"
@@ -58,45 +39,21 @@ fun MaterialDropdownMenu(
 Atributo | Descripción
 ------ | -----------
 text | Es el nombre del DropdownMenu.
-modifier | 	El modifier que se aplicará al DropdownMenu.
+modifier | El modifier que se aplicará al DropdownMenu.
 onClick | Es llamado cuando el item del DropdownMenu es clickeado.
-leadingIcon | 	Icono principal opcional que se mostrará al principio del texto del DropdownMenu.
-trailingIcon |Icono final opcional que se mostrará al final del texto del DropdownMenu.
-enabled | 	Si el DropdownMenu está habilitado o no. Cuando es falso, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
+leadingIcon | Icono principal opcional que se mostrará al principio del texto del DropdownMenu.
+trailingIcon | Icono final opcional que se mostrará al final del texto del DropdownMenu.
 colors | Colores del DropdownMenu en diferentes estados.
+enabled | Si el DropdownMenu está habilitado o no. Cuando es falso, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
 interactionSource | Podemos ver y customizar a nuestro gusto la interaccion con el DropdownMenu, por ejemplo, podemos activar o desactivar el efecto domino (ripple effect).
 
 </TabItem>
 
-fun DropdownMenu(
-    expanded: Boolean,
-    onDismissRequest: () -> Unit,
-    modifier: Modifier = Modifier,
-    offset: DpOffset = DpOffset(0.dp, 0.dp),
-    scrollState: ScrollState = rememberScrollState(),
-    properties: PopupProperties = PopupProperties(focusable = true),
-    content: @Composable ColumnScope.() -> Unit
-): Unit
-```
-
-Atributo | Descripción
------- | -----------
-expanded | Permitir que se muestre.
-onDismissRequest | Callback cuando se hace tap fuera del menu.
-modifier |  Modificador que implementará el composable (_Opcional_),
-offset | Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
-scrollState | Un controlador de estado para el desplazamiento vertical (_Opcional_).
-properties | Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
-content | El contenido del menu usualmente una lista de `DropdownMenuItem`.
-
-
-</TabItem>
 <TabItem label="Material 3">
 
 ```kotlin frame="terminal"
 @Composable
 fun DropdownMenu(
-
     text: @Composable () -> Unit,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -114,11 +71,11 @@ Atributo | Descripción
 ------ | -----------
 text | Es el nombre del DropdownMenu.
 modifier | El modifier que se aplicará al DropdownMenu.
-onClick | Es llamado cuando el DropdownMenu es clickeado.
+onClick | Es llamado cuando el item del DropdownMenu es clickeado.
 leadingIcon | Icono principal opcional que se mostrará al principio del texto del DropdownMenu.
 trailingIcon | Icono final opcional que se mostrará al final del texto del DropdownMenu.
-enabled | Si el DropdownMenu está habilitado o no. Cuando es falso, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
 colors | Colores del DropdownMenu en diferentes estados.
+enabled | Si el DropdownMenu está habilitado o no. Cuando es falso, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
 interactionSource | Podemos ver y customizar a nuestro gusto la interaccion con el DropdownMenu, por ejemplo, podemos activar o desactivar el efecto domino (ripple effect).
 
 </TabItem>
@@ -130,34 +87,6 @@ interactionSource | Podemos ver y customizar a nuestro gusto la interaccion con 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
-
-    expanded: Boolean,
-    onDismissRequest: () -> Unit,
-    modifier: Modifier = Modifier,
-    offset: DpOffset = DpOffset(0.dp, 0.dp),
-    scrollState: ScrollState = rememberScrollState(),
-    properties: PopupProperties = PopupProperties(focusable = true),
-    content: @Composable ColumnScope.() -> Unit
-): Unit
-```
-
-Atributo | Descripción
------- | -----------
-expanded | Permitir que se muestre.
-onDismissRequest | Callback cuando se hace tap fuera del menu.
-modifier |  Modificador que implementará el composable (_Opcional_),
-offset | Ajusta la posición del menú para los casos en que los límites de diseño de su padre no coincidan con sus límites visuales (_Opcional_).
-scrollState | Un controlador de estado para el desplazamiento vertical (_Opcional_).
-properties | Añade propiedades extra para una mayor personalización del comportamiento de la ventana emergente (`Popup`) (_Opcional_).
-content | El contenido del menu usualmente una lista de `DropdownMenuItem`.
-
-</TabItem>
-</Tabs>
-
-:::tip[Fuente]
-Puedes acceder a la documentación oficial de Google
-[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#DropdownMenu(kotlin.Boolean,kotlin.Function0,kotlin.Boolean,androidx.compose.ui.Modifier,androidx.compose.ui.unit.DpOffset,androidx.compose.foundation.ScrollState,kotlin.Function1)).
-
 :::
 
 ### Ejemplos
@@ -179,7 +108,7 @@ fun DropDownMenu() {
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "DropdownMenuItem", Modifier.padding(top = 10.dp), fontSize = 20.sp)
+        Text(text = "DropdownMenu", Modifier.padding(top = 10.dp), fontSize = 20.sp)
 
         Box(
             modifier = Modifier
@@ -351,66 +280,3 @@ fun DropDownMenu() {
 </TabItem>
 </Tabs>
 
-<TabItem label="Material">
-<center>
-![DropdownMenu Ejemplo 1](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo1.png)
-</center>
-
-```kotlin frame="terminal"
-IconButton(onClick = {isDropdownOpen = true}) {
-    Icon(
-        painter = painterResource(id = R.drawable.ic_dots),
-        tint = Color.White,
-        contentDescription = null
-    )
-      DropdownMenu(
-        expanded = isDropdownOpen,
-        modifier = Modifier.background(color = Color.Black),
-        offset = DpOffset(0.dp, -20.dp), // aparece 20dp más arriba del IconButton
-        properties = PopupProperties(dismissOnBackPress = true), // cerrar el menu si se navega hacia atrás
-        onDismissRequest = { isDropdownOpen = false }
-    ) {
-        Text(text = "Edit") // Mejor usar DropdowMenuItem
-        Text(text = "Share")
-        Text(text = "Delete")
-    }
-}
-```
-
-</TabItem>
-<TabItem label="Material 3">
-
-<center>
-![DropdownMenu Ejemplo 2](../../../assets/menus/dropdown-menu/dropdown-menu-ejemplo2.png)
-</center>
-
-```kotlin frame="terminal"
-val options = listOf(
-    "Edit",
-    "Share",
-    "Copy",
-    "Hide",
-    "Remove"
-)
-Box(modifier = Modifier
-    .fillMaxSize()
-    .wrapContentSize(Alignment.Center)) {
-    IconButton(onClick = { isDropdownOpen = true }) {
-        Icon(
-            imageVector = Icons.Default.MoreVert,
-            tint = Color.Black,
-            contentDescription = null
-        )
-    }
-    DropdownMenu(
-        expanded = isDropdownOpen,
-        onDismissRequest = { isDropdownOpen = false },
-    ){
-        options.forEach { option ->
-            Text(text = option, modifier = Modifier.padding(8.dp))
-        }
-    }
-}
-```
-</TabItem>
-</Tabs>
