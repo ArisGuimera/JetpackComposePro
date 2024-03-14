@@ -1,0 +1,86 @@
+---
+title: Preview
+description: Aprende a personalizar la vista previa de tus componentes en Compose.
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Las `previews` son una característica de Jetpack Compose que te permite visualizar y probar tus composables directamente en Android Studio sin tener que ejecutar la aplicación completa. Esto facilita el desarrollo y la iteración rápida.
+
+## Implementación
+
+### Definición 
+
+```kotlin frame="terminal"
+@Preview(
+    val name: String,
+    val group: String,
+    val apiLevel: Int,
+    val widthDp: Int,
+    val heightDp: Int,
+    val locale: String,
+    val fontScale: Float,
+    val showSystemUi: Boolean,
+    val showBackground: Boolean,
+    val uiMode: Int,
+    val device: String,
+    val wallpaper: Int
+)
+@Composable
+fun MyComponent() { ... }
+```
+
+Atributo | Descripción
+------ | -----------
+name | El nombre que se mostrará en Android Studio para identificar la vista previa.
+group | Grupo al que pertenece la vista previa. Ayuda a organizar y agrupar vistas previas relacionadas.
+apiLevel | Nivel de la API de Android para el cual se debe renderizar la vista previa.
+widthDp | Ancho en píxeles de la vista previa. (No confundir con el ancho del componente)
+heightDp | Altura en píxeles de la vista previa. (No confundir con el alto del componente)
+locale | Configuración regional (idioma) para la vista previa.
+fontScale | Escala del tamaño de fuente para la vista previa.
+showSystemUi | Indica si se deben mostrar los elementos de la interfaz de usuario del sistema.
+showBackground | Indica si se debe mostrar el fondo de la vista previa.
+uiMode | Modo de interfaz de usuario para la vista previa (ej. Modo Oscuro).
+device | Dispositivo en el que se representa la vista previa
+wallpaper | Recurso de fondo de pantalla a utilizar en la vista previa.
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/jetpack/compose/tooling/previews?hl=es-419).
+:::
+
+### Ejemplos
+```kotlin frame="terminal"
+@Preview(
+    name = "MyComposable Preview",
+    group = "MyGroup",
+    apiLevel = Build.VERSION_CODES.O,
+    widthDp = 360,
+    heightDp = 640,
+    locale = "en_US",
+    fontScale = 1.2f,
+    showBackground = true,
+    wallpaper = R.drawable.wallpaper_preview
+)
+@Composable
+fun MyCompose() {
+    // Tu código Compose aquí
+}
+```
+
+:::note[Limitaciones]
+Si tu componente recibe parametros dentro de la funciòn no podra ser pre-visualizada, pero si deseas ver una vista previa de tu componente, crea una función test que mande los parametros al componente que deseas visualizar.
+:::
+
+```kotlin frame="terminal"
+@Composable
+fun MyText( name: String ) {
+    Text("Hola $name")
+}
+
+@Preview
+@Composable
+fun MyTextTest() {
+    MyText("usuario")
+}
+```

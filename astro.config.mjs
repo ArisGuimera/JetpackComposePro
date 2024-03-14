@@ -65,6 +65,12 @@ export default defineConfig({
           ],
         },
         {
+          label: "Previews",
+          autogenerate: {
+            directory: "previews"
+          }
+        },
+        {
           label: "App bars",
           autogenerate: {
             directory: "app-bars",
