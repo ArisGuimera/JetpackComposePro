@@ -5,7 +5,10 @@ description: Aprende a usar el composable LazyRow en Jetpack Compose.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-![Imagen de ejemplo de uso de LazyRow](../../../assets/lists/lazyrow/lazyRow.png) 
+| Material | 
+| :----------------: |
+|        ![Imagen de ejemplo de uso de LazyRow](../../../assets/lists/lazyrow/lazyRow.png)             |
+
 
 El `LazyRow` es un componente que crea y dispone los elementos que están visibles en el viewport del mismo, produciendo un desplazamiento horizontal, este sigue los principios de un `RecyclerView`
 los cuales son --reciclar-- los elementos individuales, reutilizar la vista para los elementos nuevos que se desplazaron y permitir mostrarlos. 
@@ -19,6 +22,9 @@ por el mismo motivo de incentivar/obligar el uso de su reemplazo `LazyRow`, prev
 ### Definición del componente
 
 El componente se ha mantenido igual desde su versión en Jetpack Compose [1.2](https://developer.android.com/jetpack/androidx/releases/compose-foundation?hl=es-419#1.2.0)
+
+<Tabs>
+<TabItem label="Foundation">
 
 ```kotlin frame="terminal"
 @Composable
@@ -47,6 +53,8 @@ flingBehavior | Lógica para personalizar el comportamiento del desplazamiento (
 userScrollEnabled |  Permite el desplazamiento a través de los gestos del usuario o las acciones de accesibilidad (_Opcional_).
 content | El contenido de la lista.
 
+</TabItem>
+</Tabs>
 
 :::tip[Fuente]
 Puedes acceder a la documentación oficial de Google
