@@ -167,6 +167,12 @@ export default defineConfig({
           },
         },
         {
+          label: "Swipes",
+          autogenerate: {
+            directory: "swipes",
+          },
+        },
+        {
           label: "Switch",
           autogenerate: {
             directory: "switch",
