@@ -4,3 +4,266 @@ description: Aprende a usar el composable DropdownMenuItem en Jetpack Compose.
 sidebar:
     order: 0
 ---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+| Material| Material 3| 
+| :----------------: | :------: |
+![Imagen del componente - Material [DropdownMenuItem]](../../../assets/menus/dropdownmenu/MaterialDesignCut.png)|![Imagen del componente - Material 3 [DropdownMenu]](../../../assets/menus/dropdownmenu/Material3.png)
+
+DropdownMenuItem es un composable que representa un ítem dentro de un menú desplegable en Jetpack Compose. Es útil para mostrar una lista de opciones que el usuario puede seleccionar.
+## Implementación
+### Definición del componente
+
+<Tabs>
+
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun DropdownMenuItem(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    contentPadding: PaddingValues = MenuDefaults.ItemContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit
+)
+```
+#### Los parámetros del componente en Material son los siguientes:
+
+Atributo | Descripción
+------ | -----------
+onClick | Lambda que se invoca cuando se hace clic en el ítem.
+modifier | Modificador que implementará el composable.
+enabled | Indica si el ítem está habilitado para interacción.
+contentPadding | Espaciado interno alrededor del contenido del ítem.
+interactionSource | Fuente de interacción para manejar las interacciones del usuario.
+content | Contenido composable que se mostrará dentro del ítem.
+</TabItem>
+
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun DropdownMenuItem(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    contentPadding: PaddingValues = MenuDefaults.ItemContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit
+)
+```
+#### Los parámetros del componente DropdownMenu:
+
+Atributo | Descripción
+------ | -----------
+onClick | Lambda que se invoca cuando se hace clic en el ítem.
+modifier | Modificador que implementará el composable.
+enabled | Indica si el ítem está habilitado para interacción.
+contentPadding | Espaciado interno alrededor del contenido del ítem.
+interactionSource | Fuente de interacción para manejar las interacciones del usuario.
+content | Contenido composable que se mostrará dentro del ítem.
+
+</TabItem>
+
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos
+
+<Tabs>
+
+<TabItem label="Material">
+
+<center>![Imagen del componente DropdownMenu- Material Design](../../../assets/menus/dropdownmenu/MaterialDesign1.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun DropDownMenu() {
+    var expanded by remember { mutableStateOf(false) }
+    val contextForToast = LocalContext.current.applicationContext
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "DropdownMenu", Modifier.padding(top = 10.dp), fontSize = 20.sp)
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 15.dp)
+                .wrapContentSize(align = Alignment.TopStart),
+            contentAlignment = Alignment.Center
+        ) {
+            IconButton(
+                onClick = {
+                    expanded = true
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = "Open Menu"
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(
+                    onClick = {
+                        Toast.makeText(contextForToast, "¡Suscrito!", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Favorite,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Text("¡Suscríbete!")
+                }
+
+                DropdownMenuItem(
+                    onClick = {
+                        Toast.makeText(contextForToast, "Suscribir", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Check,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Text("¡Suscribirse!")
+                }
+
+                DropdownMenuItem(
+                    onClick = {
+                        Toast.makeText(contextForToast, "JetpackCompose.pro", Toast.LENGTH_SHORT)
+                            .show()
+                        expanded = false
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Home,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Text("JetpackCompose.pro")
+                }
+            }
+        }
+    }
+}
+
+```
+</TabItem>
+
+<TabItem label="Material 3">
+
+<center>![Imagen del componente DropdownMenu- Material 3](../../../assets/menus/dropdownmenu/Material31.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun DropDownMenu() {
+    var expanded by remember { mutableStateOf(false) }
+    val contextForToast = LocalContext.current.applicationContext
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "DropdownMenuItem", Modifier.padding(top = 10.dp), fontSize = 20.sp)
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 15.dp)
+                .wrapContentSize(align = Alignment.TopStart),
+            contentAlignment = Alignment.Center
+        ) {
+            IconButton(
+                onClick = {
+                    expanded = true
+                }
+            ) {
+                Icon(
+                    Icons.Default.MoreVert,
+                    contentDescription = "Open Menu"
+                )
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(
+                    text = {
+                        Text("¡Suscríbete!")
+                    },
+                    onClick = {
+                        Toast.makeText(contextForToast, "¡Suscrito😎!", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Favorite,
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.Red
+                        )
+                    }
+                )
+
+                DropdownMenuItem(
+                    text = {
+                        Text("¡Suscribirse!")
+                    },
+                    onClick = {
+                        Toast.makeText(contextForToast, "Suscribir🙏", Toast.LENGTH_SHORT).show()
+                        expanded = false
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Check,
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.DarkGray
+                        )
+                    }
+                )
+
+                DropdownMenuItem(
+                    text = {
+                        Text("JetpackCompose.pro")
+                    },
+                    onClick = {
+                        Toast.makeText(contextForToast, "JetpackCompose.pro", Toast.LENGTH_SHORT)
+                            .show()
+                        expanded = false
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Home,
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.DarkGray
+                        )
+                    }
+                )
+            }
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
