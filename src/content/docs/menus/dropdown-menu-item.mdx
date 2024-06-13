@@ -47,24 +47,30 @@ content | Contenido composable que se mostrará dentro del ítem.
 ```kotlin frame="terminal"
 @Composable
 fun DropdownMenuItem(
+    text: @Composable () -> Unit,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    leadingIcon: (@Composable () -> Unit)? = null,
+    trailingIcon: (@Composable () -> Unit)? = null,
     enabled: Boolean = true,
-    contentPadding: PaddingValues = MenuDefaults.ItemContentPadding,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit
+    colors: MenuItemColors = MenuDefaults.itemColors(),
+    contentPadding: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    interactionSource: MutableInteractionSource? = null
 )
 ```
 #### Los parámetros del componente DropdownMenu:
 
 Atributo | Descripción
 ------ | -----------
+text | texto del elemento del menú
 onClick | Lambda que se invoca cuando se hace clic en el ítem.
 modifier | Modificador que implementará el composable.
-enabled | Indica si el ítem está habilitado para interacción.
-contentPadding | Espaciado interno alrededor del contenido del ítem.
-interactionSource | Fuente de interacción para manejar las interacciones del usuario.
-content | Contenido composable que se mostrará dentro del ítem.
+leadingIcon | Icono inicial opcional que se mostrará al principio del texto del elemento.
+trailingIcon | Icono final opcional que se mostrará al final del texto del elemento. Esta ranura de icono final también puede aceptarse Textpara indicar un método abreviado de teclado.
+enabled | Controla el estado habilitado de este elemento de menú. Cuando sea así false, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
+colors | MenuItemColorsque se utilizará para resolver los colores utilizados para este elemento de menú en diferentes estados. Ver MenuDefaults.itemColors.
+contentPadding | El espaciado aplicado al contenido de este elemento de menú.
+interactionSource | Un elevador opcional MutableInteractionSourcepara observar y emitir Interactionmensajes para este elemento del menú. Puede usar esto para cambiar la apariencia del elemento del menú o obtener una vista previa del elemento del menú en diferentes estados. Tenga en cuenta que, si nullse proporciona, las interacciones seguirán sucediendo internamente.
 
 </TabItem>
 
@@ -77,7 +83,7 @@ Puedes acceder a la documentación oficial de Google
 [desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
 :::
 
-### Ejemplos
+### Ejemplo de uso
 
 <Tabs>
 
@@ -86,82 +92,27 @@ Puedes acceder a la documentación oficial de Google
 <center>![Imagen del componente DropdownMenu- Material Design](../../../assets/menus/dropdownmenu/MaterialDesign1.png)</center>
 
 ```kotlin frame="terminal"
-@Composable
-fun DropDownMenu() {
-    var expanded by remember { mutableStateOf(false) }
-    val contextForToast = LocalContext.current.applicationContext
+var expanded by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+Box(modifier = Modifier
+    .fillMaxSize()
+    .wrapContentSize(Alignment.TopStart)) {
+    IconButton(onClick = { expanded = true }) {
+        Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
+    }
+    DropdownMenu(
+        expanded = expanded,
+        onDismissRequest = { expanded = false }
     ) {
-        Text(text = "DropdownMenu", Modifier.padding(top = 10.dp), fontSize = 20.sp)
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 15.dp)
-                .wrapContentSize(align = Alignment.TopStart),
-            contentAlignment = Alignment.Center
-        ) {
-            IconButton(
-                onClick = {
-                    expanded = true
-                }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.MoreVert,
-                    contentDescription = "Open Menu"
-                )
-            }
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                DropdownMenuItem(
-                    onClick = {
-                        Toast.makeText(contextForToast, "¡Suscrito!", Toast.LENGTH_SHORT).show()
-                        expanded = false
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Favorite,
-                        contentDescription = null,
-                        tint = MaterialTheme.colors.primary
-                    )
-                    Text("¡Suscríbete!")
-                }
-
-                DropdownMenuItem(
-                    onClick = {
-                        Toast.makeText(contextForToast, "Suscribir", Toast.LENGTH_SHORT).show()
-                        expanded = false
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Check,
-                        contentDescription = null,
-                        tint = MaterialTheme.colors.primary
-                    )
-                    Text("¡Suscribirse!")
-                }
-
-                DropdownMenuItem(
-                    onClick = {
-                        Toast.makeText(contextForToast, "JetpackCompose.pro", Toast.LENGTH_SHORT)
-                            .show()
-                        expanded = false
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Home,
-                        contentDescription = null,
-                        tint = MaterialTheme.colors.primary
-                    )
-                    Text("JetpackCompose.pro")
-                }
-            }
+        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
+            Text("Refresh")
+        }
+        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
+            Text("Settings")
+        }
+        Divider()
+        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+            Text("Send Feedback")
         }
     }
 }
@@ -174,92 +125,30 @@ fun DropDownMenu() {
 <center>![Imagen del componente DropdownMenu- Material 3](../../../assets/menus/dropdownmenu/Material31.png)</center>
 
 ```kotlin frame="terminal"
-@Composable
-fun DropDownMenu() {
-    var expanded by remember { mutableStateOf(false) }
-    val contextForToast = LocalContext.current.applicationContext
+var expanded by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "DropdownMenuItem", Modifier.padding(top = 10.dp), fontSize = 20.sp)
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 15.dp)
-                .wrapContentSize(align = Alignment.TopStart),
-            contentAlignment = Alignment.Center
-        ) {
-            IconButton(
-                onClick = {
-                    expanded = true
-                }
-            ) {
-                Icon(
-                    Icons.Default.MoreVert,
-                    contentDescription = "Open Menu"
-                )
-            }
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                DropdownMenuItem(
-                    text = {
-                        Text("¡Suscríbete!")
-                    },
-                    onClick = {
-                        Toast.makeText(contextForToast, "¡Suscrito😎!", Toast.LENGTH_SHORT).show()
-                        expanded = false
-                    },
-                    leadingIcon = {
-                        Icon(
-                            Icons.Outlined.Favorite,
-                            contentDescription = null,
-                            tint = androidx.compose.ui.graphics.Color.Red
-                        )
-                    }
-                )
-
-                DropdownMenuItem(
-                    text = {
-                        Text("¡Suscribirse!")
-                    },
-                    onClick = {
-                        Toast.makeText(contextForToast, "Suscribir🙏", Toast.LENGTH_SHORT).show()
-                        expanded = false
-                    },
-                    leadingIcon = {
-                        Icon(
-                            Icons.Outlined.Check,
-                            contentDescription = null,
-                            tint = androidx.compose.ui.graphics.Color.DarkGray
-                        )
-                    }
-                )
-
-                DropdownMenuItem(
-                    text = {
-                        Text("JetpackCompose.pro")
-                    },
-                    onClick = {
-                        Toast.makeText(contextForToast, "JetpackCompose.pro", Toast.LENGTH_SHORT)
-                            .show()
-                        expanded = false
-                    },
-                    leadingIcon = {
-                        Icon(
-                            Icons.Outlined.Home,
-                            contentDescription = null,
-                            tint = androidx.compose.ui.graphics.Color.DarkGray
-                        )
-                    }
-                )
-            }
-        }
+Box(modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.TopStart)) {
+    IconButton(onClick = { expanded = true }) {
+        Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
+    }
+    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        DropdownMenuItem(
+            text = { Text("Edit") },
+            onClick = { /* Handle edit! */ },
+            leadingIcon = { Icon(Icons.Outlined.Edit, contentDescription = null) }
+        )
+        DropdownMenuItem(
+            text = { Text("Settings") },
+            onClick = { /* Handle settings! */ },
+            leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = null) }
+        )
+        HorizontalDivider()
+        DropdownMenuItem(
+            text = { Text("Send Feedback") },
+            onClick = { /* Handle send feedback! */ },
+            leadingIcon = { Icon(Icons.Outlined.Email, contentDescription = null) },
+            trailingIcon = { Text("F11", textAlign = TextAlign.Center) }
+        )
     }
 }
 ```
