@@ -4,3 +4,155 @@ description: Aprende a usar el composable DropdownMenuItem en Jetpack Compose.
 sidebar:
     order: 0
 ---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+| Material| Material 3| 
+| :----------------: | :------: |
+![Imagen del componente - Material [DropdownMenuItem]](../../../assets/menus/dropdownMenuItem/DropdownMenuItem-Material.png)|![Imagen del componente - Material 3 [DropdownMenu]](../../../assets/menus/dropdownMenuItem/DropdownMenuItem-Material3.png)
+
+DropdownMenuItem es un composable que representa un ítem dentro de un menú desplegable en Jetpack Compose. Es útil para mostrar una lista de opciones que el usuario puede seleccionar.
+## Implementación
+### Definición del componente
+
+<Tabs>
+
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun DropdownMenuItem(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    contentPadding: PaddingValues = MenuDefaults.ItemContentPadding,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable RowScope.() -> Unit
+)
+```
+#### Los parámetros del componente en Material son los siguientes:
+
+Atributo | Descripción
+------ | -----------
+onClick | Lambda que se invoca cuando se hace clic en el ítem.
+modifier | Modificador que implementará el composable.
+enabled | Indica si el ítem está habilitado para interacción.
+contentPadding | Espaciado interno alrededor del contenido del ítem.
+interactionSource | Fuente de interacción para manejar las interacciones del usuario.
+content | Contenido composable que se mostrará dentro del ítem.
+</TabItem>
+
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun DropdownMenuItem(
+    text: @Composable () -> Unit,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    leadingIcon: (@Composable () -> Unit)? = null,
+    trailingIcon: (@Composable () -> Unit)? = null,
+    enabled: Boolean = true,
+    colors: MenuItemColors = MenuDefaults.itemColors(),
+    contentPadding: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    interactionSource: MutableInteractionSource? = null
+)
+```
+#### Los parámetros del componente DropdownMenu:
+
+Atributo | Descripción
+------ | -----------
+text | texto del elemento del menú
+onClick | Lambda que se invoca cuando se hace clic en el ítem.
+modifier | Modificador que implementará el composable.
+leadingIcon | Icono inicial opcional que se mostrará al principio del texto del elemento.
+trailingIcon | Icono final opcional que se mostrará al final del texto del elemento. Esta ranura de icono final también puede aceptarse Textpara indicar un método abreviado de teclado.
+enabled | Controla el estado habilitado de este elemento de menú. Cuando sea así false, este componente no responderá a la entrada del usuario y aparecerá visualmente deshabilitado y deshabilitado para los servicios de accesibilidad.
+colors | MenuItemColorsque se utilizará para resolver los colores utilizados para este elemento de menú en diferentes estados. Ver MenuDefaults.itemColors.
+contentPadding | El espaciado aplicado al contenido de este elemento de menú.
+interactionSource | Un elevador opcional MutableInteractionSourcepara observar y emitir Interactionmensajes para este elemento del menú. Puede usar esto para cambiar la apariencia del elemento del menú o obtener una vista previa del elemento del menú en diferentes estados. Tenga en cuenta que, si nullse proporciona, las interacciones seguirán sucediendo internamente.
+
+</TabItem>
+
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplo de uso
+
+<Tabs>
+
+<TabItem label="Material">
+
+<center>![Imagen del componente DropdownMenu- Material Design](../../../assets/menus/dropdownMenuItem/DropdownMenu-Material.png)</center>
+
+```kotlin frame="terminal"
+var expanded by remember { mutableStateOf(false) }
+
+Box(modifier = Modifier
+    .fillMaxSize()
+    .wrapContentSize(Alignment.TopStart)) {
+    IconButton(onClick = { expanded = true }) {
+        Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
+    }
+    DropdownMenu(
+        expanded = expanded,
+        onDismissRequest = { expanded = false }
+    ) {
+        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
+            Text("Refresh")
+        }
+        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
+            Text("Settings")
+        }
+        Divider()
+        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+            Text("Send Feedback")
+        }
+    }
+}
+
+```
+</TabItem>
+
+<TabItem label="Material 3">
+
+<center>![Imagen del componente DropdownMenu- Material 3](../../../assets/menus/dropdownMenuItem/DropdownMenu-Material3.png)</center>
+
+```kotlin frame="terminal"
+var expanded by remember { mutableStateOf(false) }
+
+Box(modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.TopStart)) {
+    IconButton(onClick = { expanded = true }) {
+        Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
+    }
+    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        DropdownMenuItem(
+            text = { Text("Edit") },
+            onClick = { /* Handle edit! */ },
+            leadingIcon = { Icon(Icons.Outlined.Edit, contentDescription = null) }
+        )
+        DropdownMenuItem(
+            text = { Text("Settings") },
+            onClick = { /* Handle settings! */ },
+            leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = null) }
+        )
+        HorizontalDivider()
+        DropdownMenuItem(
+            text = { Text("Send Feedback") },
+            onClick = { /* Handle send feedback! */ },
+            leadingIcon = { Icon(Icons.Outlined.Email, contentDescription = null) },
+            trailingIcon = { Text("F11", textAlign = TextAlign.Center) }
+        )
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
