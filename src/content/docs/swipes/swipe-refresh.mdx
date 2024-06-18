@@ -1,0 +1,333 @@
+---
+title: SwipeRefresh
+description: Aprende a usar el composable SwipeRefresh en Jetpack Compose.
+sidebar:
+    badge:
+        text: Nuevo
+        variant: tip
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+|                                                      Material                                                      |                                                      Material 3                                                      |
+|:------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|
+| ![Imagen del componente SwipeRefresh Material](../../../assets/swipes/swipe-refresh/swipe-refresh-material.webp) | ![Imagen del componente SwipeRefresh Material](../../../assets/swipes/swipe-refresh/swipe-refresh-material-3.webp) |
+
+El componente `PullRefresh` mejor conocido como `SwipeRefresh` es una funcionalidad
+que permite a los usuarios actualizar el contenido de la pantalla mediante
+un gesto de arrastre hacia abajo. Cuando el usuario desliza hacia abajo en la parte superior de una
+lista o una vista de desplazamiento, se activa una animación de "pull-to-refresh" (arrastrar para actualizar)
+que indica que la aplicación está recargando los datos. Este gesto es comúnmente utilizado para refrescar el
+contenido de feeds de noticias, correos electrónicos, y otras listas de datos actualizables.
+
+## Implementación
+
+### Definición del componente
+<Tabs>
+<TabItem label="Material">
+```kotlin frame="terminal"
+@Composable
+@ExperimentalMaterialApi
+fun PullRefreshIndicator(
+    refreshing: Boolean,
+    state: PullRefreshState,
+    modifier: Modifier = Modifier,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    contentColor: Color = contentColorFor(backgroundColor),
+    scale: Boolean = false
+): Unit
+```
+
+Atributo | Descripción
+------ | -----------
+refreshing| Indica cuando el refresh está ocurriendo.
+state | El estado que rastrea cuánto se ha realizado el gesto.
+modifier | Modificador opcional para personalizar el estilo y el diseño del componente.
+backgroundColor | El color del fondo del indicador.
+contentColor | El color del arco y la flecha del indicador.
+scale | Indica si el tamaño del indicador cambia según el progreso del arrastre o no.
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/material/pullrefresh/package-summary#PullRefreshIndicator(kotlin.Boolean,androidx.compose.material.pullrefresh.PullRefreshState,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,kotlin.Boolean)).
+:::
+</TabItem>
+
+<TabItem label="Material 3">
+```kotlin frame="terminal"
+@Composable
+@ExperimentalMaterial3Api
+fun PullToRefreshBox(
+    isRefreshing: Boolean,
+    onRefresh: () -> Unit,
+    modifier: Modifier = Modifier,
+    state: PullToRefreshState = rememberPullToRefreshState(),
+    contentAlignment: Alignment = Alignment.TopStart,
+    indicator: @Composable BoxScope.() -> Unit = {
+        Indicator(
+            modifier = Modifier.align(Alignment.TopCenter),
+            isRefreshing = isRefreshing,
+            state = state
+        )
+    },
+    content: @Composable BoxScope.() -> Unit
+): Unit
+```
+
+Atributo | Descripción
+------ | -----------
+isRefreshing| Indica cuando el refresh está ocurriendo.
+onRefresh | Función lambda que se llama cuando el usuario arrastra lo suficiente para solicitar una actualización.
+modifier | Modificador opcional para personalizar el estilo y el diseño del componente.
+state | El estado que rastrea cuánto se ha realizado el gesto.
+indicator | Componente indicador que se muestra encima del contenido cuando el usuario comienza a arrastrar o cuando se está realizando una actualización.
+content | Función lambda que define el contenido principal del elemento.
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/material3/pulltorefresh/package-summary#PullToRefreshBox(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,androidx.compose.material3.pulltorefresh.PullToRefreshState,androidx.compose.ui.Alignment,kotlin.Function1,kotlin.Function1)).
+:::
+</TabItem>
+</Tabs>
+### Ejemplos
+
+<Tabs>
+
+<TabItem label="Material">
+
+<center>![Imagen del componente SwipeRefresh Material](../../../assets/swipes/swipe-refresh/swipe-refresh-material.webp)</center>
+
+```kotlin frame="terminal"
+package com.example.swiperefresh
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.example.swiperefresh.ui.theme.SwipeRefreshTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            SwipeRefreshTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    val items = remember {
+                        (1..100).map { "Item $it" }
+                    }
+                    var isRefreshing by remember {
+                        mutableStateOf(false)
+                    }
+                    val scope = rememberCoroutineScope()
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                            .padding(top = 24.dp)
+                    ) {
+                        PullToRefreshLazyColumn(
+                            items = items,
+                            content = {
+                                Text(text = it)
+                            },
+                            isRefreshing = isRefreshing,
+                            onRefresh = {
+                                scope.launch {
+                                    isRefreshing = true
+                                    delay(2000)
+                                    isRefreshing = false
+                                }
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun <T> PullToRefreshLazyColumn(
+    items: List<T>,
+    content: @Composable (T) -> Unit,
+    isRefreshing: Boolean,
+    onRefresh: () -> Unit,
+    modifier: Modifier = Modifier,
+    lazyListState: LazyListState = rememberLazyListState()
+) {
+    val pullToRefreshState = rememberPullRefreshState(isRefreshing, onRefresh = onRefresh)
+
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+    ) {
+        LazyColumn(
+            state = lazyListState,
+            contentPadding = PaddingValues(8.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .pullRefresh(pullToRefreshState),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            items(items) {
+                content(it)
+            }
+        }
+        PullRefreshIndicator(
+            refreshing = isRefreshing,
+            state = pullToRefreshState,
+            modifier = Modifier.align(Alignment.TopCenter)
+        )
+    }
+}
+```
+
+</TabItem>
+
+<TabItem label = "Material 3">
+
+<center>![Imagen del componente SwipeRefresh Material](../../../assets/swipes/swipe-refresh/swipe-refresh-material-3.webp)</center>
+
+```kotlin frame="terminal"
+package com.example.swiperefresh
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.example.swiperefresh.ui.theme.SwipeRefreshTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            SwipeRefreshTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    val items = remember {
+                        (1..100).map { "Item $it" }
+                    }
+                    var isRefreshing by remember {
+                        mutableStateOf(false)
+                    }
+                    val scope = rememberCoroutineScope()
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                    ) {
+                        PullToRefreshLazyColumn(
+                            items = items,
+                            content = {
+                                Text(text = it)
+                            },
+                            isRefreshing = isRefreshing,
+                            onRefresh = {
+                                scope.launch {
+                                    isRefreshing = true
+                                    delay(2000)
+                                    isRefreshing = false
+                                }
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun <T> PullToRefreshLazyColumn(
+    items: List<T>,
+    content: @Composable (T) -> Unit,
+    isRefreshing: Boolean,
+    onRefresh: () -> Unit,
+    modifier: Modifier = Modifier,
+    lazyListState: LazyListState = rememberLazyListState()
+) {
+    val pullToRefreshState = rememberPullToRefreshState()
+
+    PullToRefreshBox(
+        state = pullToRefreshState,
+        modifier = modifier.fillMaxSize(),
+        onRefresh = onRefresh,
+        isRefreshing = isRefreshing,
+        contentAlignment = Alignment.TopCenter,
+    ) {
+        LazyColumn(
+            state = lazyListState,
+            contentPadding = PaddingValues(8.dp),
+            modifier = Modifier
+            .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            items(items) {
+                content(it)
+            }
+        }
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
