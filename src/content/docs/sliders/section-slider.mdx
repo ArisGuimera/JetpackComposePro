@@ -1,4 +1,123 @@
 ---
-title: Section slider
-description: A guide in my new Starlight docs site.
+title: Section Slider o Range Slider
+description: Aprende a usar el composable SectionSlider en Jetpack Compose.
 ---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+| Material| Material 3| 
+| :----------------: | :------: |
+![Imagen del componente - Material [RangeSlider]](../../../assets/sliders/range-sliders/range-slider.png)|![RangeSlider - Material 3 [DropdownMenu]](../../../assets/sliders/range-sliders/range-slider-material3.png)
+
+El componente `Section Slider` es un elemento deslizante que permite a los usuarios navegar a través de diferentes secciones o elementos de manera horizontal. Es ideal para mostrar contenido como imágenes, tarjetas, o cualquier otro elemento que necesite ser visualizado de manera secuencial.
+
+## Implementación
+
+### Definición del componente
+
+<Tabs>
+
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+Slider(
+        valueRange,
+        values,
+        onValueChange,
+    )
+```
+#### Los parámetros del componente en Material son los siguientes:
+
+Atributo | Descripción
+------ | -----------
+`valueRange` | Define el rango de valores que el slider puede tomar. En este caso, va desde 0 hasta 100.
+`values` | Una tupla que representa los valores mínimos y máximos del rango seleccionado actualmente por el usuario.
+`onValueChange` | Un callback que se llama cuando el usuario desliza el control deslizante para cambiar los valores seleccionados.
+
+</TabItem>
+
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+Slider(
+        valueRange,
+        values,
+        onValueChange,
+        steps,
+        onValueChangeFinished,
+    )
+```
+#### Los parámetros del componente DropdownMenu:
+
+Atributo | Descripción
+------ | -----------
+`valueRange` | Define el rango de valores que el slider puede tomar.
+`values` | Una tupla que representa los valores mínimos y máximos del rango seleccionado actualmente por el usuario.
+`onValueChange` | Un callback que se llama cuando el usuario desliza el control deslizante para cambiar los valores seleccionados.
+`steps` | Define el número de pasos discretos entre los valores mínimos y máximos del rango.
+`onValueChangeFinished` | Un callback opcional que se llama cuando el usuario finaliza de cambiar los valores, permitiendo realizar acciones adicionales si es necesario.
+
+</TabItem>
+
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos
+
+<Tabs>
+
+<TabItem label="Material">
+
+<center>![Imagen del componente - Material [RangeSlider]](../../../assets/sliders/range-sliders/range-slider.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun MaterialRangeSlider() {
+    var sliderPosition by remember { mutableStateOf(0f to 100f) }
+
+    Slider(
+        valueRange = 0f..100f,
+        values = sliderPosition,
+        onValueChange = {
+            sliderPosition = it
+        }
+    )
+}
+
+```
+</TabItem>
+
+<TabItem label="Material 3">
+
+<center>![RangeSlider - Material 3 [DropdownMenu]](../../../assets/sliders/range-sliders/range-slider-material3.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun Material3RangeSlider() {
+    var sliderPosition by remember { mutableStateOf(0f to 100f) }
+
+    Slider(
+        valueRange = 0f..100f,
+        values = sliderPosition,
+        onValueChange = {
+            sliderPosition = it
+        },
+        steps = 100,
+        onValueChangeFinished = {
+            // Lógica adicional al terminar de cambiar los valores
+        }
+    )
+}
+```
+
+</TabItem>
+</Tabs>
+
