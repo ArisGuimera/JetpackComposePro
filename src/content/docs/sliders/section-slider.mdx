@@ -1,0 +1,145 @@
+---
+title: Range Slider
+description: Aprende a usar el composable SectionSlider en Jetpack Compose.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+| Material| Material 3|
+| :----------------: | :------: |
+![Imagen del componente - Material [RangeSlider]](../../../assets/sliders/range-sliders/range-slider.png)|![RangeSlider - Material 3 [RangeSliderM3]](../../../assets/sliders/range-sliders/range-slider-material3.png)
+
+El componente `RangeSlider` en Jetpack Compose es un control deslizante que permite a los usuarios seleccionar un rango de valores dentro de un intervalo definido. Es particularmente útil para casos donde se requiere especificar un rango, como en filtros de precios, selección de tiempo, o cualquier situación donde se necesite definir un mínimo y un máximo.
+
+## Implementación
+
+### Definición del componente
+
+<Tabs>
+
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun RangeSlider(
+    value: ClosedFloatingPointRange<Float>,
+    onValueChange: (ClosedFloatingPointRange<Float>) -> Unit,
+    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
+    steps: Int = 0,
+    enabled: Boolean = true,
+    colors: SliderColors = SliderDefaults.colors()
+)
+```
+#### Los parámetros del componente en Material son los siguientes:
+
+Atributo | Descripción
+------ | -----------
+`valueRange` | Define el rango de valores que el slider puede tomar. En este caso, va desde 0 hasta 100.
+`value` | Una tupla que representa los valores mínimos y máximos del rango seleccionado actualmente por el usuario.
+`onValueChange` | Un callback que se llama cuando el usuario desliza el control deslizante para cambiar los valores seleccionados.
+`steps` | Define el número de pasos discretos entre los valores mínimos y máximos del rango.
+`enabled` | Define si el slider está habilitado o no.
+`colors` | Los colores del slider en diferentes estados.
+`onValueChangeFinished` | Un callback opcional que se llama cuando el usuario finaliza de cambiar los valores.
+
+</TabItem>
+
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun RangeSlider(
+    value: ClosedFloatingPointRange<Float>,
+    onValueChange: (ClosedFloatingPointRange<Float>) -> Unit,
+    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
+    steps: Int = 0,
+    enabled: Boolean = true,
+    colors: SliderColors = SliderDefaults.colors()
+)
+```
+#### Los parámetros del componente DropdownMenu:
+
+Atributo | Descripción
+------ | -----------
+`valueRange` | Define el rango de valores que el slider puede tomar. En este caso, va desde 0 hasta 100.
+`value` | Una tupla que representa los valores mínimos y máximos del rango seleccionado actualmente por el usuario.
+`onValueChange` | Un callback que se llama cuando el usuario desliza el control deslizante para cambiar los valores seleccionados.
+`steps` | Define el número de pasos discretos entre los valores mínimos y máximos del rango.
+`enabled` | Define si el slider está habilitado o no.
+`colors` | Los colores del slider en diferentes estados.
+`onValueChangeFinished` | Un callback opcional que se llama cuando el usuario finaliza de cambiar los valores.
+
+</TabItem>
+
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos
+
+<Tabs>
+
+<TabItem label="Material">
+
+<center>![Imagen del componente - Material [RangeSlider]](../../../assets/sliders/range-sliders/range-slider.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun RangeSliderExample() {
+    var sliderPosition by remember { mutableStateOf(0f..100f) }
+
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Selected range: ${sliderPosition.start} - ${sliderPosition.endInclusive}")
+        RangeSlider(
+            value = sliderPosition,
+            onValueChange = { sliderPosition = it },
+            valueRange = 0f..100f,
+            steps = 10,
+            enabled = true,
+            colors = SliderDefaults.colors()
+        )
+    }
+}
+```
+</TabItem>
+
+<TabItem label="Material 3">
+
+<center>![RangeSlider - Material 3 [RangeSliderM3]](../../../assets/sliders/range-sliders/range-slider-material3.png)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun RangeSliderExample() {
+    var sliderPosition by remember { mutableStateOf(0f..100f) }
+
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Selected range: ${sliderPosition.start} - ${sliderPosition.endInclusive}")
+        RangeSlider(
+            value = sliderPosition,
+            onValueChange = { sliderPosition = it },
+            onValueChangeFinished = {
+                // Acción adicional después de que el usuario ha terminado de cambiar el valor
+            },
+            valueRange = 0f..100f,
+            steps = 10,
+            enabled = true,
+            colors = SliderDefaults.colors()
+        )
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
