@@ -1,23 +1,20 @@
 ---
-title: Carousel
+title: HorizontalPager
 description: A guide in my new Starlight docs site.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-|                                                        Material                                                        | Material 3 |
-| :--------------------------------------------------------------------------------------------------------------------: | :--------: |
+|                                                        Material                                                        |
+| :--------------------------------------------------------------------------------------------------------------------: |
 | ![Demostración de un Horizontal Pager en un dispositivo android](../../../assets/carousel/horizontal-pager-simple.gif) |
 
 ## Implementación
 
 ### Definición del componente
 
-<Tabs>
-  <TabItem label="Material">
-  
 ```kotlin frame="terminal"
-  
+
 @Composable
 @ExperimentalFoundationApi
 fun HorizontalPager(
@@ -36,7 +33,7 @@ fun HorizontalPager(
         PagerDefaults.pageNestedScrollConnection(state, Orientation.Horizontal)
     },
     pageContent: @Composable PagerScope.(page: Int) -> Unit
-)  
+)
 ```
 
 | Atributo                   | Descripción                                                                                                                                                                                                                                                                                                                                                  |
@@ -75,16 +72,9 @@ fun rememberPagerState(
 | initialPageOffsetFraction | Se utiliza para indicar qué tan desplazada está la página inicial en relación con su posición original.                                                      |
 | pageCount                 | Función lambda que devuelve el número total de items que tendrá el carousel. Es una función para soportar casos donde se agreguen más elementos al carousel. |
 
-  </TabItem>
-  <TabItem label="Material 3"></TabItem>
-</Tabs>
-
 ## Ejemplos
 
-<Tabs>
-  <TabItem label="Material">
-  
-  ### Carousel Simple
+### Carousel Simple
 
 ![Demostración de un Horizontal Pager en un dispositivo android](../../../assets/carousel/horizontal-pager-simple.gif)
 
@@ -225,7 +215,3 @@ fun CarouselHorizontalExample() {
     }
 }
 ```
-
-  </TabItem>
-  <TabItem label="Material3"></TabItem>
-</Tabs>
