@@ -1,4 +1,117 @@
 ---
 title: Card
 description: Aprende a usar el composable Card en Jetpack Compose.
+sidebar:
+    order: 0
 ---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+[comment]: <> (La ruta siempre será assets/nombeComponente/componente-header.webp)
+
+| Material| Material 3| 
+| :----------------: | :------: |
+| ![Imagen del componente Button - Material](POR PONER)              | ![Imagen del componente Button - Material 3](POR PONER) | 
+
+Las `Card` son componentes que funcionan como contenedores, le dan al usuario la posibilidad de crear un elemento reutilizable con característcas personaliizadas, como ejemplo de cards podemos encontrar:
+Los Posts en una red social.
+Las discuciones en una app tipo foro.
+Los correos en una app de mensajería digital.
+
+## Implementación
+
+### Definición del componente
+
+[comment]: <> (Añade un ``TabItem`` por cada tipo de implementación que tenga)
+
+<Tabs>
+<TabItem label="Material">
+
+```kotlin frame="terminal"
+@Composable
+fun Card(
+    modifier: Modifier = Modifier,
+    shape: Shape = MaterialTheme.shapes.medium,
+    backgroundColor: Color = MaterialTheme.colors.surface,
+    contentColor: Color = contentColorFor(backgroundColor),
+    border: BorderStroke? = null,
+    elevation: Dp = 1.dp,
+    content: @Composable () -> Unit
+)
+```
+Atributo | Descripción
+------ | -----------
+modifier | Modificador que implementará el composable.
+shape | Define la forma de la `Card`.
+backgroundColor | Define el color de fondo que tendrá la `Card`.
+contentColor | Define el color de los elementos que estarán dentro de la `Card`.
+border | Grosor de borde que envuelve a la `Card`.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `CardElevation`.
+content | Contenido a mostrar dentro de la `Card`.
+
+</TabItem>
+<TabItem label="Material 3">
+
+```kotlin frame="terminal"
+@Composable
+fun Card(
+    modifier: Modifier = Modifier,
+    shape: Shape = CardDefaults.shape,
+    colors: CardColors = CardDefaults.cardColors(),
+    elevation: CardElevation = CardDefaults.cardElevation(),
+    border: BorderStroke? = null,
+    content: @Composable ColumnScope.() -> Unit
+)
+```
+
+Atributo | Descripción
+------ | -----------
+modifier | Modificador que implementará el composable.
+shape | Define la forma de la `Card` y su sombra.
+colors | Nos permite modificar el color del fondo de la `Card` y el del contenido.
+elevation | Permite modificar la elevación del componente en sus distintos estados con el objeto `CardElevation`.
+border | Grosor de borde que envuelve a la `Card`.
+content | Contenido a mostrar dentro de la `Card`.
+
+</TabItem>
+</Tabs>
+
+[comment]: <> (No modifiques el tip)
+
+:::tip[Fuente]
+Puedes acceder a la documentación oficial de Google
+[desde aquí](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary).
+:::
+
+### Ejemplos 
+
+<Tabs>
+<TabItem label="Material">
+
+<center>![Imagen del componente Card - Material](POR PONER)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun CardExample(){
+    Card {
+        Text(text = "Card")
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Material 3">
+
+<center>![Imagen del componente Button - Material 3](POR PONER)</center>
+
+```kotlin frame="terminal"
+@Composable
+fun CardExample(){
+    Card {
+        Text(text = "Card")
+    }
+}
+```
+
+</TabItem>
+</Tabs>
