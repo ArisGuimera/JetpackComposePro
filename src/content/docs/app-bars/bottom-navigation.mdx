@@ -157,25 +157,25 @@ fun BottomNavigationExample() {
 @Composable
 fun NavigationBarExample() {
     NavigationBar( windowInsets = NavigationBarDefaults.windowInsets ){
-        BottomNavigationItem(
+        NavigationBarItem(
             selected = true,
             onClick = { /*TODO*/ },
             icon = { Icon( Icons.Filled.Favorite, null) },
             label = { Text(text = "Aris")}
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             selected = false,
             onClick = { /*TODO*/ },
             icon = { Icon( Icons.Filled.Favorite, null) },
             label = { Text(text = "Aris")}
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             selected = false,
             onClick = { /*TODO*/ },
             icon = { Icon( Icons.Filled.Favorite, null) },
             label = { Text(text = "Aris")}
         )
-        BottomNavigationItem(
+        NavigationBarItem(
             selected = true,
             onClick = { /*TODO*/ },
             icon = { Icon( Icons.Filled.Favorite, null) },
