@@ -41,7 +41,7 @@ Puedes acceder a la documentación oficial de Google
 
 ### Ejemplos
 
-Las vistas previas que usan `@PreviewParameter` se nombran de forma predeterminada con el índice del parámetro y el nombre de la propiedad (usuario 0, usuario 1, usuario 2, etcétera), lo que puede dificultar su diferenciación. Para mejorar la claridad de la vista previa, puedes proporcionar nombres visibles personalizados para cada vista previa anulando `getDisplayName()` en tu `PreviewParameterProvider. Esto ayuda a distinguir entre diferentes variaciones de datos o estados de la IU. Por ejemplo, puedes etiquetar las vistas previas según los datos de entrada:
+Las vistas previas que usan `@PreviewParameter` se nombran de forma predeterminada con el índice del parámetro y el nombre de la propiedad (state 0, state 1, state 2, etcétera), lo que puede dificultar su diferenciación. Para mejorar la claridad de la vista previa, puedes proporcionar nombres visibles personalizados para cada vista previa anulando `getDisplayName()` en tu `PreviewParameterProvider. Esto ayuda a distinguir entre diferentes variaciones de datos o estados de la IU. Por ejemplo, puedes etiquetar las vistas previas según los datos de entrada:
 
 ```kotlin frame="terminal"
 import androidx.compose.foundation.layout.Box
