@@ -49,5 +49,5 @@ Actualmente estamos en una fase muy inicial y todo ayuda se agradece. Para colab
 ## 👨‍💻 Colaboradores
 
 <a href="https://github.com/ArisGuimera/JetpackComposePro/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ArisGuimera/JetpackComposePro" />
+  <img src="https://contrib.rocks/image?repo=ArisGuimera/mobiai-core" />
 </a>
